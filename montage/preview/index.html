@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="stylesheet" type="text/css" href="style.css" >
+		<title>Preview</title>
+
+		
+	</head>
+	<body>
+
+		<header>
+		    <nav class="nav-header">
+				<ul class="nav-menu">
+				    <li><a href="#section-1">Accueil</a></li>
+				    <li><a href="#section-2">Actualités</a></li>
+				    <li><a href="#section-3">Contact</a></li>
+				</ul>
+			</nav>
+
+		</header>
+
+		<section class="section-container">
+			<main>
+
+				<section id="section-1" class="section-content"><br />Accueil</section>
+				<section id="section-2" class="section-content"><br />Actualités</section>
+				<section id="section-3" class="section-content"><br />Contact</section>
+				
+			</main>
+			<footer></footer>
+		</section>
+		<script>
+		    $(function() {
+			 
+			  $("a").click(function( event ) { // on attache la fonction au click
+			    if ( $(this).attr("href").match("#") ) { // on vérifie qu'il s'agit d'une ancre
+			      event.preventDefault();
+			      var href = $(this).attr('href').replace('#', '') // on scroll vers la cible
+			      scrollToAnchor( href ); }
+			  });
+			});
+
+
+		</script>
+	</body>
+</html>

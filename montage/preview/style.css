@@ -1,0 +1,54 @@
+body {
+	margin: 0;
+}
+
+header {
+	margin-top: 10vh;
+	position: relative;
+	overflow: hidden;
+	padding-bottom: 10vh;
+	padding-top: 10vh;
+	
+}
+
+header nav.nav-header {
+	background-color: rgba(0,0,0,0.7);
+	position: fixed;
+	width: 100%;
+	min-height: 10vh;
+	top:0;
+	
+}
+
+header ul.nav-menu {
+	margin:0;
+	padding: 0;
+	float: right;
+	line-height: 10vh;
+
+}
+
+header ul.nav-menu li {
+	display: inline-block;
+}
+
+main section.section-content {
+	clear: both;
+	height: 100vh;
+}
+
+/*section.section-container {
+	margin-top: 10vh;
+}*/
+
+main section#section-1 {
+	background-color: lightblue;
+}
+
+main section#section-2 {
+	background-color: lightgreen;
+}
+
+main section#section-3 {
+	background-color: lightyellow;
+}

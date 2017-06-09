@@ -1,0 +1,32 @@
+MERISE
+----------------------------------
+
+Réfléchir à l'organisation à mettre en place dans un système d'informations (S.I.)
+==> Phase de conception basée sur la sépration des données (CONCEPTUELLE) et des traitements (PHYSIQUE)
+
+----------------------------------
+
+Cycle d'abstraction d'un S.I.
+
+1 - Expression des besoins
+2 - Modèle conceptuel
+3 - Modèle logique
+4 - Modèle physique
+5 - S.I. informatisé
+
+Niveau      Statique (données)  Dynamique (traitements)
+Conceptuel  MCD                 MCT
+Logique     MLD (où?)           MLT (qui ? Quoi?)
+Physique    MPD                 MOPT (comment?)
+
+
+MCD
+------
+1 - Attributs (Propriétés) : informations unitaires (élémentaires)
+2 - Entités (Individu-type) : représentation d'un élément matériel ou immatériel ayant un rôle dans le S.I.
+    Ensemble composé d'attributs, regroupement bien pensé
+3 - Associations (Relation-type) : lien sémantique entre des entités
+    Binaire : 2 entités pour 1 relation
+    Récursive (reflexive) : 1 entité pour 1 relation avec un double lien
+    Ternaire : 3 entités (ou plus) pour 1 relation
+4 - Cardinalités : caractérise le lien qui existe entre une entité et une relation

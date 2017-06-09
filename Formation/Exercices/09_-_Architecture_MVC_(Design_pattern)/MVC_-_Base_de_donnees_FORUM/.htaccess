@@ -1,0 +1,18 @@
+<IfModule mod_negotiation.c>
+    Options -MultiViews
+</IfModule>
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /formation/Exercices/09_-_Architecture_MVC_(Design_pattern)/MVC_-_Base_de_donnees_FORUM/
+
+    ErrorDocument 403 error/403
+    ErrorDocument 404 error/404
+
+    ## If the request isn't for a directory, or a file, or a symbolic link that exists
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-l
+    RewriteRule ^error/([0-9]{3})/?$ web/$1.php [NC,L]
+    RewriteRule ^(.*)$ web/ [QSA,L]
+</IfModule>

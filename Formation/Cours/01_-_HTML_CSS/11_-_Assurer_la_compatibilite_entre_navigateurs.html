@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
+        <title>Assurer la compatibilité entre les navigateurs</title>
+
+        <!-- // highlight.js : Coloration syntaxique du code -->
+        <link rel="stylesheet" type="text/css" href="../../_assets/plugins/highlight/styles/monokai_sublime.css">
+        <script type="text/javascript" src="../../_assets/plugins/highlight/highlight.pack.js"></script>
+        <script type="text/javascript">
+            hljs.initHighlightingOnLoad();
+        </script>
+        <!-- // -->
+
+        <link rel="stylesheet" type="text/css" href="../../_assets/css/style.css">
+    </head>
+    <body>
+        <h1>Assurer la compatibilité entre les navigateurs</h1>
+        <p><em>Souvent, ce sont les anciennes versions d'Internet Explorer qui vont vous poser problème. Comme certaines d'entre elles sont toujours utilisées, vous devez apprendre à composer avec.</em></p>
+        <hr />
+        <h2>Les commentaires conditionnels</h2>
+        <p><em>Grâce à des commentaires conditionnels, vous pouvez faire en sorte qu'une portion du code HTML soit lue uniquement par certaines versions d'IE. Ce sont des commentaires HTML qui ont une forme un peu spéciale et qui ne seront lus que par IE.</em></p>
+        <pre><code class="html">
+&lt;!--[if IE]&gt;
+Code HTML réservé à IE
+&lt;![endif]--&gt;</code></pre>
+        <p><em>L'ensemble forme un commentaire HTML : il commence par &lt;!-- et se termine par --&gt;. Les navigateurs ignoreront donc le code qui se trouve à l'intérieur ... sauf IE, qui y voit une condition [if IE] signifiant « Si c'est Internet Explorer ».</em></p>
+        <p><em>De cette manière, nous pouvons cibler différentes versions d'Internet Explorer :</em></p>
+        <pre><code class="html">
+&lt;!--[if IE 8]&gt;
+Code HTML réservé à IE 8 uniquement
+&lt;![endif]--&gt;</code></pre>
+        <p><em>On peut utiliser les symboles suivants pour viser un ensemble de versions :</em></p>
+        <ul style="font-style:italic;">
+            <li><strong>lt</strong> : inférieur</li>
+            <li><strong>lte</strong> : inférieur ou égal</li>
+            <li><strong>gt</strong> : supérieur</li>
+            <li><strong>gte</strong> : supérieur ou égal</li>
+        </ul>
+        <pre><code class="html">
+&lt;!--[if lt IE 9]&gt;
+Code HTML réservé à IE inférieur à sa version 9
+&lt;![endif]--&gt;
+
+&lt;!--[if gte IE 9]&gt;
+Code HTML réservé à IE 9 et plus
+&lt;![endif]--&gt;
+
+&lt;!--[if !IE]&gt;&lt;!--&gt;
+Code HTML réservé pour les navigateurs différents d'IE
+&lt;!--&lt;[endif]--&gt;</code></pre>
+        <p class="block alert"><em>La syntaxe pour les navigateurs différents d'IE est un peu plus complexe, mais l'astuce est bien conçue. Si vous regardez bien, il y a deux balises de commentaires. Le code HTML se trouve en-dehors des balises de commentaires, il sera donc lu par tous les navigateurs… sauf IE, qui lit les commentaires lui demandant de ne pas lire le code HTML qui suit.</em></p>
+        <hr />
+        <h2>Le fallback pour les balises HTML5 dans les navigateurs ne les supportant pas</h2>
+        <p><em>Pour que IE8 reconnaisse les nouvelles balises, il faut ajouter du code Javascript pour créer les éléments ou balises comme ceci «&nbsp;<em>document.createElement(‘header’);</em>&nbsp;» et ajouter une ligne pour chaque balise : article, section, nav, footer, …</em></p>
+        <p><em>Les navigateurs IE8 ainsi que ses versions antérieures ne supportent pas les fonctionnalités du HMTL5, y compris les nouvelles balises. La nouvelle version IE9 rattrape un peu ce retard.</em></p>
+        <p><em>Pour simplifier ce processus, <a href="http://remysharp.com/" target="_blank" title="Blog de Remy Sharp">Remy Sharp</a> a créé un fichier Javascript hébergé sur Google Code qui crée toutes ces balises.</em></p>
+        <p><em>Pour l'utiliser, nous allons donc inclure le script dans notre page html en s'aidant des commentaires conditionnels et de la balise &lt;script&gt;.</em></p>
+        <pre><code class="html">
+&lt;!--[if lt IE 9]&gt;
+&lt;script type="text/javascript" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"&gt;&lt;/script&gt;
+&lt;![endif]--&gt;</code></pre>
+        <hr />
+        <h2>L'astuce du référentiel de dimensionnement des éléments en CSS</h2>
+        <p><em>Par défaut, la largeur d'un élément est appliquée à son contenu.<br />Ainsi les dimensions des marges internes et des bordures appliquées à l'élément viennent s'ajouter à la dimansion de ce dernier et nécessitent donc un calcul afin d'obtenir la taille définitive globale de l'élément.</em></p>
+        <p><em>Grâce à une simple instruction CSS, nous allons pouvoir conserver la taille indiquée pour l'élément en lui réduisant automatiquement l'espace alloué au contenu afin d'y incorporer les marges internes et les bordures.</em></p>
+        <style type="text/css">
+            <!--
+            *,*::before,*::after {
+                -webkit-box-sizing:border-box;
+                -moz-box-sizing:border-box;
+                -ms-box-sizing:border-box;
+                -o-box-sizing:border-box;
+                box-sizing:border-box;
+            }
+            #box-sizing {font-size:0;}
+                #box-sizing .div {
+                    border:grey 1px solid;
+                    display:inline-block;
+                    font-size:12px;
+                    padding:15px;
+                    vertical-align:top;
+                    width:49%;
+                    zoom:1;
+                }
+                #box-sizing .div:nth-child(2n) {
+                    background-color:lightblue;
+                    margin-left:1%;
+                }
+                #box-sizing .div:nth-child(2n+1) {
+                    background-color:lightgreen;
+                    margin-right:1%;
+                }
+            -->
+        </style>
+        <div id="box-sizing">
+            <div class="div"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris egestas nibh vehicula dui egestas, in tempus velit semper. Pellentesque nec condimentum mi, sit amet aliquam neque. Duis urna augue, hendrerit vitae imperdiet vitae, pretium sit amet enim. Mauris luctus efficitur sem vel congue. In in sagittis nibh. Aliquam tincidunt rhoncus felis sed consectetur. Nunc lacinia arcu vitae erat ultrices, vitae sagittis mauris ultricies. Mauris vulputate, diam vel dictum mollis, leo quam ultricies arcu, sit amet volutpat ex est sit amet ante. Maecenas accumsan aliquet molestie. Cras viverra sit amet libero vel condimentum. Ut sollicitudin, urna at finibus suscipit, lectus nisi euismod quam, at euismod metus ante nec dui. Morbi auctor ante in facilisis aliquam.</p></div>
+            <div class="div"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris egestas nibh vehicula dui egestas, in tempus velit semper. Pellentesque nec condimentum mi, sit amet aliquam neque. Duis urna augue, hendrerit vitae imperdiet vitae, pretium sit amet enim. Mauris luctus efficitur sem vel congue. In in sagittis nibh. Aliquam tincidunt rhoncus felis sed consectetur. Nunc lacinia arcu vitae erat ultrices, vitae sagittis mauris ultricies. Mauris vulputate, diam vel dictum mollis, leo quam ultricies arcu, sit amet volutpat ex est sit amet ante. Maecenas accumsan aliquet molestie. Cras viverra sit amet libero vel condimentum. Ut sollicitudin, urna at finibus suscipit, lectus nisi euismod quam, at euismod metus ante nec dui. Morbi auctor ante in facilisis aliquam.</p></div>
+        </div>
+        <pre><code class="css">
+*,*::before,*::after {
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    -ms-box-sizing:border-box;
+    -o-box-sizing:border-box;
+    box-sizing:border-box; /* content-box (par défaut) | padding-box | border-box */
+}
+.div {
+    border:grey 1px solid;
+    display:inline-block;
+    font-size:12px;
+    padding:15px;
+    vertical-align:top;
+    width:49%;
+    zoom:1;
+}
+.div:nth-child(2n) {
+    background-color:lightblue;
+    margin-left:1%;
+}
+.div:nth-child(2n+1) {
+    background-color:lightgreen;
+    margin-right:1%;
+}</code>
+<code class="html">
+&lt;div class="div"&gt;&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris egestas nibh vehicula dui egestas, in tempus velit semper. Pellentesque nec condimentum mi, sit amet aliquam neque. Duis urna augue, hendrerit vitae imperdiet vitae, pretium sit amet enim. Mauris luctus efficitur sem vel congue. In in sagittis nibh. Aliquam tincidunt rhoncus felis sed consectetur. Nunc lacinia arcu vitae erat ultrices, vitae sagittis mauris ultricies. Mauris vulputate, diam vel dictum mollis, leo quam ultricies arcu, sit amet volutpat ex est sit amet ante. Maecenas accumsan aliquet molestie. Cras viverra sit amet libero vel condimentum. Ut sollicitudin, urna at finibus suscipit, lectus nisi euismod quam, at euismod metus ante nec dui. Morbi auctor ante in facilisis aliquam.&lt;/p&gt;&lt;/div&gt;
+&lt;div class="div"&gt;&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris egestas nibh vehicula dui egestas, in tempus velit semper. Pellentesque nec condimentum mi, sit amet aliquam neque. Duis urna augue, hendrerit vitae imperdiet vitae, pretium sit amet enim. Mauris luctus efficitur sem vel congue. In in sagittis nibh. Aliquam tincidunt rhoncus felis sed consectetur. Nunc lacinia arcu vitae erat ultrices, vitae sagittis mauris ultricies. Mauris vulputate, diam vel dictum mollis, leo quam ultricies arcu, sit amet volutpat ex est sit amet ante. Maecenas accumsan aliquet molestie. Cras viverra sit amet libero vel condimentum. Ut sollicitudin, urna at finibus suscipit, lectus nisi euismod quam, at euismod metus ante nec dui. Morbi auctor ante in facilisis aliquam.&lt;/p&gt;&lt;/div&gt;</code></pre>
+    </body>
+</html>

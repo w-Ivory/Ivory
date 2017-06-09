@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
+        <title>Les sélecteurs CSS</title>
+
+        <!-- // highlight.js : Coloration syntaxique du code -->
+        <link rel="stylesheet" type="text/css" href="../../_assets/plugins/highlight/styles/monokai_sublime.css">
+        <script type="text/javascript" src="../../_assets/plugins/highlight/highlight.pack.js"></script>
+        <script type="text/javascript">
+            hljs.initHighlightingOnLoad();
+        </script>
+        <!-- // -->
+
+        <link rel="stylesheet" type="text/css" href="../../_assets/css/style.css">
+    </head>
+    <body>
+        <h1>Les sélecteurs CSS</h1>
+        <p class="block alert"><em>Pour rappel, le code CSS est lu et interprété dans le sens de l'écriture.<br />Ainsi si un élément de la page se voit attribuer plusieurs styles, ce sera le dernier écrit dans la feuille de style qui sera appliqué à condition que la précision de ciblage ne soit pas plus large que sur l'instruction précédente.</em></p>
+        <hr />
+        <h2>Le sélecteur simple de balise html</h2>
+        <p><em>Permet de cibler dans la page entière toutes les balises du type indiqué.</em></p>
+        <style type="text/css">
+            <!--
+            #balise-simple p {
+                font-size:14px;
+            }
+            -->
+        </style>
+        <div id="balise-simple">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris egestas nibh vehicula dui egestas, in tempus velit semper. Pellentesque nec condimentum mi, sit amet aliquam neque. Duis urna augue, hendrerit vitae imperdiet vitae, pretium sit amet enim. Mauris luctus efficitur sem vel congue. In in sagittis nibh. Aliquam tincidunt rhoncus felis sed consectetur. Nunc lacinia arcu vitae erat ultrices, vitae sagittis mauris ultricies. Mauris vulputate, diam vel dictum mollis, leo quam ultricies arcu, sit amet volutpat ex est sit amet ante. Maecenas accumsan aliquet molestie. Cras viverra sit amet libero vel condimentum. Ut sollicitudin, urna at finibus suscipit, lectus nisi euismod quam, at euismod metus ante nec dui. Morbi auctor ante in facilisis aliquam.</p>
+        </div>
+        <pre><code class="css">
+p {
+    font-size:14px;
+}</code>
+<code class="html">
+&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris egestas nibh vehicula dui egestas, in tempus velit semper. Pellentesque nec condimentum mi, sit amet aliquam neque. Duis urna augue, hendrerit vitae imperdiet vitae, pretium sit amet enim. Mauris luctus efficitur sem vel congue. In in sagittis nibh. Aliquam tincidunt rhoncus felis sed consectetur. Nunc lacinia arcu vitae erat ultrices, vitae sagittis mauris ultricies. Mauris vulputate, diam vel dictum mollis, leo quam ultricies arcu, sit amet volutpat ex est sit amet ante. Maecenas accumsan aliquet molestie. Cras viverra sit amet libero vel condimentum. Ut sollicitudin, urna at finibus suscipit, lectus nisi euismod quam, at euismod metus ante nec dui. Morbi auctor ante in facilisis aliquam.&lt;/p&gt;</code></pre>
+        <hr />
+        <h2>Le sélecteur de collection</h2>
+        <p><em>Permet de cibler dans la page entière tous les éléments listés.</em></p>
+        <style type="text/css">
+            <!--
+            #balise-collec h3,#balise-collec h4,#balise-collec h5 {
+                color:lightblue;
+            }
+            -->
+        </style>
+        <div id="balise-collec">
+            <h3>Titre niveau 3</h3>
+            <h3>Titre niveau 3</h3>
+            <h4>Titre niveau 4</h4>
+            <h5>Titre niveau 5</h5>
+        </div>
+        <pre><code class="css">
+h3,h4,h5 {
+    color:lightblue;
+}</code>
+<code class="html">
+&lt;h3&gt;Titre niveau 3&lt;/h3&gt;
+&lt;h3&gt;Titre niveau 3&lt;/h3&gt;
+&lt;h4&gt;Titre niveau 4&lt;/h4&gt;
+&lt;h5&gt;Titre niveau 5&lt;/h5&gt;</code></pre>
+        <p class="block alert"><em>L'exemple prend comme cible des balises html mais peut s'appliquer aussi pour tous les sélecteurs CSS vus et à venir.</em></p>
+        <hr />
+        <h2>Le sélecteur d'attribut class</h2>
+        <p><em>Permet de cibler dans la page entière tous les éléments html possédant la classe indiquée.</em></p>
+        <style type="text/css">
+            <!--
+            #class .p_1 {
+                color:lightblue;
+            }
+            -->
+        </style>
+        <div id="class">
+            <p class="p_1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris egestas nibh vehicula dui egestas, in tempus velit semper. Pellentesque nec condimentum mi, sit amet aliquam neque. Duis urna augue, hendrerit vitae imperdiet vitae, pretium sit amet enim. Mauris luctus efficitur sem vel congue. In in sagittis nibh. Aliquam tincidunt rhoncus felis sed consectetur. Nunc lacinia arcu vitae erat ultrices, vitae sagittis mauris ultricies. Mauris vulputate, diam vel dictum mollis, leo quam ultricies arcu, sit amet volutpat ex est sit amet ante. Maecenas accumsan aliquet molestie. Cras viverra sit amet libero vel condimentum. Ut sollicitudin, urna at finibus suscipit, lectus nisi euismod quam, at euismod metus ante nec dui. Morbi auctor ante in facilisis aliquam.</p>
+        </div>
+        <pre><code class="css">
+.p_1 {
+    color:lightblue;
+}</code>
+<code class="html">
+&lt;p class="p_1"&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris egestas nibh vehicula dui egestas, in tempus velit semper. Pellentesque nec condimentum mi, sit amet aliquam neque. Duis urna augue, hendrerit vitae imperdiet vitae, pretium sit amet enim. Mauris luctus efficitur sem vel congue. In in sagittis nibh. Aliquam tincidunt rhoncus felis sed consectetur. Nunc lacinia arcu vitae erat ultrices, vitae sagittis mauris ultricies. Mauris vulputate, diam vel dictum mollis, leo quam ultricies arcu, sit amet volutpat ex est sit amet ante. Maecenas accumsan aliquet molestie. Cras viverra sit amet libero vel condimentum. Ut sollicitudin, urna at finibus suscipit, lectus nisi euismod quam, at euismod metus ante nec dui. Morbi auctor ante in facilisis aliquam.&lt;/p&gt;</code></pre>
+        <hr />
+        <h2>Le sélecteur d'attribut id</h2>
+        <p><em>Permet de cibler dans la page entière tous les éléments html possédant l'identifiant indiqué.</em></p>
+        <p class="block alert"><em>Par convention et afin de s'épargner des problèmes avec des langages de script, un même id ne doit être appliqué qu'à <strong style="text-transform:uppercase;">un seul et unique</strong> élément de la page.</em></p>
+        <style type="text/css">
+            <!--
+            #class #p_1 {
+                color:lightblue;
+            }
+            -->
+        </style>
+        <div id="class">
+            <p id="p_1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris egestas nibh vehicula dui egestas, in tempus velit semper. Pellentesque nec condimentum mi, sit amet aliquam neque. Duis urna augue, hendrerit vitae imperdiet vitae, pretium sit amet enim. Mauris luctus efficitur sem vel congue. In in sagittis nibh. Aliquam tincidunt rhoncus felis sed consectetur. Nunc lacinia arcu vitae erat ultrices, vitae sagittis mauris ultricies. Mauris vulputate, diam vel dictum mollis, leo quam ultricies arcu, sit amet volutpat ex est sit amet ante. Maecenas accumsan aliquet molestie. Cras viverra sit amet libero vel condimentum. Ut sollicitudin, urna at finibus suscipit, lectus nisi euismod quam, at euismod metus ante nec dui. Morbi auctor ante in facilisis aliquam.</p>
+        </div>
+        <pre><code class="css">
+#p_1 {
+    color:lightblue;
+}</code>
+<code class="html">
+&lt;p id="p_1"&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris egestas nibh vehicula dui egestas, in tempus velit semper. Pellentesque nec condimentum mi, sit amet aliquam neque. Duis urna augue, hendrerit vitae imperdiet vitae, pretium sit amet enim. Mauris luctus efficitur sem vel congue. In in sagittis nibh. Aliquam tincidunt rhoncus felis sed consectetur. Nunc lacinia arcu vitae erat ultrices, vitae sagittis mauris ultricies. Mauris vulputate, diam vel dictum mollis, leo quam ultricies arcu, sit amet volutpat ex est sit amet ante. Maecenas accumsan aliquet molestie. Cras viverra sit amet libero vel condimentum. Ut sollicitudin, urna at finibus suscipit, lectus nisi euismod quam, at euismod metus ante nec dui. Morbi auctor ante in facilisis aliquam.&lt;/p&gt;</code></pre>
+        <hr />
+        <h2>Le sélecteur global</h2>
+        <p><em>Permet de cibler tous les éléments de la page.</em></p>
+        <style type="text/css">
+            <!--
+            #global * {
+                color:lightblue;
+            }
+            -->
+        </style>
+        <div id="global">
+            <h3>Titre niveau 3</h3>
+            <h3>Titre niveau 3</h3>
+            <h4>Titre niveau 4</h4>
+            <h5>Titre niveau 5</h5>
+            <p id="p_1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris egestas nibh vehicula dui egestas, in tempus velit semper. Pellentesque nec condimentum mi, sit amet aliquam neque. Duis urna augue, hendrerit vitae imperdiet vitae, pretium sit amet enim. Mauris luctus efficitur sem vel congue. In in sagittis nibh. Aliquam tincidunt rhoncus felis sed consectetur. Nunc lacinia arcu vitae erat ultrices, vitae sagittis mauris ultricies. Mauris vulputate, diam vel dictum mollis, leo quam ultricies arcu, sit amet volutpat ex est sit amet ante. Maecenas accumsan aliquet molestie. Cras viverra sit amet libero vel condimentum. Ut sollicitudin, urna at finibus suscipit, lectus nisi euismod quam, at euismod metus ante nec dui. Morbi auctor ante in facilisis aliquam.</p>
+            <p id="p_1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris egestas nibh vehicula dui egestas, in tempus velit semper. Pellentesque nec condimentum mi, sit amet aliquam neque. Duis urna augue, hendrerit vitae imperdiet vitae, pretium sit amet enim. Mauris luctus efficitur sem vel congue. In in sagittis nibh. Aliquam tincidunt rhoncus felis sed consectetur. Nunc lacinia arcu vitae erat ultrices, vitae sagittis mauris ultricies. Mauris vulputate, diam vel dictum mollis, leo quam ultricies arcu, sit amet volutpat ex est sit amet ante. Maecenas accumsan aliquet molestie. Cras viverra sit amet libero vel condimentum. Ut sollicitudin, urna at finibus suscipit, lectus nisi euismod quam, at euismod metus ante nec dui. Morbi auctor ante in facilisis aliquam.</p>
+        </div>
+        <pre><code class="css">
+* {
+    color:lightblue;
+}</code>
+<code class="html">
+&lt;h3&gt;Titre niveau 3&lt;/h3&gt;
+&lt;h3&gt;Titre niveau 3&lt;/h3&gt;
+&lt;h4&gt;Titre niveau 4&lt;/h4&gt;
+&lt;h5&gt;Titre niveau 5&lt;/h5&gt;
+&lt;p class="p_1"&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris egestas nibh vehicula dui egestas, in tempus velit semper. Pellentesque nec condimentum mi, sit amet aliquam neque. Duis urna augue, hendrerit vitae imperdiet vitae, pretium sit amet enim. Mauris luctus efficitur sem vel congue. In in sagittis nibh. Aliquam tincidunt rhoncus felis sed consectetur. Nunc lacinia arcu vitae erat ultrices, vitae sagittis mauris ultricies. Mauris vulputate, diam vel dictum mollis, leo quam ultricies arcu, sit amet volutpat ex est sit amet ante. Maecenas accumsan aliquet molestie. Cras viverra sit amet libero vel condimentum. Ut sollicitudin, urna at finibus suscipit, lectus nisi euismod quam, at euismod metus ante nec dui. Morbi auctor ante in facilisis aliquam.&lt;/p&gt;
+&lt;p id="p_1"&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris egestas nibh vehicula dui egestas, in tempus velit semper. Pellentesque nec condimentum mi, sit amet aliquam neque. Duis urna augue, hendrerit vitae imperdiet vitae, pretium sit amet enim. Mauris luctus efficitur sem vel congue. In in sagittis nibh. Aliquam tincidunt rhoncus felis sed consectetur. Nunc lacinia arcu vitae erat ultrices, vitae sagittis mauris ultricies. Mauris vulputate, diam vel dictum mollis, leo quam ultricies arcu, sit amet volutpat ex est sit amet ante. Maecenas accumsan aliquet molestie. Cras viverra sit amet libero vel condimentum. Ut sollicitudin, urna at finibus suscipit, lectus nisi euismod quam, at euismod metus ante nec dui. Morbi auctor ante in facilisis aliquam.&lt;/p&gt;</code></pre>
+        <hr />
+        <h2>Les sélecteurs de descendance</h2>
+        <h3>Le sélecteur global s'appliquant dans toute la descendance de l'élément parent</h3>
+        <p><em>Permet de cibler tous les éléments html dans l'élément parent.</em></p>
+        <style type="text/css">
+            <!--
+            #descendance-globale p * {
+                color:lightblue;
+            }
+            -->
+        </style>
+        <div id="descendance-globale">
+            <p><span>Lorem ipsum dolor sit amet</span>, consectetur adipiscing elit. Mauris egestas nibh vehicula dui egestas, in tempus velit semper. Pellentesque nec condimentum mi, sit amet aliquam neque. Duis urna augue, hendrerit vitae imperdiet vitae, pretium sit amet enim. Mauris luctus efficitur sem vel congue. In in sagittis nibh. Aliquam tincidunt rhoncus felis sed consectetur. Nunc lacinia arcu vitae erat ultrices, vitae sagittis mauris ultricies. <strong>Mauris vulputate</strong>, diam vel dictum mollis, leo quam ultricies arcu, sit amet volutpat ex est sit amet ante. Maecenas accumsan aliquet molestie. Cras viverra sit amet libero vel condimentum. <em>Ut sollicitudin</em>, urna at finibus suscipit, lectus nisi euismod quam, at euismod metus ante nec dui. Morbi auctor ante in facilisis aliquam.</p>
+        </div>
+        <pre><code class="css">
+p * {
+    color:lightblue;
+}</code>
+<code class="html">
+&lt;p&gt;&lt;span&gt;Lorem ipsum dolor sit amet&lt;/span&gt;, consectetur adipiscing elit. Mauris egestas nibh vehicula dui egestas, in tempus velit semper. Pellentesque nec condimentum mi, sit amet aliquam neque. Duis urna augue, hendrerit vitae imperdiet vitae, pretium sit amet enim. Mauris luctus efficitur sem vel congue. In in sagittis nibh. Aliquam tincidunt rhoncus felis sed consectetur. Nunc lacinia arcu vitae erat ultrices, vitae sagittis mauris ultricies. &lt;strong&gt;Mauris vulputate&lt;/strong&gt;, diam vel dictum mollis, leo quam ultricies arcu, sit amet volutpat ex est sit amet ante. Maecenas accumsan aliquet molestie. Cras viverra sit amet libero vel condimentum. &lt;em&gt;Ut sollicitudin&lt;/em&gt;, urna at finibus suscipit, lectus nisi euismod quam, at euismod metus ante nec dui. Morbi auctor ante in facilisis aliquam.&lt;/p&gt;</code></pre>
+        <h3>Le sélecteur s'appliquant sur l'élément ciblé dans toute la descendance de l'élément parent</h3>
+        <p><em>Permet de cibler un élément (descendant : enfant, petit enfant, arrière petit enfant, ...) appartenant à l'arborescence d'un autre élément (le parent).</em></p>
+        <style type="text/css">
+            <!--
+            #descendance-balise p span {
+                color:lightblue;
+            }
+            -->
+        </style>
+        <div id="descendance-balise">
+            <p><span>Lorem ipsum dolor sit amet</span>, consectetur adipiscing elit. Mauris egestas nibh vehicula dui egestas, in tempus velit semper. Pellentesque nec condimentum mi, sit amet aliquam neque. Duis urna augue, hendrerit vitae imperdiet vitae, pretium sit amet enim. Mauris luctus efficitur sem vel congue. In in sagittis nibh. Aliquam tincidunt rhoncus felis sed consectetur. Nunc lacinia arcu vitae erat ultrices, vitae sagittis mauris ultricies. <span>Mauris vulputate</span>, diam vel dictum mollis, leo quam ultricies arcu, sit amet volutpat ex est sit amet ante. Maecenas accumsan aliquet molestie. Cras viverra sit amet libero vel condimentum. <span>Ut sollicitudin</span>, urna at finibus suscipit, lectus nisi euismod quam, at euismod metus ante nec dui. Morbi auctor ante in facilisis aliquam.</p>
+        </div>
+        <pre><code class="css">
+p span {
+    color:lightblue;
+}</code>
+<code class="html">
+&lt;p&gt;&lt;span&gt;Lorem ipsum dolor sit amet&lt;/span&gt;, consectetur adipiscing elit. Mauris egestas nibh vehicula dui egestas, in tempus velit semper. Pellentesque nec condimentum mi, sit amet aliquam neque. Duis urna augue, hendrerit vitae imperdiet vitae, pretium sit amet enim. Mauris luctus efficitur sem vel congue. In in sagittis nibh. Aliquam tincidunt rhoncus felis sed consectetur. Nunc lacinia arcu vitae erat ultrices, vitae sagittis mauris ultricies. &lt;span&gt;Mauris vulputate&lt;/span&gt;, diam vel dictum mollis, leo quam ultricies arcu, sit amet volutpat ex est sit amet ante. Maecenas accumsan aliquet molestie. Cras viverra sit amet libero vel condimentum. &lt;span&gt;Ut sollicitudin&lt;/span&gt;, urna at finibus suscipit, lectus nisi euismod quam, at euismod metus ante nec dui. Morbi auctor ante in facilisis aliquam.&lt;/p&gt;</code></pre>
+        <p class="block alert"><em>L'exemple prend comme cible une balise html mais la descendance peut s'appliquer aussi pour tous les sélecteurs CSS vus et à venir.</em></p>
+        <h3>Le sélecteur s'appliquant sur l'élément ciblé dans la descendance directe de l'élément parent</h3>
+        <p><em>Permet de cibler un élément descendant direct (l'enfant) appartenant à l'arborescence d'un autre élément (le parent).<br /> Ceci exclut les descendants indirects (petits enfants, arrière petits enfants, ...).</em></p>
+        <style type="text/css">
+            <!--
+            #descendance-directe p > strong {
+                color:lightblue;
+            }
+            -->
+        </style>
+        <div id="descendance-directe">
+            <p><strong>Lorem ipsum dolor sit amet</strong>, consectetur adipiscing elit. Mauris egestas nibh vehicula dui egestas, in tempus velit semper. Pellentesque nec condimentum mi, sit amet aliquam neque. Duis urna augue, hendrerit vitae imperdiet vitae, pretium sit amet enim. Mauris luctus efficitur sem vel congue. In in sagittis nibh. Aliquam tincidunt rhoncus felis sed consectetur. Nunc lacinia arcu vitae erat ultrices, vitae sagittis mauris ultricies. <span>Mauris <strong>vulputate</strong></span>, diam vel dictum mollis, leo quam ultricies arcu, sit amet volutpat ex est sit amet ante. Maecenas accumsan aliquet molestie. Cras viverra sit amet libero vel condimentum. <strong>Ut sollicitudin</strong>, urna at finibus suscipit, lectus nisi euismod quam, at euismod metus ante nec dui. Morbi auctor ante in facilisis aliquam.</p>
+        </div>
+        <pre><code class="css">
+p > strong {
+    color:lightblue;
+}</code>
+<code class="html">
+&lt;p&gt;&lt;strong&gt;Lorem ipsum dolor sit amet&lt;/strong&gt;, consectetur adipiscing elit. Mauris egestas nibh vehicula dui egestas, in tempus velit semper. Pellentesque nec condimentum mi, sit amet aliquam neque. Duis urna augue, hendrerit vitae imperdiet vitae, pretium sit amet enim. Mauris luctus efficitur sem vel congue. In in sagittis nibh. Aliquam tincidunt rhoncus felis sed consectetur. Nunc lacinia arcu vitae erat ultrices, vitae sagittis mauris ultricies. &lt;span&gt;Mauris &lt;strong&gt;vulputate&lt;/strong&gt;&lt;/span&gt;, diam vel dictum mollis, leo quam ultricies arcu, sit amet volutpat ex est sit amet ante. Maecenas accumsan aliquet molestie. Cras viverra sit amet libero vel condimentum. &lt;strong&gt;Ut sollicitudin&lt;/strong&gt;, urna at finibus suscipit, lectus nisi euismod quam, at euismod metus ante nec dui. Morbi auctor ante in facilisis aliquam.&lt;/p&gt;</code></pre>
+        <hr />
+        <h2>Les sélecteurs d'adjacence</h2>
+        <h3>Le sélecteur d'adjacence simple</h3>
+        <p><em>Permet de cibler tous les éléments frères/soeurs précédé(e)s d'un autre élément.</em></p>
+        <style type="text/css">
+            <!--
+            #adjacence-globale ul~p {
+                color:lightblue;
+            }
+            -->
+        </style>
+        <div id="adjacence-globale">
+            <ul>
+                <li>Item</li>
+                <li>Item</li>
+                <li>Item</li>
+            </ul>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris egestas nibh vehicula dui egestas, in tempus velit semper. Pellentesque nec condimentum mi, sit amet aliquam neque. Duis urna augue, hendrerit vitae imperdiet vitae, pretium sit amet enim. Mauris luctus efficitur sem vel congue.</p>
+            <p>In in sagittis nibh. Aliquam tincidunt rhoncus felis sed consectetur. Nunc lacinia arcu vitae erat ultrices, vitae sagittis mauris ultricies. Mauris vulputate, diam vel dictum mollis, leo quam ultricies arcu, sit amet volutpat ex est sit amet ante. Maecenas accumsan aliquet molestie.</p>
+            <div><p>Cras viverra sit amet libero vel condimentum.</p></div>
+            <p>Ut sollicitudin, urna at finibus suscipit, lectus nisi euismod quam, at euismod metus ante nec dui. Morbi auctor ante in facilisis aliquam.</p>
+        </div>
+        <pre><code class="css">
+ul~p {
+    color:lightblue;
+}</code>
+<code class="html">
+&lt;ul&gt;
+    &lt;li&gt;Item&lt;/li&gt;
+    &lt;li&gt;Item&lt;/li&gt;
+    &lt;li&gt;Item&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris egestas nibh vehicula dui egestas, in tempus velit semper. Pellentesque nec condimentum mi, sit amet aliquam neque. Duis urna augue, hendrerit vitae imperdiet vitae, pretium sit amet enim. Mauris luctus efficitur sem vel congue.&lt;/p&gt;
+&lt;p&gt;In in sagittis nibh. Aliquam tincidunt rhoncus felis sed consectetur. Nunc lacinia arcu vitae erat ultrices, vitae sagittis mauris ultricies. Mauris vulputate, diam vel dictum mollis, leo quam ultricies arcu, sit amet volutpat ex est sit amet ante. Maecenas accumsan aliquet molestie.&lt;/p&gt;
+&lt;div&gt;&lt;p&gt;Cras viverra sit amet libero vel condimentum.&lt;/p&gt;&lt;/div&gt;
+&lt;p&gt;Ut sollicitudin, urna at finibus suscipit, lectus nisi euismod quam, at euismod metus ante nec dui. Morbi auctor ante in facilisis aliquam.&lt;/p&gt;</code></pre>
+        <h3>Le sélecteur d'adjacence directe</h3>
+        <p><em>Permet de cibler tous les éléments frères/soeurs directement précédé(e)s d'un autre élément.</em></p>
+        <style type="text/css">
+            <!--
+            #adjacence-directe ul+p {
+                color:lightblue;
+            }
+            -->
+        </style>
+        <div id="adjacence-directe">
+            <ul>
+                <li>Item</li>
+                <li>Item</li>
+                <li>Item</li>
+            </ul>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris egestas nibh vehicula dui egestas, in tempus velit semper. Pellentesque nec condimentum mi, sit amet aliquam neque. Duis urna augue, hendrerit vitae imperdiet vitae, pretium sit amet enim. Mauris luctus efficitur sem vel congue.</p>
+            <p>In in sagittis nibh. Aliquam tincidunt rhoncus felis sed consectetur. Nunc lacinia arcu vitae erat ultrices, vitae sagittis mauris ultricies. Mauris vulputate, diam vel dictum mollis, leo quam ultricies arcu, sit amet volutpat ex est sit amet ante. Maecenas accumsan aliquet molestie.</p>
+            <div><p>Cras viverra sit amet libero vel condimentum.</p></div>
+            <p>Ut sollicitudin, urna at finibus suscipit, lectus nisi euismod quam, at euismod metus ante nec dui. Morbi auctor ante in facilisis aliquam.</p>
+        </div>
+        <pre><code class="css">
+ul+p {
+    color:lightblue;
+}</code>
+<code class="html">
+&lt;ul&gt;
+    &lt;li&gt;Item&lt;/li&gt;
+    &lt;li&gt;Item&lt;/li&gt;
+    &lt;li&gt;Item&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris egestas nibh vehicula dui egestas, in tempus velit semper. Pellentesque nec condimentum mi, sit amet aliquam neque. Duis urna augue, hendrerit vitae imperdiet vitae, pretium sit amet enim. Mauris luctus efficitur sem vel congue.&lt;/p&gt;
+&lt;p&gt;In in sagittis nibh. Aliquam tincidunt rhoncus felis sed consectetur. Nunc lacinia arcu vitae erat ultrices, vitae sagittis mauris ultricies. Mauris vulputate, diam vel dictum mollis, leo quam ultricies arcu, sit amet volutpat ex est sit amet ante. Maecenas accumsan aliquet molestie.&lt;/p&gt;
+&lt;div&gt;&lt;p&gt;Cras viverra sit amet libero vel condimentum.&lt;/p&gt;&lt;/div&gt;
+&lt;p&gt;Ut sollicitudin, urna at finibus suscipit, lectus nisi euismod quam, at euismod metus ante nec dui. Morbi auctor ante in facilisis aliquam.&lt;/p&gt;</code></pre>
+        <hr />
+        <h2>Les sélecteurs d'attributs</h2>
+        <p><em>Permettent de sélectionner des éléments en fonction des attributs passés aux balises html.</em></p>
+        <h3>Le sélecteur de présence d'un attribut</h3>
+        <p><em>Permet de sélectionner tous les éléments possédant l'attribut indiqué.</em></p>
+        <style type="text/css">
+            <!--
+            #attribut-presence [target] {
+                color:lightblue;
+            }
+            -->
+        </style>
+        <div id="attribut-presence">
+            <a href="http://www.google.fr" title="">Lien sans attribut target</a>
+            <a href="http://www.google.fr" target="_blank" title="">Lien avec attribut target</a>
+        </div>
+        <pre><code class="css">
+[target] {
+    color:lightblue;
+}</code>
+<code class="html">
+&lt;a href="http://www.google.fr" title=""&gt;Lien sans attribut target&lt;/a&gt;
+&lt;a href="http://www.google.fr" target="_blank" title=""&gt;Lien avec attribut target&lt;/a&gt;</code></pre>
+        <h3>Le sélecteur de valeur exacte d'un attribut</h3>
+        <p><em>Permet de sélectionner tous les éléments possédant l'attribut indiqué ayant pour valeur la chaîne de caractères passée.</em></p>
+        <style type="text/css">
+            <!--
+            #attribut-valeur-exacte [title="Mon lien"] {
+                color:lightblue;
+            }
+            -->
+        </style>
+        <div id="attribut-valeur-exacte">
+            <a href="http://www.google.fr" target="_blank" title="Lien">Lien</a>
+            <a href="http://www.google.fr" target="_blank" title="Mon lien">Mon lien</a>
+            <a href="http://www.google.fr" target="_blank" title="Mon Lien">Mon Lien</a>
+        </div>
+        <pre><code class="css">
+[title="Mon lien"] {
+    color:lightblue;
+}</code>
+<code class="html">
+&lt;a href="http://www.google.fr" target="_blank" title="Lien"&gt;Lien&lt;/a&gt;
+&lt;a href="http://www.google.fr" target="_blank" title="Mon lien"&gt;Mon lien&lt;/a&gt;
+&lt;a href="http://www.google.fr" target="_blank" title="Mon Lien"&gt;Mon Lien&lt;/a&gt;</code></pre>
+        <p class="block alert"><em>Attention à la casse : les minscules et majuscules sont différenciées.</em></p>
+        <h3>Le sélecteur de sous-chaîne dans la valeur d'un attribut</h3>
+        <p><em>Permet de sélectionner tous les éléments possédant l'attribut indiqué ayant pour valeur la sous-chaîne de caractères passée.</em></p>
+        <style type="text/css">
+            <!--
+            #attribut-valeur-souschaine [title*="bing"] {
+                color:lightblue;
+            }
+            -->
+        </style>
+        <div id="attribut-valeur-souschaine">
+            <a href="http://www.google.fr" target="_blank" title="http://www.google.fr">http://www.google.fr</a>
+            <a href="http://www.bing.fr" target="_blank" title="http://www.bing.fr">http://www.bing.fr</a>
+            <a href="http://www.bingo.fr" target="_blank" title="http://www.bingo.fr">http://www.bingo.fr</a>
+            <a href="http://www.google.fr" target="_blank" title="http://www.google.fr">http://www.google.fr</a>
+        </div>
+        <pre><code class="css">
+[title*="bing"] {
+    color:lightblue;
+}</code>
+<code class="html">
+&lt;a href="http://www.google.fr" target="_blank" title="http://www.google.fr"&gt;http://www.google.fr&lt;/a&gt;
+&lt;a href="http://www.bing.fr" target="_blank" title="http://www.bing.fr"&gt;http://www.bing.fr&lt;/a&gt;;
+&lt;a href="http://www.bingo.fr" target="_blank" title="http://www.bingo.fr"&gt;http://www.bingo.fr&lt;/a&gt;;
+&lt;a href="http://www.google.fr" target="_blank" title="http://www.google.fr"&gt;http://www.google.fr&lt;/a&gt;</code></pre>
+        <h3>Le sélecteur de sous-chaîne dans le début de la valeur d'un attribut</h3>
+        <p><em>Permet de sélectionner tous les éléments possédant l'attribut indiqué ayant pour début de valeur la sous-chaîne de caractères passée.</em></p>
+        <style type="text/css">
+            <!--
+            #attribut-valeur-debut [href^="http://"] {
+                color:lightblue;
+            }
+            -->
+        </style>
+        <div id="attribut-valeur-debut">
+            <a href="http://www.google.fr" target="_blank" title="">http://www.google.fr</a>
+            <a href="http://www.bing.fr" target="_blank" title="">http://www.bing.fr</a>
+            <a href="assets/uploads/mon-dossier.zip" target="_blank" title="">Fichier à télécharger</a>
+        </div>
+        <pre><code class="css">
+[href^="http://"] {
+    color:lightblue;
+}</code>
+<code class="html">
+&lt;a href="http://www.google.fr" target="_blank" title=""&gt;http://www.google.fr&lt;/a&gt;
+&lt;a href="http://www.bing.fr" target="_blank" title=""&gt;http://www.bing.fr&lt;/a&gt;
+&lt;a href="assets/uploads/mon-dossier.zip" target="_blank" title=""&gt;Fichier à télécharger&lt;/a&gt;</code></pre>
+        <h3>Le sélecteur de sous-chaîne dans la fin de la valeur d'un attribut</h3>
+        <p><em>Permet de sélectionner tous les éléments possédant l'attribut indiqué ayant pour fin de valeur la sous-chaîne de caractères passée.</em></p>
+        <style type="text/css">
+            <!--
+            #attribut-valeur-fin [href$=".com"] {
+                color:lightblue;
+            }
+            -->
+        </style>
+        <div id="attribut-valeur-fin">
+            <a href="http://www.google.fr" target="_blank" title="">http://www.google.fr</a>
+            <a href="http://www.bing.fr" target="_blank" title="">http://www.bing.fr</a>
+            <a href="assets/uploads/mon-dossier.zip" target="_blank" title="">Fichier à télécharger</a>
+            <a href="http://www.google.com" target="_blank" title="">http://www.google.com</a>
+        </div>
+        <pre><code class="css">
+[href$=".com"] {
+    color:lightblue;
+}</code>
+<code class="html">
+&lt;a href="http://www.google.fr" target="_blank" title=""&gt;http://www.google.fr&lt;/a&gt;
+&lt;a href="http://www.bing.fr" target="_blank" title=""&gt;http://www.bing.fr&lt;/a&gt;
+&lt;a href="assets/uploads/mon-dossier.zip" target="_blank" title=""&gt;Fichier à télécharger&lt;/a&gt;
+&lt;a href="http://www.google.com" target="_blank" title=""&gt;http://www.google.com&lt;/a&gt;</code></pre>
+        <hr />
+        <h2>Les pseudo-classes CSS</h2>
+        <p><em>Une pseudo-classe CSS est un mot-clé ajouté au sélecteur pour indiquer un état particulier de l'élément qui doit être sélectionné.</em></p>
+        <h3>Les pseudo-classes d'action/d'événement</h3>
+        <p><em>La pseudo-classe :link permet de sélectionner les liens au sein d'autres éléments. Elle sélectionnera tout lien n'ayant pas été visité, même ceux déjà stylés par des sélecteurs utilisant d'autres pseudo-classes pour liens :visited, :hover ou :active.</em></p>
+        <p><em>La pseudo-classe CSS :visited permet de modifier l'aspect d'un lien une fois que l'utilisateur l'a visité. Ce style peut être écrasé par toute autre pseudo-classe liée aux liens, telles que :link, :hover, et :active, qui apparaîtraient dans les règles CSS suivantes.</em></p>
+        <p><em>La pseudo-classe CSS :hover permet de spécifier l'apparence d'un élément au moment où l'utilisateur passe la souris dessus, mais sans nécessairement l'activer. Ce style peut être écrasé par d'autres pseudo-classes liées aux liens, comme :link, :visited, et :active, apparaissant dans des règles subséquentes.</em></p>
+        <p><em>La pseudo-classes CSS :focus permet de spécifier l'aspect d'un élément lorsque celui-ci reçoit le focus, souvent reçu lorsque l'internaute utilise la touche TAB du clavier. La pseudo-classe :focus est habituellement placée juste avant ou juste après :hover, en fonction de l'effet attendu.</em></p>
+        <p><em>La pseudo-classes CSS :active permet de définir l'apparence d'un élément au moment exact où l'utilisateur clique dessus. Cela permet de donner un retour sur l'action, montrant que le navigateur a bien compris la demande. Lorsqu'une souris est utilisée pour interagir, il s'agit généralement du moment où l'utilisateur presse le bouton principal de celle-ci. La pseudo-classe :active s'applique aussi dans l'univers du web mobile lorsque vous posez votre doigt sur un élément. Le style défini avec :active peut être écrasé par une autre pseudo-classe destinée aux liens, tel que :link, :hover ou :visited.</em></p>
+        <style type="text/css">
+            <!--
+            #pseudo-classes-action a {
+                color:grey;
+            }
+            #pseudo-classes-action a:link {
+                color:lightblue;
+            }
+            #pseudo-classes-action a:visited {
+                color:blue;
+            }
+            #pseudo-classes-action a:hover {
+                color:lightgreen;
+            }
+            #pseudo-classes-action a:focus {
+                color:green;
+            }
+            #pseudo-classes-action a:active {
+                color:red;
+            }
+            -->
+        </style>
+        <div id="pseudo-classes-action">
+            <a title="">Lien non linké</a>
+            <a href="http://www.google.fr" title="">Lien linké</a>
+        </div>
+        <pre><code class="css">
+a {
+    color:grey;
+}
+a:link {
+    color:lightblue;
+}
+a:visited {
+    color:blue;
+}
+a:hover {
+    color:lightgreen;
+}
+a:focus {
+    color:green;
+}
+a:active {
+    color:red;
+}</code>
+<code class="html">
+&lt;a href="" title=""&gt;Lien&lt;/a&gt;</code></pre>
+        <p class="block alert"><em>Afin de styler efficacement les liens, vous devez définir la règle :link avant les autres : :link — :visited — :hover — :active. La pseudo-classe :focus est habituellement placée juste avant ou juste après :hover, en fonction de l'effet attendu.</em></p>
+        <p class="block alert"><em>Les pseudo-classes :hover et :active ne se cantonnent pas à être utilisées uniquement avec la balise &lt;a&gt;. Elle peuvent être utilisées avec de nombreuses autres balises (ou avec des attributs class ou id).</em></p>
+        <h3>Les pseudo-classes d'arborescence</h3>
+        <h4>La pseudo-classe CSS :first-child</h4>
+        <p><em>Représente un élément qui est le premier enfant d'un élément parent.</em></p>
+        <style type="text/css">
+            <!--
+            #pseudo-classes-firstchild ul li:first-child {
+                background-color:lightblue;
+            }
+            -->
+        </style>
+        <div id="pseudo-classes-firstchild">
+            <ul>
+                <li>Item</li>
+                <li>Item</li>
+                <li>Item</li>
+            </ul>
+        </div>
+        <pre><code class="css">
+ul li:first-child {
+    background-color:lightblue;
+}</code>
+<code class="html">
+&lt;ul&gt;
+    &lt;li&gt;Item&lt;/li&gt;
+    &lt;li&gt;Item&lt;/li&gt;
+    &lt;li&gt;Item&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+        <h4>La pseudo-classe CSS :last-child</h4>
+        <p><em>Représente un élément qui est le dernier enfant d'un élément parent.</em></p>
+        <style type="text/css">
+            <!--
+            #pseudo-classes-lastchild ul li:last-child {
+                background-color:lightblue;
+            }
+            -->
+        </style>
+        <div id="pseudo-classes-lastchild">
+            <ul>
+                <li>Item</li>
+                <li>Item</li>
+                <li>Item</li>
+            </ul>
+        </div>
+        <pre><code class="css">
+ul li:last-child {
+    background-color:lightblue;
+}</code>
+<code class="html">
+&lt;ul&gt;
+    &lt;li&gt;Item&lt;/li&gt;
+    &lt;li&gt;Item&lt;/li&gt;
+    &lt;li&gt;Item&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+        <h4>La pseudo-classe CSS de répétition</h4>
+        <p><em>Cible un élément qui a an+b-1 nœuds frères, pour une valeur de n positive ou égale à 0, et qui a un élément parent.<br />Ceci peut être décrit de manière plus claire : l'élément ciblé, est le bème enfant d'un élément, après que tous ses enfants aient été découpés en goupe de a éléments chacun.<br />Les valeurs a et b doivent être des nombres entiers, et l'index du premier enfant d'un élément est 1.</em></p>
+        <style type="text/css">
+            <!--
+            #pseudo-classes-nthchild ul li:nth-child(2),#pseudo-classes-nthchild ul li:nth-child(7) {
+                color:white;
+            }
+            #pseudo-classes-nthchild ul li:nth-child(2n+1) {
+                background-color:lightblue;
+            }
+            #pseudo-classes-nthchild ul li:nth-child(2n) {
+                background-color:lightgreen;
+            }
+            -->
+        </style>
+        <div id="pseudo-classes-nthchild">
+            <ul>
+                <li>Item</li>
+                <li>Item</li>
+                <li>Item</li>
+                <li>Item</li>
+                <li>Item</li>
+                <li>Item</li>
+                <li>Item</li>
+                <li>Item</li>
+                <li>Item</li>
+                <li>Item</li>
+            </ul>
+        </div>
+        <pre><code class="css">
+ul li:nth-child(2),ul li:nth-child(7) {
+    color:white;
+}
+ul li:nth-child(2n+1) {
+    background-color:lightblue;
+}
+ul li:nth-child(2n) {
+    background-color:lightgreen;
+}</code>
+<code class="html">
+&lt;ul&gt;
+    &lt;li&gt;Item&lt;/li&gt;
+    &lt;li&gt;Item&lt;/li&gt;
+    &lt;li&gt;Item&lt;/li&gt;
+    &lt;li&gt;Item&lt;/li&gt;
+    &lt;li&gt;Item&lt;/li&gt;
+    &lt;li&gt;Item&lt;/li&gt;
+    &lt;li&gt;Item&lt;/li&gt;
+    &lt;li&gt;Item&lt;/li&gt;
+    &lt;li&gt;Item&lt;/li&gt;
+    &lt;li&gt;Item&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+        <h3>La pseudo-classe CSS de négation</h3>
+        <p><em>Sert à exclure les éléments qui ne sont pas concernés par le sélecteur en argument.</em></p>
+        <style type="text/css">
+            <!--
+            #pseudo-classes-not ul li:not(.item) {
+                background-color:lightblue;
+            }
+            -->
+        </style>
+        <div id="pseudo-classes-not">
+            <ul>
+                <li>Item</li>
+                <li>Item</li>
+                <li>Item</li>
+                <li>Item</li>
+                <li class="item">Item</li>
+                <li class="item">Item</li>
+                <li>Item</li>
+                <li>Item</li>
+                <li>Item</li>
+                <li>Item</li>
+            </ul>
+        </div>
+        <pre><code class="css">
+ul li:not(.item) {
+    background-color:lightblue;
+}</code>
+<code class="html">
+&lt;ul&gt;
+    &lt;li&gt;Item&lt;/li&gt;
+    &lt;li&gt;Item&lt;/li&gt;
+    &lt;li&gt;Item&lt;/li&gt;
+    &lt;li&gt;Item&lt;/li&gt;
+    &lt;li class="item"&gt;Item&lt;/li&gt;
+    &lt;li class="item"&gt;Item&lt;/li&gt;
+    &lt;li&gt;Item&lt;/li&gt;
+    &lt;li&gt;Item&lt;/li&gt;
+    &lt;li&gt;Item&lt;/li&gt;
+    &lt;li&gt;Item&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+        <hr />
+        <h2>Les pseudo-éléments</h2>
+        <p><em>Tout comme les pseudo-classes, les pseudo-éléments sont ajoutés aux sélecteurs. Mais au lieu de décrire un état spécial, ils permettent de styler certaines parties du document.</em></p>
+        <h3>Le pseudo-élément ::first-letter</h3>
+        <p><em>Sélectionne la première lettre de la première ligne d'un bloc, si elle n'est pas précédée par un quelconque autre contenu (comme une image ou un tableau en ligne) sur sa ligne.</em></p>
+        <p class="block alert"><em>Utilisez :first-letter (au lieu de ::first-letter) si le support pour IE8 ou antérieur est nécessaire.</em></p>
+        <style type="text/css">
+            <!--
+            #pseudo-element-firstletter p:first-letter {
+                background-color:lightblue;
+                color:white;
+                display:inline-block;
+                font-size:35px;
+                padding:0 10px;
+            }
+            -->
+        </style>
+        <div id="pseudo-element-firstletter">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris egestas nibh vehicula dui egestas, in tempus velit semper. Pellentesque nec condimentum mi, sit amet aliquam neque. Duis urna augue, hendrerit vitae imperdiet vitae, pretium sit amet enim. Mauris luctus efficitur sem vel congue.</p>
+        </div>
+        <pre><code class="css">
+p:first-letter {
+    background-color:lightblue;
+    color:white;
+    display:inline-block;
+    font-size:35px;
+    padding:0 10px;
+}</code>
+<code class="html">
+&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris egestas nibh vehicula dui egestas, in tempus velit semper. Pellentesque nec condimentum mi, sit amet aliquam neque. Duis urna augue, hendrerit vitae imperdiet vitae, pretium sit amet enim. Mauris luctus efficitur sem vel congue.&lt;/p&gt;</code></pre>
+        <h3>Le pseudo-élément ::first-line</h3>
+        <p><em>Applique la décoration à la première ligne d'un élément.</em></p>
+        <p class="block alert"><em>La quantité de texte sur la première ligne dépend de nombreux facteurs, comme la largeur des éléments ou du document, mais aussi la taille du texte.</em></p>
+        <p class="block alert"><em>Utilisez :first-line (au lieu de ::first-line) si le support pour IE8 ou antérieur est nécessaire.</em></p>
+        <style type="text/css">
+            <!--
+            #pseudo-element-firstline p:first-line {
+                background-color:lightblue;
+                color:white;
+                font-size:35px;
+            }
+            -->
+        </style>
+        <div id="pseudo-element-firstline">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris egestas nibh vehicula dui egestas, in tempus velit semper.<br />Pellentesque nec condimentum mi, sit amet aliquam neque. Duis urna augue, hendrerit vitae imperdiet vitae, pretium sit amet enim. Mauris luctus efficitur sem vel congue. In in sagittis nibh. Aliquam tincidunt rhoncus felis sed consectetur. Nunc lacinia arcu vitae erat ultrices, vitae sagittis mauris ultricies. Mauris vulputate, diam vel dictum mollis, leo quam ultricies arcu, sit amet volutpat ex est sit amet ante. Maecenas accumsan aliquet molestie. Cras viverra sit amet libero vel condimentum. Ut sollicitudin, urna at finibus suscipit, lectus nisi euismod quam, at euismod metus ante nec dui. Morbi auctor ante in facilisis aliquam.</p>
+        </div>
+        <pre><code class="css">
+p:first-line {
+    background-color:lightblue;
+    color:white;
+    font-size:35px;
+}</code>
+<code class="html">
+&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris egestas nibh vehicula dui egestas, in tempus velit semper.&lt;br /&gt;Pellentesque nec condimentum mi, sit amet aliquam neque. Duis urna augue, hendrerit vitae imperdiet vitae, pretium sit amet enim. Mauris luctus efficitur sem vel congue. In in sagittis nibh. Aliquam tincidunt rhoncus felis sed consectetur. Nunc lacinia arcu vitae erat ultrices, vitae sagittis mauris ultricies. Mauris vulputate, diam vel dictum mollis, leo quam ultricies arcu, sit amet volutpat ex est sit amet ante. Maecenas accumsan aliquet molestie. Cras viverra sit amet libero vel condimentum. Ut sollicitudin, urna at finibus suscipit, lectus nisi euismod quam, at euismod metus ante nec dui. Morbi auctor ante in facilisis aliquam.&lt;/p&gt;</code></pre>
+        <h3>Le pseudo-élément ::before</h3>
+        <p><em>Crée un pseudo-élément qui sera le premier enfant de l'élément sélectionné.</em></p>
+        <p class="block alert"><em>S'utilise toujours avec l'instruction content:"mon contenu".</em></p>
+        <p class="block alert"><em>S'utilise toujours avec l'instruction position:relative appliqué à l'élément sur lequel on ajoute le pseudo-élément.</em></p>
+        <style type="text/css">
+            <!--
+            #pseudo-element-before p {position:relative;}
+            #pseudo-element-before p::before {
+                background-color:lightblue;
+                color:white;
+                content:"Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
+                display:inline-block;
+                font-style:italic;
+                margin-right:10px;
+            }
+            -->
+        </style>
+        <div id="pseudo-element-before">
+            <p>Mauris egestas nibh vehicula dui egestas, in tempus velit semper. Pellentesque nec condimentum mi, sit amet aliquam neque. Duis urna augue, hendrerit vitae imperdiet vitae, pretium sit amet enim. Mauris luctus efficitur sem vel congue. In in sagittis nibh. Aliquam tincidunt rhoncus felis sed consectetur. Nunc lacinia arcu vitae erat ultrices, vitae sagittis mauris ultricies. Mauris vulputate, diam vel dictum mollis, leo quam ultricies arcu, sit amet volutpat ex est sit amet ante. Maecenas accumsan aliquet molestie. Cras viverra sit amet libero vel condimentum. Ut sollicitudin, urna at finibus suscipit, lectus nisi euismod quam, at euismod metus ante nec dui. Morbi auctor ante in facilisis aliquam.</p>
+        </div>
+        <pre><code class="css">
+p {position:relative;}
+p::before {
+    background-color:lightblue;
+    color:white;
+    content:"Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
+    display:inline-block;
+    font-style:italic;
+    margin-right:10px;
+}</code>
+<code class="html">
+&lt;p&gt;Mauris egestas nibh vehicula dui egestas, in tempus velit semper. Pellentesque nec condimentum mi, sit amet aliquam neque. Duis urna augue, hendrerit vitae imperdiet vitae, pretium sit amet enim. Mauris luctus efficitur sem vel congue. In in sagittis nibh. Aliquam tincidunt rhoncus felis sed consectetur. Nunc lacinia arcu vitae erat ultrices, vitae sagittis mauris ultricies. Mauris vulputate, diam vel dictum mollis, leo quam ultricies arcu, sit amet volutpat ex est sit amet ante. Maecenas accumsan aliquet molestie. Cras viverra sit amet libero vel condimentum. Ut sollicitudin, urna at finibus suscipit, lectus nisi euismod quam, at euismod metus ante nec dui. Morbi auctor ante in facilisis aliquam.&lt;/p&gt;</code></pre>
+        <h3>Le pseudo-élément ::after</h3>
+        <p><em>Crée un pseudo-élément qui sera le dernier enfant de l'élément sélectionné.</em></p>
+        <p class="block alert"><em>S'utilise toujours avec l'instruction content:"mon contenu".</em></p>
+        <p class="block alert"><em>S'utilise toujours avec l'instruction position:relative appliqué à l'élément sur lequel on ajoute le pseudo-élément.</em></p>
+        <style type="text/css">
+            <!--
+            #pseudo-element-after p {position:relative;}
+            #pseudo-element-after p::after {
+                background-color:lightblue;
+                color:white;
+                content:"Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
+                display:inline-block;
+                font-style:italic;
+                margin-left:10px;
+            }
+            -->
+        </style>
+        <div id="pseudo-element-after">
+            <p>Mauris egestas nibh vehicula dui egestas, in tempus velit semper. Pellentesque nec condimentum mi, sit amet aliquam neque. Duis urna augue, hendrerit vitae imperdiet vitae, pretium sit amet enim. Mauris luctus efficitur sem vel congue. In in sagittis nibh. Aliquam tincidunt rhoncus felis sed consectetur. Nunc lacinia arcu vitae erat ultrices, vitae sagittis mauris ultricies. Mauris vulputate, diam vel dictum mollis, leo quam ultricies arcu, sit amet volutpat ex est sit amet ante. Maecenas accumsan aliquet molestie. Cras viverra sit amet libero vel condimentum. Ut sollicitudin, urna at finibus suscipit, lectus nisi euismod quam, at euismod metus ante nec dui. Morbi auctor ante in facilisis aliquam.</p>
+        </div>
+        <pre><code class="css">
+p {position:relative;}
+p::after {
+    background-color:lightblue;
+    color:white;
+    content:"Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
+    display:inline-block;
+    font-style:italic;
+    margin-right:10px;
+}</code>
+<code class="html">
+&lt;p&gt;Mauris egestas nibh vehicula dui egestas, in tempus velit semper. Pellentesque nec condimentum mi, sit amet aliquam neque. Duis urna augue, hendrerit vitae imperdiet vitae, pretium sit amet enim. Mauris luctus efficitur sem vel congue. In in sagittis nibh. Aliquam tincidunt rhoncus felis sed consectetur. Nunc lacinia arcu vitae erat ultrices, vitae sagittis mauris ultricies. Mauris vulputate, diam vel dictum mollis, leo quam ultricies arcu, sit amet volutpat ex est sit amet ante. Maecenas accumsan aliquet molestie. Cras viverra sit amet libero vel condimentum. Ut sollicitudin, urna at finibus suscipit, lectus nisi euismod quam, at euismod metus ante nec dui. Morbi auctor ante in facilisis aliquam.&lt;/p&gt;</code></pre>
+        <h4>Les pseudo-éléments ::before & ::after</h4>
+        <style type="text/css">
+            <!--
+            #pseudo-element-beforeafter q {position:relative;}
+            #pseudo-element-beforeafter q::before {
+                background-color:lightblue;
+                color:white;
+                content:"\"";
+                display:inline-block;
+                font-style:italic;
+                padding:0 5px;
+            }
+            #pseudo-element-beforeafter q::after {
+                background-color:lightblue;
+                color:white;
+                content:"\"";
+                display:inline-block;
+                font-style:italic;
+                padding:0 5px;
+            }
+            -->
+        </style>
+        <div id="pseudo-element-beforeafter">
+            <p><q>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</q> Mauris egestas nibh vehicula dui egestas, in tempus velit semper. Pellentesque nec condimentum mi, sit amet aliquam neque. Duis urna augue, hendrerit vitae imperdiet vitae, pretium sit amet enim. Mauris luctus efficitur sem vel congue. In in sagittis nibh. Aliquam tincidunt rhoncus felis sed consectetur. Nunc lacinia arcu vitae erat ultrices, vitae sagittis mauris ultricies. Mauris vulputate, diam vel dictum mollis, leo quam ultricies arcu, sit amet volutpat ex est sit amet ante. Maecenas accumsan aliquet molestie. Cras viverra sit amet libero vel condimentum. Ut sollicitudin, urna at finibus suscipit, lectus nisi euismod quam, at euismod metus ante nec dui. Morbi auctor ante in facilisis aliquam.</p>
+        </div>
+        <pre><code class="css">
+q {position:relative;}
+q::before {
+    background-color:lightblue;
+    color:white;
+    content:"\"";
+    display:inline-block;
+    font-style:italic;
+    margin-right:10px;
+}
+q::after {
+    background-color:lightblue;
+    color:white;
+    content:"\"";
+    display:inline-block;
+    font-style:italic;
+    margin-right:10px;
+}</code>
+<code class="html">
+&lt;p&gt;&lt;q&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit.&lt;/q&gt; Mauris egestas nibh vehicula dui egestas, in tempus velit semper. Pellentesque nec condimentum mi, sit amet aliquam neque. Duis urna augue, hendrerit vitae imperdiet vitae, pretium sit amet enim. Mauris luctus efficitur sem vel congue. In in sagittis nibh. Aliquam tincidunt rhoncus felis sed consectetur. Nunc lacinia arcu vitae erat ultrices, vitae sagittis mauris ultricies. Mauris vulputate, diam vel dictum mollis, leo quam ultricies arcu, sit amet volutpat ex est sit amet ante. Maecenas accumsan aliquet molestie. Cras viverra sit amet libero vel condimentum. Ut sollicitudin, urna at finibus suscipit, lectus nisi euismod quam, at euismod metus ante nec dui. Morbi auctor ante in facilisis aliquam.&lt;/p&gt;</code></pre>
+        <p class="block alert"><em>Les exemples précédents sur les pseudo-éléments ::before & ::after appliquent du texte au contenu. Cependant, l'instruction content peut aussi être utilisée<br />- avec une image (content:url(chemin_vers_mon_image);)<br />- ou avec un contenu vide (content:"";) si des tailles sont appliquées au bloc.</em></p>
+        <style type="text/css">
+            <!--
+            #pseudo-element-image p {position:relative;}
+            #pseudo-element-image p::before {
+                content:url(assets/images/objectif_3w_logo.png);
+                display:block;
+            }
+            #pseudo-element-image p::after {
+                background-color:lightblue;
+                content:"";
+                display:inline-block;
+                height:15px;
+                width:250px;
+            }
+            -->
+        </style>
+        <div id="pseudo-element-image">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris egestas nibh vehicula dui egestas, in tempus velit semper. Pellentesque nec condimentum mi, sit amet aliquam neque. Duis urna augue, hendrerit vitae imperdiet vitae, pretium sit amet enim. Mauris luctus efficitur sem vel congue. In in sagittis nibh. Aliquam tincidunt rhoncus felis sed consectetur. Nunc lacinia arcu vitae erat ultrices, vitae sagittis mauris ultricies. Mauris vulputate, diam vel dictum mollis, leo quam ultricies arcu, sit amet volutpat ex est sit amet ante. Maecenas accumsan aliquet molestie. Cras viverra sit amet libero vel condimentum. Ut sollicitudin, urna at finibus suscipit, lectus nisi euismod quam, at euismod metus ante nec dui. Morbi auctor ante in facilisis aliquam.</p>
+        </div>
+        <pre><code class="css">
+p {position:relative;}
+p::before {
+    content:url(assets/images/ban.jpg);
+    display:block;
+}
+p::after {
+    background-color:lightblue;
+    content:"";
+    display:inline-block;
+    height:15px;
+    width:250px;
+}</code>
+<code class="html">
+&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris egestas nibh vehicula dui egestas, in tempus velit semper. Pellentesque nec condimentum mi, sit amet aliquam neque. Duis urna augue, hendrerit vitae imperdiet vitae, pretium sit amet enim. Mauris luctus efficitur sem vel congue. In in sagittis nibh. Aliquam tincidunt rhoncus felis sed consectetur. Nunc lacinia arcu vitae erat ultrices, vitae sagittis mauris ultricies. Mauris vulputate, diam vel dictum mollis, leo quam ultricies arcu, sit amet volutpat ex est sit amet ante. Maecenas accumsan aliquet molestie. Cras viverra sit amet libero vel condimentum. Ut sollicitudin, urna at finibus suscipit, lectus nisi euismod quam, at euismod metus ante nec dui. Morbi auctor ante in facilisis aliquam.&lt;/p&gt;</code></pre>
+    </body>
+</html>

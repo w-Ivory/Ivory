@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
+        <title>Les animations CSS - Mise en pratique</title>
+
+        <link rel="stylesheet" type="text/css" href="../../_assets/css/style.css">
+
+        <!-- // highlight.js : Coloration syntaxique du code -->
+        <link rel="stylesheet" type="text/css" href="../../_assets/plugins/highlight/styles/monokai_sublime.css">
+        <script type="text/javascript" src="../../_assets/plugins/highlight/highlight.pack.js"></script>
+        <script type="text/javascript">
+            hljs.initHighlightingOnLoad();
+        </script>
+        <!-- // -->
+
+        <style type="text/css">
+            *,*::before,*::after {
+                -webkit-box-sizing:border-box;
+                -moz-box-sizing:border-box;
+                -ms-box-sizing:border-box;
+                -o-box-sizing:border-box;
+                box-sizing:border-box;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Les animations CSS - Mise en pratique</h1>
+        <blockquote>Suite au <a href="../../Cours/01_-_HTML_CSS/13_-_Les_animations_CSS.html" target="_blank" title="">cours sur les animations CSS</a>, nous allons mettre en pratique les différentes propriétés CSS correspondant à ces instructions.<br />Vous allez trouver ci-dessous différens exercices vous permettant de les manipuler.</blockquote>
+        <hr />
+        <h2>Exercice 1 : Square to circle - Déformation d'un élément</h2>
+        <p><em>Reproduire sur le seul cadre présent et en animation les différentes formes enchainées dans l'image <img alt="Exercice 1 - Square to circle - Déformation d'un élément" src="assets/images/13_-_Les_animations_CSS.jpg" style="max-width:100%;" /></em></p>
+        <style type="text/css">
+            <!--
+            .square-to-circle {
+                background-color:#ff7f50;
+                height:200px;
+                margin:50px auto;
+                width:200px;
+
+                animation:square-to-circle 5s infinite cubic-bezier(1,.015,.295,1.225) alternate;
+            }
+
+            @keyframes square-to-circle {
+                25% {
+                    background-color:#ea967a;
+                    border-radius:50% 0 0 0;
+                    transform:rotate(45deg);
+                }
+                50% {
+                    background-color:#cf5d5d;
+                    border-radius:50% 50% 0 0;
+                    transform:rotate(90deg);
+                }
+                75% {
+                    background-color:#f18082;
+                    border-radius:50% 50% 50% 0;
+                    transform:rotate(135deg);
+                }
+                100% {
+                    background-color:#ea967c;
+                    border-radius:50%;
+                    transform:rotate(180deg);
+                }
+            }
+            -->
+        </style>
+        <div id="ex1">
+            <div class="square-to-circle"></div>
+        </div>
+        <pre><code class="css">
+.square-to-circle {
+    background-color:#ff7f50;
+    height:200px;
+    margin:50px auto;
+    width:200px;
+
+    animation:square-to-circle 5s infinite cubic-bezier(1,.015,.295,1.225) alternate;
+}
+
+@keyframes square-to-circle {
+    25% {
+        background-color:#ea967a;
+        border-radius:50% 0 0 0;
+        transform:rotate(45deg);
+    }
+    50% {
+        background-color:#cf5d5d;
+        border-radius:50% 50% 0 0;
+        transform:rotate(90deg);
+    }
+    75% {
+        background-color:#f18082;
+        border-radius:50% 50% 50% 0;
+        transform:rotate(135deg);
+    }
+    100% {
+        background-color:#ea967c;
+        border-radius:50%;
+        transform:rotate(180deg);
+    }
+}</code>
+<code class="html">
+&lt;div class="square-to-circle"&gt;&lt;/div&gt;</code></pre>
+        <hr />
+        <h2>Exercice 2 : Parallax - Ciel nuageux et tombée de la nuit</h2>
+        <p>Pour cet exercice, vous devez transformer et/ou animer chacun des éléments du bandeau selon le story-board suivant :</p>
+        <ul>
+            <li><strong>le ciel</strong> : doit passer du jour (#007fd5) à la nuit (#000000) puis de la nuit au jour, le tout dans un délai de 50s.</li>
+            <li><strong>la lune</strong> : doit se lever puis se coucher dans un délai de 50s. Pour se faire, nous allons la faire passer de la droite vers la gauche en la rendant de plus en plus visible au levé (en CSS, opacity:0 = transparente / opacity:1 = opaque) et nous allons modifier sa taille afin qu'elle fasse 50% de sa dimension au début de l'animation, 75% à la moitié de l'animation puis à nouveau 50% à la fin de l'animation.</li>
+            <li><strong>les nuages</strong> : doivent apparaître par la droite puis disparaître par la gauche, à des vitesses différentes.</li>
+        </ul>
+        <style type="text/css">
+            <!--
+            .sky {
+                background-color:#007fd5;
+                height:480px;
+                overflow:hidden;
+                position:relative;
+
+                /* animations */
+                animation:sky_bg 50s infinite;
+            }
+            .moon {
+                background:transparent url("assets/images/13_-_Les_animations_CSS/moon.png") center center no-repeat;
+                height:100%;
+                position:absolute;
+                width:100%;
+
+                /* animations */
+                animation:moon 50s infinite;
+            }
+            .clouds_one,.clouds_two,.clouds_three {
+                background-color:transparent;
+                background-position:left center;
+                background-repeat:repeat-x;
+                height:100%;
+                position:absolute;
+                top:0;
+                width:300000%;
+            }
+            .clouds_one {
+                background-image:url("assets/images/13_-_Les_animations_CSS/cloud_one.png");
+
+                /* animations */
+                animation:cloud 50000s infinite;
+            }
+            .clouds_two {
+                background-image:url("assets/images/13_-_Les_animations_CSS/cloud_two.png");
+
+                /* animations */
+                animation:cloud 75000s infinite;
+            }
+            .clouds_three {
+                background-image:url("assets/images/13_-_Les_animations_CSS/cloud_three.png");
+
+                /* animations */
+                animation:cloud 100000s infinite;
+            }
+
+            @keyframes sky_bg {
+                0% {
+                    background-color:#007fd5;
+                }
+                50% {
+                    background-color:#000000;
+                }
+                100% {
+                    background-color:#007fd5;
+                }
+            }
+            @keyframes cloud {
+                0% {
+                    left:0;
+                }
+                100% {
+                    left:-300000%;
+                }
+            }
+            @keyframes moon {
+                0% {
+                    left:50%;
+                    opacity:0;
+                    transform:scale(.5);
+                }
+                50% {
+                    opacity:1;
+                    transform:scale(.75);
+                }
+                100% {
+                    left:-50%;
+                    opacity:0;
+                    transform:scale(.5);
+                }
+            }
+            -->
+        </style>
+        <div id="ex2">
+            <div class="sky">
+                <div class="moon"></div>
+                <div class="clouds_one"></div>
+                <div class="clouds_two"></div>
+                <div class="clouds_three"></div>
+            </div>
+        </div>
+        <pre><code class="css">
+.sky {
+    background-color:#007fd5;
+    height:480px;
+    overflow:hidden;
+    position:relative;
+
+    /* animations */
+    animation:sky_bg 50s infinite;
+}
+.moon {
+    background:transparent url("assets/images/13_-_Les_animations_CSS/moon.png") center center no-repeat;
+    height:100%;
+    position:absolute;
+    width:100%;
+
+    /* animations */
+    animation:moon 50s infinite;
+}
+.clouds_one,.clouds_two,.clouds_three {
+    background-color:transparent;
+    background-position:left center;
+    background-repeat:repeat-x;
+    height:100%;
+    position:absolute;
+    top:0;
+    width:300000%;
+}
+.clouds_one {
+    background-image:url("assets/images/13_-_Les_animations_CSS/cloud_one.png");
+
+    /* animations */
+    animation:cloud 50000s infinite;
+}
+.clouds_two {
+    background-image:url("assets/images/13_-_Les_animations_CSS/cloud_two.png");
+
+    /* animations */
+    animation:cloud 75000s infinite;
+}
+.clouds_three {
+    background-image:url("assets/images/13_-_Les_animations_CSS/cloud_three.png");
+
+    /* animations */
+    animation:cloud 100000s infinite;
+}
+
+@keyframes sky_bg {
+    0% {
+        background-color:#007fd5;
+    }
+    50% {
+        background-color:#000000;
+    }
+    100% {
+        background-color:#007fd5;
+    }
+}
+@keyframes cloud {
+    0% {
+        left:0;
+    }
+    100% {
+        left:-300000%;
+    }
+}
+@keyframes moon {
+    0% {
+        left:50%;
+        opacity:0;
+        transform:scale(.5);
+    }
+    50% {
+        opacity:1;
+        transform:scale(.75);
+    }
+    100% {
+        left:-50%;
+        opacity:0;
+        transform:scale(.5);
+    }
+}</code>
+<code class="html">
+&lt;div class="sky"&gt;
+    &lt;div class="moon"&gt;&lt;/div&gt;
+    &lt;div class="clouds_one"&gt;&lt;/div&gt;
+    &lt;div class="clouds_two"&gt;&lt;/div&gt;
+    &lt;div class="clouds_three"&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    </body>
+</html>

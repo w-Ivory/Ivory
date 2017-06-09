@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fra">
+    <head>
+        <meta charset="utf-8" />
+        <title></title>
+    </head>
+    <body>
+        <header role="banner">
+            <nav id="nav-menu-principal" role="navigation">
+                <ul id="menu-principal">
+                    <li><a href="." title="">Accueil</a></li>
+                    <li><a href="?c=user" title="">Utilisateurs</a>
+                                            </li>
+                    <li><a href="?c=conversation" title="">Conversations</a>
+                                            </li>
+                    <li><a href="?a=contact" title="">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div id="mod_auth">
+                                <form action="?c=authentification&a=login" method="post">
+                    <label for="txt-login">Identifiant ou adresse e-mail :</label>
+                    <input id="txt-login" name="login" type="text" />
+
+                    <input type="submit" value="Se Connecter" />
+                </form>  
+                            </div>
+        </header>
+
+        <section role="main">
+        <article role="article">
+    <header>
+        <h1>Contact | Forum</h1>
+    </header>
+
+    <form action="?a=sending" data-role="formulaire" method="post">
+        <label data-role="label" for="txt-firstname">Nom</label>
+        <input id="txt-firstname" maxlength="255" name="firstname" type="text" value="" />
+        
+        <label data-role="label" for="txt-lastname">Prénom</label>
+        <input id="txt-lastname" maxlength="255" name="lastname" type="text" value="" />
+        
+        <label class="required" data-role="label" for="txt-mail">E-mail</label>
+        <input id="txt-mail" name="mail" required="required" type="email" value="" />
+        
+        <label class="required" data-role="label" for="txt-object">Objet du message</label>
+        <input id="txt-object" name="object" required="required" type="text" value="" />
+        
+        <label data-role="label" for="txt-message">Corps du message</label>
+        <textarea id="txt-message" name="message"></textarea>
+
+        <input data-role="submit" type="submit" value="Envoyer" />
+    </form>
+</article>        </section>
+
+        <footer role="contentinfo"></footer>
+    </body>
+</html>

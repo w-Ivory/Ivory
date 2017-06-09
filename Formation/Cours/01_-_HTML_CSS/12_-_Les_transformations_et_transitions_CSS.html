@@ -1,0 +1,1657 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
+        <title>Les transformations & transitions CSS</title>
+
+        <!-- // highlight.js : Coloration syntaxique du code -->
+        <link rel="stylesheet" type="text/css" href="../../_assets/plugins/highlight/styles/monokai_sublime.css">
+        <script type="text/javascript" src="../../_assets/plugins/highlight/highlight.pack.js"></script>
+        <script type="text/javascript">
+            hljs.initHighlightingOnLoad();
+        </script>
+        <!-- // -->
+
+        <link rel="stylesheet" type="text/css" href="../../_assets/css/style.css">
+
+        <style type="text/css">
+            <!--
+            div {
+                -webkit-transform-style:preserve-3d;
+                -moz-transform-style:preserve-3d;
+                -ms-transform-style:preserve-3d;
+                -o-transform-style:preserve-3d;
+                transform-style:preserve-3d;
+            }
+                div > p {margin:0;}
+            -->
+        </style>
+    </head>
+    <body>
+        <h1>Les transformations & transitions CSS</h1>
+        <p><em>Il est possible d'agir directement en CSS sur un élément de type bloc de la page afin de le déformer et de lui affecter des transitions pour passer d'un état à l'autre.</em></p>
+        <hr />
+        <h2>Les transformations 2D</h2>
+        <p><em>Permet de modifier les coordonnées spatiales du modèle de formatage visuel de CSS. En l'utilisant, les éléments pourront subir des translations, rotations, homothéties ou être inclinés selon les valeurs définies.</em></p>
+        <p class="block alert"><em>Attention à ces différentes transformations car elles n'agissent que sur l'élément ciblé et peuvent provoquer des superpositions d'éléments.</em></p>
+        <h3>Le déplacement</h3>
+        <p><em>Permet de décaler un élément sur les axes à partir de son point d'ancrage d'origine.<br />Les valeurs indiquées peuvent être exprimées dans n'importe quelle unité de mesure (px, %, rem, ...) et peuvent être positives ou négatives.</em></p>
+        <h4>Sur les axes x ET y : translate</h4>
+        <style type="text/css">
+            <!--
+            #transform-translate div {
+                background-color:lightblue;
+                height:150px;
+                width:150px;
+
+                -webkit-transform-origin:0 0;
+                -moz-transform-origin:0 0;
+                -ms-transform-origin:0 0;
+                -o-transform-origin:0 0;
+                transform-origin:0 0;
+
+                -webkit-transform:translate(120px,50%);
+                -moz-transform:translate(120px,50%);
+                -ms-transform:translate(120px,50%);
+                -o-transform:translate(120px,50%);
+                transform:translate(120px,50%);
+            }
+            -->
+        </style>
+        <div id="transform-translate">
+            <div><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></div>
+        </div>
+        <pre><code class="css">
+div {
+    background-color:lightblue;
+    height:150px;
+    width:150px;
+
+    -webkit-transform:translate(120px,50%);
+    -moz-transform:translate(120px,50%);
+    -ms-transform:translate(120px,50%);
+    -o-transform:translate(120px,50%);
+    transform:translate(120px,50%); /* axe_x axe_y */
+}</code>
+<code class="html">
+&lt;div&gt;&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit.&lt;/p&gt;&lt;/div&gt;</code></pre>
+        <h4>Sur l'axe x uniquement : translateX</h4>
+        <style type="text/css">
+            <!--
+            #transform-translateX div {
+                background-color:lightblue;
+                height:150px;
+                width:150px;
+                
+                -webkit-transform-origin:0 0;
+                -moz-transform-origin:0 0;
+                -ms-transform-origin:0 0;
+                -o-transform-origin:0 0;
+                transform-origin:0 0;
+
+                -webkit-transform:translateX(120px);
+                -moz-transform:translateX(120px);
+                -ms-transform:translateX(120px);
+                -o-transform:translateX(120px);
+                transform:translateX(120px);
+            }
+            -->
+        </style>
+        <div id="transform-translateX">
+            <div><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></div>
+        </div>
+        <pre><code class="css">
+div {
+    background-color:lightblue;
+    height:150px;
+    width:150px;
+
+    -webkit-transform:translateX(120px);
+    -moz-transform:translateX(120px);
+    -ms-transform:translateX(120px);
+    -o-transform:translateX(120px);
+    transform:translateX(120px);
+}</code>
+<code class="html">
+&lt;div&gt;&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit.&lt;/p&gt;&lt;/div&gt;</code></pre>
+        <h4>Sur l'axe y uniquement : translateY</h4>
+        <style type="text/css">
+            <!--
+            #transform-translateY div {
+                background-color:lightblue;
+                height:150px;
+                width:150px;
+                
+                -webkit-transform-origin:0 0;
+                -moz-transform-origin:0 0;
+                -ms-transform-origin:0 0;
+                -o-transform-origin:0 0;
+                transform-origin:0 0;
+
+                -webkit-transform:translateY(120px);
+                -moz-transform:translateY(120px);
+                -ms-transform:translateY(120px);
+                -o-transform:translateY(120px);
+                transform:translateY(120px);
+            }
+            -->
+        </style>
+        <div id="transform-translateY">
+            <div><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></div>
+        </div>
+        <pre><code class="css">
+div {
+    background-color:lightblue;
+    height:150px;
+    width:150px;
+
+    -webkit-transform:translateY(120px);
+    -moz-transform:translateY(120px);
+    -ms-transform:translateY(120px);
+    -o-transform:translateY(120px);
+    transform:translateY(120px);
+}</code>
+<code class="html">
+&lt;div&gt;&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit.&lt;/p&gt;&lt;/div&gt;</code></pre>
+        <h3>La mise à l'échelle</h3>
+        <p><em>Permet d'agir sur l'échelle (les dimensions) de l'élément.<br />La valeur initiale est 1, tandis que les valeurs supérieures à 1 créent un effet d'agrandissement, et les valeurs inférieures créent un effet de réduction.</em></p>
+        <h4>Sur les axes x ET y : scale</h4>
+        <style type="text/css">
+            <!--
+            #transform-scale div {
+                background-color:lightblue;
+                height:150px;
+                width:150px;
+                
+                -webkit-transform-origin:0 0;
+                -moz-transform-origin:0 0;
+                -ms-transform-origin:0 0;
+                -o-transform-origin:0 0;
+                transform-origin:0 0;
+
+                -webkit-transform:scale(2,0.5);
+                -moz-transform:scale(2,0.5);
+                -ms-transform:scale50%x,50%);
+                -o-transform:scale(2,0.5);
+                transform:scale(2,0.5);
+            }
+            -->
+        </style>
+        <div id="transform-scale">
+            <div><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></div>
+        </div>
+        <pre><code class="css">
+div {
+    background-color:lightblue;
+    height:150px;
+    width:150px;
+
+    -webkit-transform:scale(2,0.5);
+    -moz-transform:scale(2,0.5);
+    -ms-transform:scale(2,0.5);
+    -o-transform:scale(2,0.5);
+    transform:scale(2,0.5); /* axe_x (largeur) axe_y (hauteur) */
+}</code>
+<code class="html">
+&lt;div&gt;&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit.&lt;/p&gt;&lt;/div&gt;</code></pre>
+        <h4>Sur l'axe x uniquement : scaleX</h4>
+        <style type="text/css">
+            <!--
+            #transform-scaleX div {
+                background-color:lightblue;
+                height:150px;
+                width:150px;
+                
+                -webkit-transform-origin:0 0;
+                -moz-transform-origin:0 0;
+                -ms-transform-origin:0 0;
+                -o-transform-origin:0 0;
+                transform-origin:0 0;
+
+                -webkit-transform:scaleX(2);
+                -moz-transform:scaleX(2);
+                -ms-transform:scaleX(2);
+                -o-transform:scaleX(2);
+                transform:scaleX(2);
+            }
+            -->
+        </style>
+        <div id="transform-scaleX">
+            <div><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></div>
+        </div>
+        <pre><code class="css">
+div {
+    background-color:lightblue;
+    height:150px;
+    width:150px;
+
+    -webkit-transform:scaleX(2);
+    -moz-transform:scaleX(2);
+    -ms-transform:scaleX(2);
+    -o-transform:scaleX(2);
+    transform:scaleX(2);
+}</code>
+<code class="html">
+&lt;div&gt;&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit.&lt;/p&gt;&lt;/div&gt;</code></pre>
+        <h4>Sur l'axe y uniquement : scaleY</h4>
+        <style type="text/css">
+            <!--
+            #transform-scaleY div {
+                background-color:lightblue;
+                height:150px;
+                width:150px;
+                
+                -webkit-transform-origin:0 0;
+                -moz-transform-origin:0 0;
+                -ms-transform-origin:0 0;
+                -o-transform-origin:0 0;
+                transform-origin:0 0;
+
+                -webkit-transform:scaleY(0.5);
+                -moz-transform:scaleY(0.5);
+                -ms-transform:scaleY(0.5);
+                -o-transform:scaleY(0.5);
+                transform:scaleY(0.5);
+            }
+            -->
+        </style>
+        <div id="transform-scaleY">
+            <div><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></div>
+        </div>
+        <pre><code class="css">
+div {
+    background-color:lightblue;
+    height:150px;
+    width:150px;
+
+    -webkit-transform:scaleY(0.5);
+    -moz-transform:scaleY(0.5);
+    -ms-transform:scaleY(0.5);
+    -o-transform:scaleY(0.5);
+    transform:scaleY(0.5);
+}</code>
+<code class="html">
+&lt;div&gt;&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit.&lt;/p&gt;&lt;/div&gt;</code></pre>
+        <h3>La rotation</h3>
+        <p><em>Permet d'effectuer une rotation de l'élément ciblé.<br />Cette transformation nous permet d'inclure une nouvelle règle : le point d'origine de la transformation dans l'élément (par défaut au centre de l'élément)</em></p>
+        <h4>Sur lui-même : rotate</h4>
+        <style type="text/css">
+            <!--
+            #transform-rotate div {
+                height:150px;
+                width:150px;
+
+                -webkit-transform:rotate(45deg);
+                -moz-transform:rotate(45deg);
+                -ms-transform:rotate(45deg);
+                -o-transform:rotate(45deg);
+                transform:rotate(45deg);
+            }
+            #transform-rotate div:nth-child(2n) {
+                background-color:lightgreen;
+
+                -webkit-transform-origin:0 0;
+                -moz-transform-origin:0 0;
+                -ms-transform-origin:0 0;
+                -o-transform-origin:0 0;
+                transform-origin:0 0;
+            }
+            #transform-rotate div:nth-child(2n+1) {
+                background-color:lightblue;
+                
+                -webkit-transform-origin:50% 50%;
+                -moz-transform-origin:50% 50%;
+                -ms-transform-origin:50% 50%;
+                -o-transform-origin:50% 50%;
+                transform-origin:50% 50%;
+            }
+            -->
+        </style>
+        <div id="transform-rotate">
+            <div><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></div>
+            <div><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></div>
+        </div>
+        <pre><code class="css">
+div {
+    height:150px;
+    width:150px;
+
+    -webkit-transform:rotate(45deg);
+    -moz-transform:rotate(45deg);
+    -ms-transform:rotate(45deg);
+    -o-transform:rotate(45deg);
+    transform:rotate(45deg);
+}
+div:nth-child(2n) { /* pivote l'élément avec comme origine son angle en haut à gauche */
+    background-color:lightgreen;
+
+    -webkit-transform-origin:0 0;
+    -moz-transform-origin:0 0;
+    -ms-transform-origin:0 0;
+    -o-transform-origin:0 0;
+    transform-origin:0 0;
+}
+div:nth-child(2n+1) { /* pivote l'élément avec comme origine son centre */
+    background-color:lightblue;
+
+    -webkit-transform-origin:50% 50%;
+    -moz-transform-origin:50% 50%;
+    -ms-transform-origin:50% 50%;
+    -o-transform-origin:50% 50%;
+    transform-origin:50% 50%;
+}</code>
+<code class="html">
+&lt;div&gt;&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit.&lt;/p&gt;&lt;/div&gt;
+&lt;div&gt;&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit.&lt;/p&gt;&lt;/div&gt;</code></pre>
+        <p class="block alert"><em>Attention, on voit bien dans les exemples précédents que le point d'origine a son importance.</em></p>
+        <h3>L'inclinaison</h3>
+        <p><em>Permet d'obliquer la forme d'un élément.<br />La documentation du W3C ne parle que des fonctions skewX et skewY, et pour cause :<br /><blockquote><q>Important, transform: skew() is not supported anymore (spec and gecko). (But skewX an skewY are).</q><br /><cite>— Paul Rouget (@paulrouget) Avril 12, 2012</cite></blockquote></em></p>
+        <p class="block alert"><em>Attention donc : les navigateurs qui prennent en charge la fonction skew() font du zèle. Cette fonction n'est pas prévue par le W3C et ne sera plus supportée (prochainement par Gecko), dans un avenir proche. Pour faire les choses correctement, utilisez les fonctions skewX et skewY.</em></p>
+        <h4>Sur l'axe x uniquement : skewX</h4>
+        <style type="text/css">
+            <!--
+            #transform-skewX div {
+                background-color:lightblue;
+                height:150px;
+                width:150px;
+                
+                -webkit-transform-origin:50% 50%;
+                -moz-transform-origin:50% 50%;
+                -ms-transform-origin:50% 50%;
+                -o-transform-origin:50% 50%;
+                transform-origin:50% 50%;
+
+                -webkit-transform:skewX(45deg);
+                -moz-transform:skewX(45deg);
+                -ms-transform:skewX(45deg);
+                -o-transform:skewX(45deg);
+                transform:skewX(45deg);
+            }
+            -->
+        </style>
+        <div id="transform-skewX">
+            <div><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></div>
+        </div>
+        <pre><code class="css">
+div {
+    background-color:lightblue;
+    height:150px;
+    width:150px;
+
+    -webkit-transform-origin:50% 50%;
+    -moz-transform-origin:50% 50%;
+    -ms-transform-origin:50% 50%;
+    -o-transform-origin:50% 50%;
+    transform-origin:50% 50%;
+
+    -webkit-transform:skewX(45deg);
+    -moz-transform:skewX(45deg);
+    -ms-transform:skewX(45deg);
+    -o-transform:skewX(45deg);
+    transform:skewX(45deg);
+}</code>
+<code class="html">
+&lt;div&gt;&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit.&lt;/p&gt;&lt;/div&gt;</code></pre>
+        <h4>Sur l'axe y uniquement : skewY</h4>
+        <style type="text/css">
+            <!--
+            #transform-skewY div {
+                background-color:lightblue;
+                height:150px;
+                width:150px;
+                
+                -webkit-transform-origin:50% 50%;
+                -moz-transform-origin:50% 50%;
+                -ms-transform-origin:50% 50%;
+                -o-transform-origin:50% 50%;
+                transform-origin:50% 50%;
+
+                -webkit-transform:skewY(15deg);
+                -moz-transform:skewY(15deg);
+                -ms-transform:skewY(15deg);
+                -o-transform:skewY(15deg);
+                transform:skewY(15deg);
+            }
+            -->
+        </style>
+        <div id="transform-skewY">
+            <div><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></div>
+        </div>
+        <pre><code class="css">
+div {
+    background-color:lightblue;
+    height:150px;
+    width:150px;
+
+    -webkit-transform-origin:50% 50%;
+    -moz-transform-origin:50% 50%;
+    -ms-transform-origin:50% 50%;
+    -o-transform-origin:50% 50%;
+    transform-origin:50% 50%;
+
+    -webkit-transform:skewY(15deg);
+    -moz-transform:skewY(15deg);
+    -ms-transform:skewY(15deg);
+    -o-transform:skewY(15deg);
+    transform:skewY(15deg);
+}</code>
+<code class="html">
+&lt;div&gt;&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit.&lt;/p&gt;&lt;/div&gt;</code></pre>
+        <h4>Astuce pour agir sur les 2 axes</h4>
+        <p><em>Il est possible grâce à l'règle "transform" d'indiquer plusieurs transformations en même temps en les séparant par un espace.</em></p>
+        <style type="text/css">
+            <!--
+            #transform-skew div {
+                background-color:lightblue;
+                height:150px;
+                width:150px;
+                
+                -webkit-transform-origin:0 0;
+                -moz-transform-origin:0 0;
+                -ms-transform-origin:0 0;
+                -o-transform-origin:0 0;
+                transform-origin:0 0;
+
+                -webkit-transform:skewX(15deg) skewY(15deg);
+                -moz-transform:skewX(15deg) skewY(15deg);
+                -ms-transform:skewX(15deg) skewY(15deg);
+                -o-transform:skewX(15deg) skewY(15deg);
+                transform:skewX(15deg) skewY(15deg);
+            }
+            -->
+        </style>
+        <div id="transform-skew">
+            <div><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></div>
+        </div>
+        <pre><code class="css">
+div {
+    background-color:lightblue;
+    height:150px;
+    width:150px;
+                
+    -webkit-transform-origin:0 0;
+    -moz-transform-origin:0 0;
+    -ms-transform-origin:0 0;
+    -o-transform-origin:0 0;
+    transform-origin:0 0;
+
+    -webkit-transform:skewX(15deg) skewY(15deg);
+    -moz-transform:skewX(15deg) skewY(15deg);
+    -ms-transform:skewX(15deg) skewY(15deg);
+    -o-transform:skewX(15deg) skewY(15deg);
+    transform:skewX(15deg) skewY(15deg);
+}</code>
+<code class="html">
+&lt;div&gt;&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit.&lt;/p&gt;&lt;/div&gt;</code></pre>
+        <h3>La matrice de transformation</h3>
+        <p><em>Permet de réunir en une seule déclaration toutes les fonctions précédentes que nous avons vu ensemble sous la forme d'une matrice. Très concrètement, les détails ne seront pas abordés ici car ils font beaucoup plus appel à des notions mathématiques complexes que beaucoup d'entre nous ont mis de côté.</em></p>
+        <style type="text/css">
+            <!--
+            #transform-matrix div {
+                background-color:lightblue;
+                height:150px;
+                position:relative;
+                top:-600px;
+                width:150px;
+                
+                -webkit-transform-origin:0 0;
+                -moz-transform-origin:0 0;
+                -ms-transform-origin:0 0;
+                -o-transform-origin:0 0;
+                transform-origin:0 0;
+
+                -webkit-transform:matrix(1.06,1.84,0.54,2.8,466,482);
+                -moz-transform:matrix(1.06,1.84,0.54,2.8,400px,-100px);
+                -ms-transform:matrix(1.06,1.84,0.54,2.8,466,482);
+                -o-transform:matrix(1.06,1.84,0.54,2.8,466,482);
+                transform:matrix(1.06,1.84,0.54,2.8,466,482);
+            }
+            -->
+        </style>
+        <div id="transform-matrix">
+            <div><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></div>
+        </div>
+        <pre><code class="css">
+div {
+    background-color:lightblue;
+    height:150px;
+    width:150px;
+
+    -webkit-transform-origin:0 0;
+    -moz-transform-origin:0 0;
+    -ms-transform-origin:0 0;
+    -o-transform-origin:0 0;
+    transform-origin:0 0;
+
+    -webkit-transform:matrix(1.06,1.84,0.54,2.8,466,482);
+    -moz-transform:matrix(1.4488,-0.3882,0.3882,1.4489,400px,-100px); /* spécifité Firefox : les 2 derniers paramètres nécessitent une unité. */
+    -ms-transform:matrix(1.06,1.84,0.54,2.8,466,482);
+    -o-transform:matrix(1.06,1.84,0.54,2.8,466,482);
+    transform:matrix(1.06,1.84,0.54,2.8,466,482); /* équivaut à transform:rotate(15deg) translateX(230px) scale(1.5, 2.6) skew(220deg,-150deg) translateY(230px); */
+}</code>
+<code class="html">
+&lt;div&gt;&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit.&lt;/p&gt;&lt;/div&gt;</code></pre>
+        <p class="block alert"><em>Comme vu précédemment, la propriété "transform" accepte plusieurs fonctions les unes à la suite des autres.<br />Cependant, l'ordre des fonctions a son importance. En effet, les transformations se font dans l'ordre où elles sont déclarées.<br />Ainsi une translation de 20px est équivalente à 40px si un scale de 2 la précède.<br />Attention donc à l'ordre de déclaration de ces fonctions.</em></p>
+        <hr />
+        <h2>Les transformations 3D</h2>
+        <p><em>Pour l'affichage d'un site web à l'écran, nous travaillons en 2D :</em></p>
+        <ul style="font-style:italic;">
+            <li>sur l'axe X : positif vers la droite de l'écran,</li>
+            <li>sur l'axe Y : positif vers le bas de l'écran,</li>
+        </ul>
+        <p><em>Avec l'introduction des transformations 3D par le W3C, cela induit une nouvelle dimension : l'axe Z, positif vers l'internaute (et donc négatif vers l'intérieur de l'écran).</em></p>
+        <p><em>Les transformations 2D ou 3D s'utilisent de la même manière.</em></p>
+        <h3>La perspective</h3>
+        <p><em>La perspective joue un rôle primordial dans le rendu visuel des éléments en 3D. En effet, grâce à elle, vous aurez l'impression que vos éléments "sortent" de l'écran. La perspective représente la distance entre l'oeil et l'élément HTML sur lequel cette perspective est appliquée. Plus la perspective est importante, plus vous êtes éloignés, et donc, plus l'objet paraît plat. À l'inverse, plus la perspective est faible, et plus l'élément paraît en relief.</em></p>
+        <p><em>L'règle définissant la perspective s'applique au conteneur parent de l'élément sur lequel on applique la transformation 3D.</em></p>
+        <pre><code class="css">
+#transform {
+    -webkit-perspective:400px;
+    -moz-perspective:400px;
+    -ms-perspective:400px;
+    -o-perspective:400px;
+    perspective:400px;
+}</code>
+<code class="html">
+&lt;div id="transform"&gt;
+    &lt;div&gt;&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit.&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        <h3>La rotation</h3>
+        <h4>Autour de l'axe défini par le vecteur (x,y,z) : rotate3d</h4>
+        <style type="text/css">
+            <!--
+            #transform-rotate3d {
+                border:gray thin solid;
+                height:150px;
+                margin:0 auto;
+                width:150px;
+
+                -webkit-perspective:400px;
+                -moz-perspective:400px;
+                -ms-perspective:400px;
+                -o-perspective:400px;
+                perspective:400px;
+            }
+                #transform-rotate3d div {
+                    background-color:lightblue;
+                    height:150px;
+                    width:150px;
+                    
+                    -webkit-transform-origin:50% 50%;
+                    -moz-transform-origin:50% 50%;
+                    -ms-transform-origin:50% 50%;
+                    -o-transform-origin:50% 50%;
+                    transform-origin:50% 50%;
+
+                    -webkit-transform:rotate3d(1,-1,1,60deg);
+                    -moz-transform:rotate3d(1,-1,1,60deg);
+                    -ms-transform:rotate3d(1,-1,1,60deg);
+                    -o-transform:rotate3d(1,-1,1,60deg);
+                    transform:rotate3d(1,-1,1,60deg);
+                }
+            -->
+        </style>
+        <div id="transform-rotate3d">
+            <div><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></div>
+        </div>
+        <pre><code class="css">
+#transform-rotate3d {
+    border:gray thin solid;
+    height:150px;
+    margin:0 auto;
+    width:150px;
+
+    -webkit-perspective:400px;
+    -moz-perspective:400px;
+    -ms-perspective:400px;
+    -o-perspective:400px;
+    perspective:400px;
+}
+    #transform-rotate3d div {
+        background-color:lightblue;
+        height:150px;
+        width:150px;
+
+        -webkit-transform-origin:50% 50%;
+        -moz-transform-origin:50% 50%;
+        -ms-transform-origin:50% 50%;
+        -o-transform-origin:50% 50%;
+        transform-origin:50% 50%;
+
+        -webkit-transform:rotate3d(1,-1,1,60deg);
+        -moz-transform:rotate3d(1,-1,1,60deg);
+        -ms-transform:rotate3d(1,-1,1,60deg);
+        -o-transform:rotate3d(1,-1,1,60deg);
+        transform:rotate3d(1,-1,1,60deg);
+    }</code>
+<code class="html">
+&lt;div id="transform-rotate3d"&gt;
+    &lt;div&gt;&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit.&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        <h4>Sur l'axe x uniquement : rotateX</h4>
+        <style type="text/css">
+            <!--
+            #transform-rotateX {
+                border:gray thin solid;
+                height:150px;
+                margin:0 auto;
+                width:150px;
+
+                -webkit-perspective:400px;
+                -moz-perspective:400px;
+                -ms-perspective:400px;
+                -o-perspective:400px;
+                perspective:400px;
+            }
+                #transform-rotateX div {
+                    background-color:lightblue;
+                    height:150px;
+                    width:150px;
+                    
+                    -webkit-transform-origin:50% 50%;
+                    -moz-transform-origin:50% 50%;
+                    -ms-transform-origin:50% 50%;
+                    -o-transform-origin:50% 50%;
+                    transform-origin:50% 50%;
+
+                    -webkit-transform:rotateX(45deg);
+                    -moz-transform:rotateX(45deg);
+                    -ms-transform:rotateX(45deg);
+                    -o-transform:rotateX(45deg);
+                    transform:rotateX(45deg);
+                }
+            -->
+        </style>
+        <div id="transform-rotateX">
+            <div><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></div>
+        </div>
+        <pre><code class="css">
+#transform-rotateX {
+    border:gray thin solid;
+    height:150px;
+    margin:0 auto;
+    width:150px;
+
+    -webkit-perspective:400px;
+    -moz-perspective:400px;
+    -ms-perspective:400px;
+    -o-perspective:400px;
+    perspective:400px;
+}
+    #transform-rotateX div {
+        background-color:lightblue;
+        height:150px;
+        width:150px;
+        
+        -webkit-transform-origin:50% 50%;
+        -moz-transform-origin:50% 50%;
+        -ms-transform-origin:50% 50%;
+        -o-transform-origin:50% 50%;
+        transform-origin:50% 50%;
+
+        -webkit-transform:rotateX(45deg);
+        -moz-transform:rotateX(45deg);
+        -ms-transform:rotateX(45deg);
+        -o-transform:rotateX(45deg);
+        transform:rotateX(45deg);
+    }</code>
+<code class="html">
+&lt;div id="transform-rotateX"&gt;
+    &lt;div&gt;&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit.&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        <h4>Sur l'axe y uniquement : rotateY</h4>
+        <style type="text/css">
+            <!--
+            #transform-rotateY {
+                border:gray thin solid;
+                height:150px;
+                margin:0 auto;
+                width:150px;
+
+                -webkit-perspective:150px;
+                -moz-perspective:150px;
+                -ms-perspective:150px;
+                -o-perspective:150px;
+                perspective:150px;
+            }
+                #transform-rotateY div {
+                    background-color:lightblue;
+                    height:150px;
+                    width:150px;
+                    
+                    -webkit-transform-origin:50% 50%;
+                    -moz-transform-origin:50% 50%;
+                    -ms-transform-origin:50% 50%;
+                    -o-transform-origin:50% 50%;
+                    transform-origin:50% 50%;
+
+                    -webkit-transform:rotateY(45deg);
+                    -moz-transform:rotateY(45deg);
+                    -ms-transform:rotateY(45deg);
+                    -o-transform:rotateY(45deg);
+                    transform:rotateY(45deg);
+                }
+            -->
+        </style>
+        <div id="transform-rotateY">
+            <div><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></div>
+        </div>
+        <pre><code class="css">
+#transform-rotateY {
+    border:gray thin solid;
+    height:150px;
+    margin:0 auto;
+    width:150px;
+
+    -webkit-perspective:150px;
+    -moz-perspective:150px;
+    -ms-perspective:150px;
+    -o-perspective:150px;
+    perspective:150px;
+}
+    #transform-rotateY div {
+        background-color:lightblue;
+        height:150px;
+        width:150px;
+        
+        -webkit-transform-origin:50% 50%;
+        -moz-transform-origin:50% 50%;
+        -ms-transform-origin:50% 50%;
+        -o-transform-origin:50% 50%;
+        transform-origin:50% 50%;
+
+        -webkit-transform:rotateY(45deg);
+        -moz-transform:rotateY(45deg);
+        -ms-transform:rotateY(45deg);
+        -o-transform:rotateY(45deg);
+        transform:rotateY(45deg);
+    }</code>
+<code class="html">
+&lt;div id="transform-rotateY"&gt;
+    &lt;div&gt;&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit.&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        <h4>Sur l'axe z uniquement : rotateZ (équivalent à rotate en 2D)</h4>
+        <style type="text/css">
+            <!--
+            #transform-rotateZ {
+                border:gray thin solid;
+                height:150px;
+                margin:0 auto;
+                width:150px;
+
+                -webkit-perspective:150px;
+                -moz-perspective:150px;
+                -ms-perspective:150px;
+                -o-perspective:150px;
+                perspective:150px;
+            }
+                #transform-rotateZ div {
+                    background-color:lightblue;
+                    height:150px;
+                    width:150px;
+                    
+                    -webkit-transform-origin:50% 50%;
+                    -moz-transform-origin:50% 50%;
+                    -ms-transform-origin:50% 50%;
+                    -o-transform-origin:50% 50%;
+                    transform-origin:50% 50%;
+
+                    -webkit-transform:rotateZ(45deg);
+                    -moz-transform:rotateZ(45deg);
+                    -ms-transform:rotateZ(45deg);
+                    -o-transform:rotateZ(45deg);
+                    transform:rotateZ(45deg);
+                }
+            -->
+        </style>
+        <div id="transform-rotateZ">
+            <div><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></div>
+        </div>
+        <pre><code class="css">
+#transform-rotateZ {
+    border:gray thin solid;
+    height:150px;
+    margin:0 auto;
+    width:150px;
+
+    -webkit-perspective:150px;
+    -moz-perspective:150px;
+    -ms-perspective:150px;
+    -o-perspective:150px;
+    perspective:150px;
+}
+    #transform-rotateZ div {
+        background-color:lightblue;
+        height:150px;
+        width:150px;
+        
+        -webkit-transform-origin:50% 50%;
+        -moz-transform-origin:50% 50%;
+        -ms-transform-origin:50% 50%;
+        -o-transform-origin:50% 50%;
+        transform-origin:50% 50%;
+
+        -webkit-transform:rotateZ(45deg);
+        -moz-transform:rotateZ(45deg);
+        -ms-transform:rotateZ(45deg);
+        -o-transform:rotateZ(45deg);
+        transform:rotateZ(45deg);
+    }</code>
+<code class="html">
+&lt;div id="transform-rotateZ"&gt;
+    &lt;div&gt;&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit.&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        <h3>Le déplacement</h3>
+        <h4>Sur l'axe défini par le vecteur (x,y,z) : translate3d</h4>
+        <style type="text/css">
+            <!--
+            #transform-translate3d {
+                border:gray thin solid;
+                height:150px;
+                margin:0 auto;
+                width:150px;
+
+                -webkit-perspective:400px;
+                -moz-perspective:400px;
+                -ms-perspective:400px;
+                -o-perspective:400px;
+                perspective:400px;
+            }
+                #transform-translate3d div {
+                    background-color:lightblue;
+                    height:150px;
+                    width:150px;
+                    
+                    -webkit-transform-origin:50% 50%;
+                    -moz-transform-origin:50% 50%;
+                    -ms-transform-origin:50% 50%;
+                    -o-transform-origin:50% 50%;
+                    transform-origin:50% 50%;
+
+                    -webkit-transform:translate3d(20px,20px,-300px);
+                    -moz-transform:translate3d(20px,20px,-300px);
+                    -ms-transform:translate3d(20px,20px,-300px);
+                    -o-transform:translate3d(20px,20px,-300px);
+                    transform:translate3d(20px,20px,-300px);
+                }
+            -->
+        </style>
+        <div id="transform-translate3d">
+            <div><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></div>
+        </div>
+        <pre><code class="css">
+#transform-translate3d {
+    border:gray thin solid;
+    height:150px;
+    margin:0 auto;
+    width:150px;
+
+    -webkit-perspective:400px;
+    -moz-perspective:400px;
+    -ms-perspective:400px;
+    -o-perspective:400px;
+    perspective:400px;
+}
+    #transform-translate3d div {
+        background-color:lightblue;
+        height:150px;
+        width:150px;
+
+        -webkit-transform-origin:50% 50%;
+        -moz-transform-origin:50% 50%;
+        -ms-transform-origin:50% 50%;
+        -o-transform-origin:50% 50%;
+        transform-origin:50% 50%;
+
+        -webkit-transform:translate3d(20px,20px,-300px);
+        -moz-transform:translate3d(20px,20px,-300px);
+        -ms-transform:translate3d(20px,20px,-300px);
+        -o-transform:translate3d(20px,20px,-300px);
+        transform:translate3d(20px,20px,-300px);
+    }</code>
+<code class="html">
+&lt;div id="transform-translate3d"&gt;
+    &lt;div&gt;&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit.&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        <h4>Sur l'axe z uniquement : translateZ</h4>
+        <style type="text/css">
+            <!--
+            #transform-translateZ {
+                border:gray thin solid;
+                height:150px;
+                margin:0 auto;
+                width:150px;
+
+                -webkit-perspective:400px;
+                -moz-perspective:400px;
+                -ms-perspective:400px;
+                -o-perspective:400px;
+                perspective:400px;
+            }
+                #transform-translateZ div {
+                    background-color:lightblue;
+                    height:150px;
+                    width:150px;
+                    
+                    -webkit-transform-origin:50% 50%;
+                    -moz-transform-origin:50% 50%;
+                    -ms-transform-origin:50% 50%;
+                    -o-transform-origin:50% 50%;
+                    transform-origin:50% 50%;
+
+                    -webkit-transform:translateZ(-500px);
+                    -moz-transform:translateZ(-500px);
+                    -ms-transform:translateZ(-500px);
+                    -o-transform:translateZ(-500px);
+                    transform:translateZ(-500px);
+                }
+            -->
+        </style>
+        <div id="transform-translateZ">
+            <div><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></div>
+        </div>
+        <pre><code class="css">
+#transform-translateZ {
+    border:gray thin solid;
+    height:150px;
+    margin:0 auto;
+    width:150px;
+
+    -webkit-perspective:400px;
+    -moz-perspective:400px;
+    -ms-perspective:400px;
+    -o-perspective:400px;
+    perspective:400px;
+}
+    #transform-translateZ div {
+        background-color:lightblue;
+        height:150px;
+        width:150px;
+        
+        -webkit-transform-origin:50% 50%;
+        -moz-transform-origin:50% 50%;
+        -ms-transform-origin:50% 50%;
+        -o-transform-origin:50% 50%;
+        transform-origin:50% 50%;
+
+        -webkit-transform:translateZ(-500px);
+        -moz-transform:translateZ(-500px);
+        -ms-transform:translateZ(-500px);
+        -o-transform:translateZ(-500px);
+        transform:translateZ(-500px);
+    }</code>
+<code class="html">
+&lt;div id="transform-translateZ"&gt;
+    &lt;div&gt;&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit.&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        <h3>La mise à l'échelle</h3>
+        <h4>Sur l'axe défini par le vecteur (x,y,z) : scale3d</h4>
+        <style type="text/css">
+            <!--
+            #transform-scale3d {
+                border:gray thin solid;
+                height:150px;
+                margin:0 auto;
+                width:150px;
+
+                -webkit-perspective:400px;
+                -moz-perspective:400px;
+                -ms-perspective:400px;
+                -o-perspective:400px;
+                perspective:400px;
+            }
+                #transform-scale3d div {
+                    background-color:lightblue;
+                    height:150px;
+                    width:150px;
+                    
+                    -webkit-transform-origin:50% 50%;
+                    -moz-transform-origin:50% 50%;
+                    -ms-transform-origin:50% 50%;
+                    -o-transform-origin:50% 50%;
+                    transform-origin:50% 50%;
+
+                    -webkit-transform:scale3d(2,1,3);
+                    -moz-transform:scale3d(2,1,3);
+                    -ms-transform:scale3d(2,1,3);
+                    -o-transform:scale3d(2,1,3);
+                    transform:scale3d(2,1,3);
+                }
+            -->
+        </style>
+        <div id="transform-scale3d">
+            <div><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></div>
+        </div>
+        <pre><code class="css">
+#transform-scale3d {
+    border:gray thin solid;
+    height:150px;
+    margin:0 auto;
+    width:150px;
+
+    -webkit-perspective:400px;
+    -moz-perspective:400px;
+    -ms-perspective:400px;
+    -o-perspective:400px;
+    perspective:400px;
+}
+    #transform-scale3d div {
+        background-color:lightblue;
+        height:150px;
+        width:150px;
+
+        -webkit-transform-origin:50% 50%;
+        -moz-transform-origin:50% 50%;
+        -ms-transform-origin:50% 50%;
+        -o-transform-origin:50% 50%;
+        transform-origin:50% 50%;
+
+        -webkit-transform:scale3d(2,1,3);
+        -moz-transform:scale3d(2,1,3);
+        -ms-transform:scale3d(2,1,3);
+        -o-transform:scale3d(2,1,3);
+        transform:scale3d(2,1,3);
+    }</code>
+<code class="html">
+&lt;div id="transform-scale3d"&gt;
+    &lt;div&gt;&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit.&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        <h4>Sur l'axe z uniquement : scaleZ</h4>
+        <style type="text/css">
+            <!--
+            #transform-scaleZ {
+                border:gray thin solid;
+                height:150px;
+                margin:0 auto;
+                width:150px;
+
+                -webkit-perspective:400px;
+                -moz-perspective:400px;
+                -ms-perspective:400px;
+                -o-perspective:400px;
+                perspective:400px;
+            }
+                #transform-scaleZ div {
+                    background-color:lightblue;
+                    height:150px;
+                    width:150px;
+                    
+                    -webkit-transform-origin:50% 50%;
+                    -moz-transform-origin:50% 50%;
+                    -ms-transform-origin:50% 50%;
+                    -o-transform-origin:50% 50%;
+                    transform-origin:50% 50%;
+
+                    -webkit-transform:scaleZ(3);
+                    -moz-transform:scaleZ(3);
+                    -ms-transform:scaleZ(3);
+                    -o-transform:scaleZ(3);
+                    transform:scaleZ(3);
+                }
+            -->
+        </style>
+        <div id="transform-scaleZ">
+            <div><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></div>
+        </div>
+        <pre><code class="css">
+#transform-scaleZ {
+    border:gray thin solid;
+    height:150px;
+    margin:0 auto;
+    width:150px;
+
+    -webkit-perspective:400px;
+    -moz-perspective:400px;
+    -ms-perspective:400px;
+    -o-perspective:400px;
+    perspective:400px;
+}
+    #transform-scaleZ div {
+        background-color:lightblue;
+        height:150px;
+        width:150px;
+        
+        -webkit-transform-origin:50% 50%;
+        -moz-transform-origin:50% 50%;
+        -ms-transform-origin:50% 50%;
+        -o-transform-origin:50% 50%;
+        transform-origin:50% 50%;
+
+        -webkit-transform:scaleZ(3);
+        -moz-transform:scaleZ(3);
+        -ms-transform:scaleZ(3);
+        -o-transform:scaleZ(3);
+        transform:scaleZ(3);
+    }</code>
+<code class="html">
+&lt;div id="transform-scaleZ"&gt;
+    &lt;div&gt;&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit.&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        <hr />
+        <h2>Les transitions</h2>
+        <p><em>Pour le moment, certains effets ne sont pas visibles (ou peu probants) car il n'y a pas d'animation entre les 2 états.<br />Le principe de base d'une transition CSS3 est de permettre une transition douce entre l'ancienne valeur et la nouvelle valeur d'une propriété CSS lorsqu'un événement est déclenché : via une pseudo-classe telles que ":hover", ":focus" ou ":active"</em></p>
+        <p><em>Pour définir une nouvelle transition animée, il est nécessaire de préciser au minimum : </em></p>
+        <ul style="font-style:italic;">
+            <li>la ou les propriété(s) à animer (dans le cas ci-dessous : le background)</li>
+            <li>la durée de l'animation (exprimée en seconde)</li>
+        </ul>
+        <style type="text/css">
+            <!--
+            #transition div {
+                background-color:lightblue;
+                height:150px;
+                margin:0 auto;
+                width:150px;
+
+                -webkit-transition-duration:1s;
+                -moz-transition-duration:1s;
+                -ms-transition-duration:1s;
+                -o-transition-duration:1s;
+                transition-duration:1s;
+            }
+            #transition div:hover {background-color:lightgreen;}
+            -->
+        </style>
+        <div id="transition">
+            <div></div>
+        </div>
+        <pre><code class="css">
+div {
+    background-color:lightblue;
+    height:150px;
+    margin:0 auto;
+    width:150px;
+
+    -webkit-transition-duration:1s;
+    -moz-transition-duration:1s;
+    -ms-transition-duration:1s;
+    -o-transition-duration:1s;
+    transition-duration:1s;
+}
+div:hover {
+    background-color:lightgreen;
+}</code>
+<code class="html">
+&lt;div&gt;&lt;/div&gt;</code></pre>
+        <p><em>Nous pouvons aussi appliquer la transition à plusieurs propriétés en même temps (dans l'exemple ci-dessous, le background et le padding en même temps) :</em></p>
+        <style type="text/css">
+            <!--
+            #transition-multiple div {
+                background-color:lightblue;
+                height:150px;
+                margin:0 auto;
+                padding:15px;
+                width:150px;
+
+                -webkit-transition-duration:1s;
+                -moz-transition-duration:1s;
+                -ms-transition-duration:1s;
+                -o-transition-duration:1s;
+                transition-duration:1s;
+            }
+            #transition-multiple div:hover {
+                background-color:lightgreen;
+                padding:50px;
+            }
+            -->
+        </style>
+        <div id="transition-multiple">
+            <div>Lorem ipsum</div>
+        </div>
+        <pre><code class="css">
+div {
+    background-color:lightblue;
+    height:150px;
+    margin:0 auto;
+    padding:15px;
+    width:150px;
+
+    -webkit-transition-duration:1s;
+    -moz-transition-duration:1s;
+    -ms-transition-duration:1s;
+    -o-transition-duration:1s;
+    transition-duration:1s;
+}
+div:hover {
+    background-color:lightgreen;
+    padding:50px;
+}</code>
+<code class="html">
+&lt;div&gt;Lorem ipsum&lt;/div&gt;</code></pre>
+        <h3>Le ciblage des propriétés : transition-property</h3>
+        <p><em>Lorsque plusieurs propriétés sont modifiées dans la pseudo-classe, il est possible de spécifier la(les)quelle(s) nous allons cibler avec une transition (dans l'exemple ci-dessous, le background et le color en même temps mais pas le padding) :</em></p>
+        <style type="text/css">
+            <!--
+            #transition-property div {
+                background-color:lightblue;
+                color:#000;
+                height:150px;
+                margin:0 auto;
+                padding:15px;
+                width:150px;
+
+                -webkit-transition-duration:1s;
+                -moz-transition-duration:1s;
+                -ms-transition-duration:1s;
+                -o-transition-duration:1s;
+                transition-duration:1s;
+
+                -webkit-transition-property:background,color;
+                -moz-transition-property:background,color;
+                -ms-transition-property:background,color;
+                -o-transition-property:background,color;
+                transition-property:background,color;
+            }
+            #transition-property div:hover {
+                background-color:lightgreen;
+                color:#FFF;
+                padding:50px;
+            }
+            -->
+        </style>
+        <div id="transition-property">
+            <div>Lorem ipsum</div>
+        </div>
+        <pre><code class="css">
+div {
+    background-color:lightblue;
+    color:#000;
+    height:150px;
+    margin:0 auto;
+    padding:15px;
+    width:150px;
+
+    -webkit-transition-duration:1s;
+    -moz-transition-duration:1s;
+    -ms-transition-duration:1s;
+    -o-transition-duration:1s;
+    transition-duration:1s;
+
+    -webkit-transition-property:background,color;
+    -moz-transition-property:background,color;
+    -ms-transition-property:background,color;
+    -o-transition-property:background,color;
+    transition-property:background,color; /* valeur par défaut : all */
+}
+div:hover {
+    background-color:lightgreen;
+    color:#FFF;
+    padding:50px;
+}</code>
+<code class="html">
+&lt;div&gt;Lorem ipsum&lt;/div&gt;</code></pre>
+        <p class="block alert"><em>Nous voyons bien que toutes les propriétés sont affectées par la pseudo-classe mais la tranqition ne s'applique qu'aux propriétés indiquées.</em></p>
+        <p class="block alert"><em>Attention : certaines propriétés ne peuvent pas être affectées par une transition.<br />Vous trouverez la liste des propriétés compatibles sur le site du W3C (<a href="http://www.w3.org/TR/css3-transitions/#animatable-properties" target="_blank" title="">http://www.w3.org/TR/css3-transitions/#animatable-properties</a>)</em></p>
+        <h3>La durée de la transition : transition-duration</h3>
+        <p><em>Permet de préciser la durée de la transition.<br />Si plusieurs propriétés ont été précisées à l'aide de la propriété précédente, il est possible de préciser plusieurs valeurs pour cette propriété en les séparant également d'une virgule. Cela va donc créer un décalage entre les modifications appliquées à chaque propriétés.</em></p>
+        <style type="text/css">
+            <!--
+            #transition-duration div {
+                background-color:lightblue;
+                color:#000;
+                height:150px;
+                margin:0 auto;
+                padding:50px;
+                width:150px;
+
+                -webkit-transition-duration:1s,5s;
+                -moz-transition-duration:1s,5s;
+                -ms-transition-duration:1s,5s;
+                -o-transition-duration:1s,5s;
+                transition-duration:1s,5s;
+
+                -webkit-transition-property:background,color;
+                -moz-transition-property:background,color;
+                -ms-transition-property:background,color;
+                -o-transition-property:background,color;
+                transition-property:background,color;
+            }
+            #transition-duration div:hover {
+                background-color:lightgreen;
+                color:#FFF;
+            }
+            -->
+        </style>
+        <div id="transition-duration">
+            <div>Lorem ipsum</div>
+        </div>
+        <pre><code class="css">
+div {
+    background-color:lightblue;
+    color:#000;
+    height:150px;
+    margin:0 auto;
+    padding:15px;
+    width:150px;
+
+    -webkit-transition-duration:1s,5s;
+    -moz-transition-duration:1s,5s;
+    -ms-transition-duration:1s,5s;
+    -o-transition-duration:1s,5s;
+    transition-duration:1s,5s;
+
+    -webkit-transition-property:background,color;
+    -moz-transition-property:background,color;
+    -ms-transition-property:background,color;
+    -o-transition-property:background,color;
+    transition-property:background,color;
+}
+div:hover {
+    background-color:lightgreen;
+    color:#FFF;
+}</code>
+<code class="html">
+&lt;div&gt;Lorem ipsum&lt;/div&gt;</code></pre>
+        <h3>L'accélération : transition-timing-function</h3>
+        <p><em>Pour calculer les valeurs intermédiaires, le navigateur procède à une interpolation. La fonction calculant la valeur de cette interpolation influence directement la fluidité de l'animation.<br />Certaines animations sont plus rapides sur le début et ralentissent sur la fin, d'autres sont constantes dans leur vitesse (linéaires). Afin d'exprimer ces différents modèles d'animations, les spécifications introduisent une fonction de timing.</em></p>
+        <style type="text/css">
+            <!--
+            #transition-timing div {
+                background-color:lightblue;
+                color:#000;
+                height:150px;
+                margin:0 auto;
+                padding:50px;
+                width:150px;
+
+                -webkit-transition-duration:1s;
+                -moz-transition-duration:1s;
+                -ms-transition-duration:1s;
+                -o-transition-duration:1s;
+                transition-duration:1s;
+
+                -webkit-transition-property:all;
+                -moz-transition-property:all;
+                -ms-transition-property:all;
+                -o-transition-property:all;
+                transition-property:all;
+
+                -webkit-transition-timing-function:ease;
+                -moz-transition-timing-function:ease;
+                -ms-transition-timing-function:ease;
+                -o-transition-timing-function:ease;
+                transition-timing-function:ease;
+            }
+            #transition-timing div:hover {
+                background-color:lightgreen;
+                color:#FFF;
+            }
+            -->
+        </style>
+        <div id="transition-timing">
+            <div>Lorem ipsum</div>
+        </div>
+        <pre><code class="css">
+div {
+    background-color:lightblue;
+    color:#000;
+    height:150px;
+    margin:0 auto;
+    padding:15px;
+    width:150px;
+
+    -webkit-transition-duration:1s;
+    -moz-transition-duration:1s;
+    -ms-transition-duration:1s;
+    -o-transition-duration:1s;
+    transition-duration:1s;
+
+    -webkit-transition-property:all;
+    -moz-transition-property:all;
+    -ms-transition-property:all;
+    -o-transition-property:all;
+    transition-property:all;
+
+    -webkit-transition-timing-function:ease;
+    -moz-transition-timing-function:ease;
+    -ms-transition-timing-function:ease;
+    -o-transition-timing-function:ease;
+    transition-timing-function:ease; /* linear | ease | ease-in | ease-out | ease-in-out */
+}
+div:hover {
+    background-color:lightgreen;
+    color:#FFF;
+}</code>
+<code class="html">
+&lt;div&gt;Lorem ipsum&lt;/div&gt;</code></pre>
+        <h3>Le délai de déclenchement : transition-delay</h3>
+        <p><em>La transition commence, par défaut, dès que la propriété est changée suite à l'événement.<br />La propriété transition-delay permet d'adapter ce comportement en retardant ou en avançant le début de la transition.</em></p>
+        <style type="text/css">
+            <!--
+            #transition-delay div {
+                background-color:lightblue;
+                color:#000;
+                height:150px;
+                margin:0 auto;
+                padding:50px;
+                width:150px;
+
+                -webkit-transition-duration:1s,2s;
+                -moz-transition-duration:1s,2s;
+                -ms-transition-duration:1s,2s;
+                -o-transition-duration:1s,2s;
+                transition-duration:1s,2s;
+
+                -webkit-transition-property:background,color;
+                -moz-transition-property:background,color;
+                -ms-transition-property:background,color;
+                -o-transition-property:background,color;
+                transition-property:background,color;
+
+                -webkit-transition-timing-function:ease;
+                -moz-transition-timing-function:ease;
+                -ms-transition-timing-function:ease;
+                -o-transition-timing-function:ease;
+                transition-timing-function:ease;
+
+                -webkit-transition-delay:2s,1s;
+                -moz-transition-delay:2s,1s;
+                -ms-transition-delay:2s,1s;
+                -o-transition-delay:2s,1s;
+                transition-delay:2s,1s;
+            }
+            #transition-delay div:hover {
+                background-color:lightgreen;
+                color:#FFF;
+            }
+            -->
+        </style>
+        <div id="transition-delay">
+            <div>Lorem ipsum</div>
+        </div>
+        <pre><code class="css">
+div {
+    background-color:lightblue;
+    color:#000;
+    height:150px;
+    margin:0 auto;
+    padding:15px;
+    width:150px;
+
+    -webkit-transition-duration:1s,2s;
+    -moz-transition-duration:1s,2s;
+    -ms-transition-duration:1s,2s;
+    -o-transition-duration:1s,2s;
+    transition-duration:1s,2s;
+
+    -webkit-transition-property:background,color;
+    -moz-transition-property:background,color;
+    -ms-transition-property:background,color;
+    -o-transition-property:background,color;
+    transition-property:background,color;
+
+    -webkit-transition-timing-function:ease;
+    -moz-transition-timing-function:ease;
+    -ms-transition-timing-function:ease;
+    -o-transition-timing-function:ease;
+    transition-timing-function:ease;
+
+    -webkit-transition-delay:2s,1s;
+    -moz-transition-delay:2s,1s;
+    -ms-transition-delay:2s,1s;
+    -o-transition-delay:2s,1s;
+    transition-delay:2s,1s;
+}
+div:hover {
+    background-color:lightgreen;
+    color:#FFF;
+}</code>
+<code class="html">
+&lt;div&gt;Lorem ipsum&lt;/div&gt;</code></pre>
+        <h3>Notation raccourcie</h3>
+        <p><em>Tout comme pour d'autres propriétés CSS, il existe une notation raccourcie pour déclarer les transitions. Cette notation permet de décrire facilement et de manière concise les différentes propriétés en jeu à l'aide d'une seule propriété.</em></p>
+        <style type="text/css">
+            <!--
+            #transition-delay div {
+                background-color:lightblue;
+                color:#000;
+                height:150px;
+                margin:0 auto;
+                padding:50px;
+                width:150px;
+
+                -webkit-transition:background 1s ease 2s,color 2s ease 1s;
+                -moz-transition:background 1s ease 2s,color 2s ease 1s;
+                -ms-transition:background 1s ease 2s,color 2s ease 1s;
+                -o-transition:background 1s ease 2s,color 2s ease 1s;
+                transition:background 1s ease 2s,color 2s ease 1s;
+            }
+            #transition-delay div:hover {
+                background-color:lightgreen;
+                color:#FFF;
+            }
+            -->
+        </style>
+        <div id="transition-delay">
+            <div>Lorem ipsum</div>
+        </div>
+        <pre><code class="css">
+div {
+    background-color:lightblue;
+    color:#000;
+    height:150px;
+    margin:0 auto;
+    padding:15px;
+    width:150px;
+
+    -webkit-transition:background 1s ease 2s,color 2s ease 1s;
+    -moz-transition:background 1s ease 2s,color 2s ease 1s;
+    -ms-transition:background 1s ease 2s,color 2s ease 1s;
+    -o-transition:background 1s ease 2s,color 2s ease 1s;
+    transition:background 1s ease 2s,color 2s ease 1s;
+}
+div:hover {
+    background-color:lightgreen;
+    color:#FFF;
+}</code>
+<code class="html">
+&lt;div&gt;Lorem ipsum&lt;/div&gt;</code></pre>
+        <hr />
+        <h2>Les transitions appliquées au transformations</h2>
+        <p><em>Tout comme les autres propriétés CSS, les transitions s'appliquent aux transformations.</em></p>
+        <style type="text/css">
+            <!--
+            #transition-rotateX {
+                border:gray thin solid;
+                height:150px;
+                margin:0 auto;
+                width:150px;
+
+                -webkit-perspective:400px;
+                -moz-perspective:400px;
+                -ms-perspective:400px;
+                -o-perspective:400px;
+                perspective:400px;
+            }
+                #transition-rotateX div {
+                    background-color:lightblue;
+                    color:#000;
+                    height:150px;
+                    padding:50px;
+                    width:150px;
+
+                    -webkit-transform-origin:50% 50%;
+                    -moz-transform-origin:50% 50%;
+                    -ms-transform-origin:50% 50%;
+                    -o-transform-origin:50% 50%;
+                    transform-origin:50% 50%;
+
+                    -webkit-transform:rotateX(0deg);
+                    -moz-transform:rotateX(0deg);
+                    -ms-transform:rotateX(0deg);
+                    -o-transform:rotateX(0deg);
+                    transform:rotateX(0deg);
+
+                    -webkit-transition:transform 1s ease;
+                    -moz-transition:transform 1s ease;
+                    -ms-transition:transform 1s ease;
+                    -o-transition:transform 1s ease;
+                    transition:transform 1s ease;
+                }
+                #transition-rotateX div:hover {
+                    -webkit-transform:rotateX(180deg);
+                    -moz-transform:rotateX(180deg);
+                    -ms-transform:rotateX(180deg);
+                    -o-transform:rotateX(180deg);
+                    transform:rotateX(180deg);
+                }
+            -->
+        </style>
+        <div id="transition-rotateX">
+            <div>Lorem ipsum</div>
+        </div>
+        <pre><code class="css">
+#transition-rotateX {
+    border:gray thin solid;
+    height:150px;
+    margin:0 auto;
+    width:150px;
+
+    -webkit-perspective:400px;
+    -moz-perspective:400px;
+    -ms-perspective:400px;
+    -o-perspective:400px;
+    perspective:400px;
+}
+    #transition-rotateX div {
+        background-color:lightblue;
+        color:#000;
+        height:150px;
+        margin:0 auto;
+        padding:50px;
+        width:150px;
+
+        -webkit-transform-origin:50% 50%;
+        -moz-transform-origin:50% 50%;
+        -ms-transform-origin:50% 50%;
+        -o-transform-origin:50% 50%;
+        transform-origin:50% 50%;
+
+        -webkit-transform:rotateX(0deg);
+        -moz-transform:rotateX(0deg);
+        -ms-transform:rotateX(0deg);
+        -o-transform:rotateX(0deg);
+        transform:rotateX(0deg);
+
+        -webkit-transition:transform 1s ease;
+        -moz-transition:transform 1s ease;
+        -ms-transition:transform 1s ease;
+        -o-transition:transform 1s ease;
+        transition:transform 1s ease;
+    }
+    #transition-rotateX div:hover {
+        -webkit-transform:rotateX(180deg);
+        -moz-transform:rotateX(180deg);
+        -ms-transform:rotateX(180deg);
+        -o-transform:rotateX(180deg);
+        transform:rotateX(180deg);
+    }</code>
+<code class="html">
+&lt;div id="transition-rotateX"&gt;
+    &lt;div&gt;Lorem ipsum
+&lt;/div&gt;</code></pre>
+        <p class="block alert"><em>Il peut arriver qu'une transformation 3D ne s'applique pas correctement. Cela est du à la façon dont les éléments imbriqués sont rendus dans un espace 3D. Par défaut, les éléments sont rendus à plat.<br />Nous pouvons utiliser alors la règle "transform-style:preserve-3d;" pour forcer la gestion du rendu 3D de ces éléments.</em></p>
+        <p><em>Pour les fainéants, il existe plusieurs outils pour préfixer vos règles CSS. Outre des scripts parfois lourds à charger, il y a des ressources en ligne comme <a href="http://prefixmycss.com/" target="_blank" title="">PrefixMyCSS</a> qui peuvent vous aider (à manipuler avec précautions !!!).</em></p>
+    </body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html> <!-- Doctype : indique qu'il s'agit bien d'une page web HTML5 -->
+<!-- // Début : Document HTML -->
+<html>
+    <!-- // Début : En-tête du document -->
+    <head>
+        <meta charset="utf-8"> <!-- Encodage des caractères -->
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0"> <!-- Meta désignant la surface visible de la page web. La propriété width contrôle la taille du viewport. Elle peut être réglée à une valeur précise de pixels, comme width=600, ou bien à la valeur spéciale device-width qui correspond à la largeur de l'écran en pixels CSS à l'échelle 100%. La propriété initial-scale contrôle le niveau de zoom lorsque la page est chargée pour la première fois. Les propriétés maximum-scale, minimum-scale, et user-scalable contrôlent la manière dont les utilisateurs sont autorisés à zoomer ou dézoomer une page. -->
+        <title>Introduction à la structure HTML5</title> <!-- Titre principal du document (max. 60 caractères) -->
+        <meta name="description" content="Description courte"> <!-- Résumé de la page <max. 160 caractères) -->
+        <link rel="stylesheet" type="text/css" href="_assets/css/01_-_Introduction_a_la_structure_HTML5/style.css"> <!-- Lien vers une feuille de style CSS -->
+    </head>
+    <!-- // Fin : En-tête du document -->
+
+    <!-- // Début : Corps du document -->
+    <body>
+        <!-- // Début : En-tête de la page -->
+        <header role="banner">
+            <!-- // Début : Navigation -->
+            <nav role="navigation">
+                <!-- // Début : Liste à puces -->
+                <ul>
+                    <li>Item 1</li> <!-- Item de liste -->
+                    <li><a href="http://www.google.fr" target="_blank" title="Lien externe">Google</a>
+                        <ul>
+                            <li>Sous-item</li>
+                        </ul>
+                    </li> <!-- Item de liste contenant un lien vers un lien externe -->
+                    <li><a href="01_-_Introduction_a_la_structure_HTML5/01_-_Introduction_a_la_structure_HTML5_-_page_2.html" title="Lien interne vers sous-dossier">Page dans un sous-dossier</a></li> <!-- Item de liste contenant un lien vers un lien interne dans un sous-dossier -->
+                    <li><a href="#article1" title="Titre de menu 3">Item 3</a></li> <!-- Item de liste contenant un lien vers une ancre dans la page -->
+                    <li><a href="_assets/uploads/mon-dossier.zip" target="_blank" title="Fichier">Fichier à télécharger</a></li>
+                    <li><a href="02_-_Les_tableaux.html" title="Lien interne">Cours suivant</a></li> <!-- Item de liste contenant un lien vers un lien interne dans le même niveau d'arborescence -->
+                </ul>
+                <!-- // Fin : Liste à puces -->
+            </nav>
+            <!-- // Fin : Navigation -->
+
+            <!-- // Début : Groupe de titres de la page -->
+            <hgroup>
+                <h1>Titre principal de la page</h1> <!-- Titre principal de la page (balise unique dans chaque page) -->
+                <h2>Sous-titre de la page</h2> <!-- Sous-titre de niveau 2 dans la hiérarchie des titres -->
+            </hgroup>
+            <!-- // Fin : Groupe de titres de la page -->
+        </header>
+        <!-- // Fin : En-tête de la page -->
+
+        <!-- // Début : Section thématique de la page -->
+        <main role="main">
+        <!-- // Début : Section thématique de la page -->
+        <section>
+            <!-- // Début : Article à valeur sémantique -->
+            <article id="article1" role="article">
+                <!-- // Début : En-tête de l'article -->
+                <header>
+                    <h2>Titre de l'article 1</h2> <!-- Sous-titre de niveau 2 dans la hiérarchie des titres -->
+                </header>
+                <!-- // Fin : En-tête de l'article -->
+
+                <!-- // Début : Groupe d'images -->
+                <figure>
+                    <img alt="Logo O3W" src="assets/images/objectif_3w_logo.png"> <!-- Image -->
+                    <img alt="Région LR" src="assets/images/region.jpg">
+                    <figcaption>Logo O3W</figcaption> <!-- Légende du groupe d'images -->
+                </figure>
+                <!-- // Fin : Groupe d'images -->
+
+                <p><strong>Lorem ipsum dolor sit amet</strong>, consectetur adipiscing elit. Mauris egestas nibh vehicula dui egestas, in tempus velit semper. Pellentesque nec condimentum mi, sit amet aliquam neque. Duis urna augue, hendrerit vitae imperdiet vitae, pretium sit amet enim. Mauris luctus efficitur sem vel congue. In in sagittis nibh. Aliquam tincidunt rhoncus felis sed consectetur. Nunc lacinia arcu vitae erat ultrices, vitae sagittis mauris ultricies. Mauris vulputate, diam vel dictum mollis, leo quam ultricies arcu, sit amet volutpat ex est sit amet ante. Maecenas accumsan aliquet molestie. Cras viverra sit amet libero vel condimentum. Ut sollicitudin, urna at finibus suscipit, lectus nisi euismod quam, at euismod metus ante nec dui. Morbi auctor ante in facilisis aliquam.</p> <!-- Paragraphe de texte : la balise <strong> permet de mettre le texte en gras -->
+                
+                <h3>Sous-titre 1 de l'article 1</h3> <!-- Sous-titre de niveau 3 dans la hiérarchie des titres -->
+
+                <p>Quisque in elementum nulla. Etiam facilisis dui quis odio rutrum, ac auctor sapien porta. Donec quis sem est. Proin laoreet, erat in tincidunt tincidunt, lorem elit ornare turpis, ut euismod quam nunc quis nisi. Curabitur vitae lacus pretium, euismod lectus nec, rutrum purus. Duis tempus, mi blandit pretium efficitur, neque magna suscipit nulla, feugiat ultrices urna nisi ac ex.
+                <br> <!-- Retour à la ligne simple -->
+                Quisque at est arcu. In a luctus elit. Nulla facilisi. Suspendisse potenti.</p> <!-- Paragraphe de texte -->
+
+                <!-- // Début : Bloc de citation -->
+                <blockquote cite="http://fr.lipsum.com/"> <!-- L'attribut "cite" permet d'indiquer la source de la citation -->
+                    <p><em><q>Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit ...</q></em></p> <!-- Paragraphe de texte : la balise <em> permet de mettre le texte en italique, la balise <q> permet d'ajouter des guillemets au texte -->
+                    <p>Le texte ci-dessus a été généré via <cite>Lorem Ipsum - <span style="color:red;">All the facts</span> - Lipsum generator</cite></p> <!-- Paragraphe de texte : la balise <cite> permet de citer le titre de la source de la citation, la balise span permet de sélectionner une sous-chaine de caractères pour lui attribuer un(des) style(s) particulier(s) -->
+                </blockquote>
+                <!-- // Fin : Bloc de citation -->
+
+                <!-- // Début : Contenu connexe lié à l'article -->
+                <aside>
+                    <h3>Sous-titre 2 de l'article 1</h3> <!-- Sous-titre de niveau 3 dans la hiérarchie des titres -->
+                    <!-- // Début : Liste à puces numérotée -->
+                    <ol>
+                        <li>Item 1</li> <!-- Item de liste -->
+                        <li>Item 2</li> <!-- Item de liste -->
+                        <li>Item 3</li> <!-- Item de liste -->
+                    </ol>
+                    <!-- // Fin : Liste à puces numérotée -->
+                </aside>
+                <!-- // Fin : Contenu connexe lié à l'article -->
+
+                <!-- // Début : Pied de l'article -->
+                <footer>
+                    <h3>Sous-titre 3 de l'article 1</h3> <!-- Sous-titre de niveau 3 dans la hiérarchie des titres -->
+                    <!-- // Début : Tableau -->
+                    <table border="1">
+                        <!-- // Début : Ligne du tableau -->
+                        <tr>
+                            <td>Ligne 1 Cellule 1</td> <!-- Cellule -->
+                            <td>Ligne 1 Cellule 2</td> <!-- Cellule -->
+                            <td>Ligne 1 Cellule 3</td> <!-- Cellule -->
+                        </tr>
+                        <!-- // Fin : Ligne du tableau -->
+                        <!-- // Début : Ligne du tableau -->
+                        <tr>
+                            <td colspan="2">Ligne 2 Cellule 1</td> <!-- Cellule fusionnée horizontalement -->
+                            <td>Ligne 2 Cellule 3</td> <!-- Cellule -->
+                        </tr>
+                        <!-- // Fin : Ligne du tableau -->
+                        <!-- // Début : Ligne du tableau -->
+                        <tr>
+                            <td>Ligne 3 Cellule 1</td> <!-- Cellule -->
+                            <td>Ligne 3 Cellule 2</td> <!-- Cellule -->
+                            <td rowspan="2">Ligne 3 Cellule 3</td> <!-- Cellule fusionnée verticalement -->
+                        </tr>
+                        <!-- // Fin : Ligne du tableau -->
+                        <!-- // Début : Ligne du tableau -->
+                        <tr>
+                            <td>Ligne 4 Cellule 1</td> <!-- Cellule -->
+                            <td>Ligne 4 Cellule 2</td> <!-- Cellule -->
+                        </tr>
+                        <!-- // Fin : Ligne du tableau -->
+                    </table>
+                    <!-- // Fin : Tableau -->
+                </footer>
+                <!-- // Fin : Pied de l'article -->
+            </article>
+            <!-- // Fin : Article à valeur sémantique -->
+
+            <hr> <!-- Séparateur -->
+            
+            <!-- // Début : Article à valeur sémantique -->
+            <article id="article2" role="article">
+                <!-- // Début : En-tête de l'article -->
+                <header>
+                    <h2>Titre de l'article 2</h2> <!-- Sous-titre de niveau 2 dans la hiérarchie des titres -->
+                </header>
+                <!-- // Fin : En-tête de l'article -->
+
+                <p>Duis arcu elit, sollicitudin sed elit sit amet, pellentesque mollis leo. Proin et dolor eu nisl tincidunt scelerisque. Vivamus turpis purus, congue id posuere vel, pellentesque quis mauris. Aliquam eget tristique lacus. Quisque vitae venenatis dolor, vitae sodales sem. Aenean pellentesque purus a porta lobortis. Donec ultricies tincidunt justo, vitae feugiat est porta ac.</p> <!-- Paragraphe de texte -->
+
+                <p>Suspendisse vitae maximus ipsum. In bibendum urna neque, a bibendum velit scelerisque et. Nulla facilisi. Aliquam at mauris molestie, tincidunt nulla vitae, condimentum risus. Suspendisse rutrum tellus et arcu placerat posuere. Praesent ut varius quam. Etiam condimentum enim id felis aliquet vehicula. Morbi eget maximus lectus. Vestibulum erat risus, pharetra vitae purus vel, imperdiet vestibulum sem. Nam pretium quis dui nec sodales. Vivamus porta metus euismod tellus finibus sodales. In ut purus mi.</p> <!-- Paragraphe de texte -->
+            </article>
+            <!-- // Fin : Article à valeur sémantique -->
+
+            <hr> <!-- Séparateur -->
+            
+            <!-- // Début : Article à valeur sémantique -->
+            <article id="article3" role="article">
+                <!-- // Début : En-tête de l'article -->
+                <header>
+                    <h2>Titre de l'article 3</h2> <!-- Sous-titre de niveau 2 dans la hiérarchie des titres -->
+                </header>
+                <!-- // Fin : En-tête de l'article -->
+
+                <p>Aliquam posuere ante at aliquam molestie. In sit amet consectetur urna, ac hendrerit diam. Cras porta, urna et scelerisque maximus, tortor nisi interdum mauris, et mattis enim tortor aliquet orci. Vestibulum tincidunt sed sapien et iaculis. Pellentesque ultricies, leo quis laoreet finibus, erat tortor mollis turpis, sed feugiat metus lacus quis eros. Cras scelerisque eros vitae hendrerit cursus. Nunc tincidunt risus mi, id tincidunt neque sagittis vel. Curabitur gravida odio ut posuere maximus. Nam molestie viverra orci in interdum. Nam eleifend consequat tellus a faucibus. Etiam at aliquet nibh. Suspendisse dolor felis, pulvinar ac vehicula vel, semper vel lacus. Fusce elit massa, dictum ut nisi sed, porttitor sagittis lacus. Nunc vel lorem augue. Aenean nisi metus, eleifend sed dapibus pulvinar, dapibus et orci. Sed dui mauris, lacinia id velit at, ullamcorper cursus sapien.</p> <!-- Paragraphe de texte -->
+            </article>
+            <!-- // Fin : Article à valeur sémantique -->
+        </section>
+        <!-- // Fin : Section thématique de la page -->
+
+        <!-- // Début : Contenu connexe lié à la page -->
+        <aside role="complementary">
+        </aside>
+        <!-- // Fin : Contenu connexe lié à la page -->
+        </main>
+
+        <!-- // Début : Pied de la page -->
+        <footer role="contentinfo">
+            <address>
+            </address>
+        </footer>
+        <!-- // Fin : Pied de la page -->
+    </body>
+    <!-- // Fin : Corps du document -->
+</html>
+<!-- // Fin : Document HTML -->

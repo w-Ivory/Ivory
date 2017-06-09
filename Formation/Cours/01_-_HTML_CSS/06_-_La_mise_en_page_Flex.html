@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
+        <title>La mise en page flexbox</title>
+
+        <!-- // highlight.js : Coloration syntaxique du code -->
+        <link rel="stylesheet" type="text/css" href="../../_assets/plugins/highlight/styles/monokai_sublime.css">
+        <script type="text/javascript" src="../../_assets/plugins/highlight/highlight.pack.js"></script>
+        <script type="text/javascript">
+            hljs.initHighlightingOnLoad();
+        </script>
+        <!-- // -->
+
+        <link rel="stylesheet" type="text/css" href="../../_assets/css/style.css">
+    </head>
+
+    <body>
+        <h1>La mise en page flexbox</h1>
+        <p>Le concept de Flexbox a été développé pour simplifier le mode de mise en page des éléments HTML. Il est sensiblement différent des affichages en bloc ou en ligne et induit un modèle plus flexible.</p>
+        <p class="block alert"><em>Le développement de cette technologie date de 2009 mais elle n'est cependant standardisée et bien interprètée que depuis peu de temps, suite à plusieurs refontes complètes.</em></p>
+        <hr />
+        <h2>Architecture</h2>
+        <ul>
+            <li><strong>"flex-container"</strong> : le conteneur qui impose le contexte général d'affichage</li>
+            <li><strong>"flex-item"</strong> : le ou les éléments intérieurs disposant automatiquement des propriétés héritées du modèle flexible</li>
+        </ul>
+        <h2>Possibilités</h2>
+        <ol>
+            <li>
+                <strong>La distribution</strong> : distribuer les éléments HTML de manière horizontale ou verticale avec retour à la ligne ou non
+                <p>flex-direction<br /><em style="font-size:smaller;">/* Distribution du contexte flexbox : row (horizontal / par défaut) | column (vertical) | row-reverse (horizontal inversé) | column-reverse (vertical inversé) */</em></p>
+                <p>flex-wrap<br /><em style="font-size:smaller;">/* Distribution sur une ou plusieurs lignes : nowrap (pas de retour à la ligne / par défaut) | wrap (plusieurs lignes) | wrap-reverse (plusieurs lignes inversé) */</em></p>
+            </li>
+            <li>
+                <strong>Alignement</strong> : aligner et centrer les éléments HTML horizontalement ou verticalement (gauche / droite / centré / justifié / répartis)
+                <p>justify-content<br /><em style="font-size:smaller;">/* Alignement sur l'axe principal : flex-start (début du sens de lecture / par défaut) | flex-end (fin du sens de lecture) | center (centrage) | space-between (répartition entre les éléments HTML de l'espace disponible) | space-around (répartition autour des éléments HTML de l'espace disponible) */</em></p>
+                <p>align-items<br /><em style="font-size:smaller;">/* Alignement sur l'axe secondaire : stretch (étiré / par défaut) | flex-start | flex-end | center | baseline (équivalent à flex-start) */</em></p>
+            </li>
+            <li>
+                <strong>Réorganisation</strong> : réorganiser les éléments HTML indépendamment du flux (DOM)
+            </li>
+            <li>
+                <strong>Fluidité</strong> : gérer les espaces disponibles
+            </li>
+        </ol>
+        <h3>Exemples</h3>
+        <style type="text/css">
+            <!--
+            .flexbox ul {
+                border:red 1px double;
+                display:flex; /* Impose le contexte globale de flexbox */
+                height:300px;
+                list-style:none;
+                margin:0;
+                padding:0;
+            }
+                .flexbox ul li {  border:black thin solid; }
+            -->
+        </style>
+        <div class="flexbox">
+            <ul>
+                <li style="background-color:lightblue;">Item 1</li>
+                <li style="background-color:lightgreen;">Item 2</li>
+                <li style="background-color:orange;">Item 3</li>
+                <li style="background-color:purple;">Item 4</li>
+                <li style="background-color:yellow;">Item 5</li>
+                <li style="background-color:maroon;">Item 6</li>
+                <li style="background-color:lightblue;">Item 1</li>
+                <li style="background-color:lightgreen;">Item 2</li>
+                <li style="background-color:orange;">Item 3</li>
+                <li style="background-color:purple;">Item 4</li>
+                <li style="background-color:yellow;">Item 5</li>
+                <li style="background-color:maroon;">Item 6</li>
+                <li style="background-color:lightblue;">Item 1</li>
+                <li style="background-color:lightgreen;">Item 2</li>
+                <li style="background-color:orange;">Item 3</li>
+                <li style="background-color:purple;">Item 4</li>
+                <li style="background-color:yellow;">Item 5</li>
+                <li style="background-color:maroon;">Item 6</li>
+                <li style="background-color:lightblue;">Item 1</li>
+                <li style="background-color:lightgreen;">Item 2</li>
+                <li style="background-color:orange;">Item 3</li>
+                <li style="background-color:purple;">Item 4</li>
+                <li style="background-color:yellow;">Item 5</li>
+                <li style="background-color:maroon;">Item 6</li>
+                <li style="background-color:lightblue;">Item 1</li>
+                <li style="background-color:lightgreen;">Item 2</li>
+                <li style="background-color:orange;">Item 3</li>
+                <li style="background-color:purple;">Item 4</li>
+                <li style="background-color:yellow;">Item 5</li>
+                <li style="background-color:maroon;">Item 6</li>
+                <li style="background-color:lightblue;">Item 1</li>
+                <li style="background-color:lightgreen;">Item 2</li>
+                <li style="background-color:orange;">Item 3</li>
+                <li style="background-color:purple;">Item 4</li>
+                <li style="background-color:yellow;">Item 5</li>
+                <li style="background-color:maroon;">Item 6</li>
+                <li style="background-color:lightblue;">Item 1</li>
+                <li style="background-color:lightgreen;">Item 2</li>
+                <li style="background-color:orange;">Item 3</li>
+                <li style="background-color:purple;">Item 4</li>
+                <li style="background-color:yellow;">Item 5</li>
+                <li style="background-color:maroon;">Item 6</li>
+            </ul>
+        </div>
+        <pre><code class="css">
+ul {
+    border:red 1px double;
+    display:flex; /* Impose le contexte globale de flexbox */
+    height:300px;
+    list-style:none;
+    margin:0;
+    padding:0;
+}
+    ul li {  border:black thin solid; }</code>
+<code class="html">
+&lt;ul&gt;
+    &lt;li style="background-color:lightblue;"&gt;Item 1&lt;/li&gt;
+    &lt;li style="background-color:lightgreen;"&gt;Item 2&lt;/li&gt;
+    &lt;li style="background-color:orange;"&gt;Item 3&lt;/li&gt;
+    &lt;li style="background-color:purple;"&gt;Item 4&lt;/li&gt;
+    &lt;li style="background-color:yellow;"&gt;Item 5&lt;/li&gt;
+    &lt;li style="background-color:maroon;"&gt;Item 6&lt;/li&gt;
+    &lt;li style="background-color:lightblue;"&gt;Item 1&lt;/li&gt;
+    &lt;li style="background-color:lightgreen;"&gt;Item 2&lt;/li&gt;
+    &lt;li style="background-color:orange;"&gt;Item 3&lt;/li&gt;
+    &lt;li style="background-color:purple;"&gt;Item 4&lt;/li&gt;
+    &lt;li style="background-color:yellow;"&gt;Item 5&lt;/li&gt;
+    &lt;li style="background-color:maroon;"&gt;Item 6&lt;/li&gt;
+    &lt;li style="background-color:lightblue;"&gt;Item 1&lt;/li&gt;
+    &lt;li style="background-color:lightgreen;"&gt;Item 2&lt;/li&gt;
+    &lt;li style="background-color:orange;"&gt;Item 3&lt;/li&gt;
+    &lt;li style="background-color:purple;"&gt;Item 4&lt;/li&gt;
+    &lt;li style="background-color:yellow;"&gt;Item 5&lt;/li&gt;
+    &lt;li style="background-color:maroon;"&gt;Item 6&lt;/li&gt;
+    &lt;li style="background-color:lightblue;"&gt;Item 1&lt;/li&gt;
+    &lt;li style="background-color:lightgreen;"&gt;Item 2&lt;/li&gt;
+    &lt;li style="background-color:orange;"&gt;Item 3&lt;/li&gt;
+    &lt;li style="background-color:purple;"&gt;Item 4&lt;/li&gt;
+    &lt;li style="background-color:yellow;"&gt;Item 5&lt;/li&gt;
+    &lt;li style="background-color:maroon;"&gt;Item 6&lt;/li&gt;
+    &lt;li style="background-color:lightblue;"&gt;Item 1&lt;/li&gt;
+    &lt;li style="background-color:lightgreen;"&gt;Item 2&lt;/li&gt;
+    &lt;li style="background-color:orange;"&gt;Item 3&lt;/li&gt;
+    &lt;li style="background-color:purple;"&gt;Item 4&lt;/li&gt;
+    &lt;li style="background-color:yellow;"&gt;Item 5&lt;/li&gt;
+    &lt;li style="background-color:maroon;"&gt;Item 6&lt;/li&gt;
+    &lt;li style="background-color:lightblue;"&gt;Item 1&lt;/li&gt;
+    &lt;li style="background-color:lightgreen;"&gt;Item 2&lt;/li&gt;
+    &lt;li style="background-color:orange;"&gt;Item 3&lt;/li&gt;
+    &lt;li style="background-color:purple;"&gt;Item 4&lt;/li&gt;
+    &lt;li style="background-color:yellow;"&gt;Item 5&lt;/li&gt;
+    &lt;li style="background-color:maroon;"&gt;Item 6&lt;/li&gt;
+    &lt;li style="background-color:lightblue;"&gt;Item 1&lt;/li&gt;
+    &lt;li style="background-color:lightgreen;"&gt;Item 2&lt;/li&gt;
+    &lt;li style="background-color:orange;"&gt;Item 3&lt;/li&gt;
+    &lt;li style="background-color:purple;"&gt;Item 4&lt;/li&gt;
+    &lt;li style="background-color:yellow;"&gt;Item 5&lt;/li&gt;
+    &lt;li style="background-color:maroon;"&gt;Item 6&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+        <h4>La distribution (axe principal)</h4>
+        <style type="text/css">
+            <!--
+            #distribution ul {
+                flex-direction:row; /* Distribution du contexte flexbox : row (horizontal / par défaut) | column (vertical) | row-reverse (horizontal inversé) | column-reverse (vertical inversé) */
+                flex-wrap:wrap; /* Distribution sur une ou plusieurs lignes : nowrap (pas de retour à la ligne / par défaut) | wrap (plusieurs lignes) | wrap-reverse (plusieurs lignes inversé) */
+                /* flex-direction + flex-wrap = flex-flow => flex-flow:row nowrap; */
+            }
+            -->
+        </style>
+        <div class="flexbox" id="distribution">
+            <ul>
+                <li style="background-color:lightblue;">Item 1</li>
+                <li style="background-color:lightgreen;">Item 2</li>
+                <li style="background-color:orange;">Item 3</li>
+                <li style="background-color:purple;">Item 4</li>
+                <li style="background-color:yellow;">Item 5</li>
+                <li style="background-color:maroon;">Item 6</li>
+                <li style="background-color:lightblue;">Item 1</li>
+                <li style="background-color:lightgreen;">Item 2</li>
+                <li style="background-color:orange;">Item 3</li>
+                <li style="background-color:purple;">Item 4</li>
+                <li style="background-color:yellow;">Item 5</li>
+                <li style="background-color:maroon;">Item 6</li>
+                <li style="background-color:lightblue;">Item 1</li>
+                <li style="background-color:lightgreen;">Item 2</li>
+                <li style="background-color:orange;">Item 3</li>
+                <li style="background-color:purple;">Item 4</li>
+                <li style="background-color:yellow;">Item 5</li>
+                <li style="background-color:maroon;">Item 6</li>
+                <li style="background-color:lightblue;">Item 1</li>
+                <li style="background-color:lightgreen;">Item 2</li>
+                <li style="background-color:orange;">Item 3</li>
+                <li style="background-color:purple;">Item 4</li>
+                <li style="background-color:yellow;">Item 5</li>
+                <li style="background-color:maroon;">Item 6</li>
+                <li style="background-color:lightblue;">Item 1</li>
+                <li style="background-color:lightgreen;">Item 2</li>
+                <li style="background-color:orange;">Item 3</li>
+                <li style="background-color:purple;">Item 4</li>
+                <li style="background-color:yellow;">Item 5</li>
+                <li style="background-color:maroon;">Item 6</li>
+                <li style="background-color:lightblue;">Item 1</li>
+                <li style="background-color:lightgreen;">Item 2</li>
+                <li style="background-color:orange;">Item 3</li>
+                <li style="background-color:purple;">Item 4</li>
+                <li style="background-color:yellow;">Item 5</li>
+                <li style="background-color:maroon;">Item 6</li>
+            </ul>
+        </div>
+        <pre><code class="css">
+ul {
+    flex-direction:row; /* Distribution du contexte flexbox : row (horizontal / par défaut) | column (vertical) | row-reverse (horizontal inversé) | column-reverse (vertical inversé) */
+    flex-wrap:wrap; /* Distribution sur une ou plusieurs lignes : nowrap (pas de retour à la ligne / par défaut) | wrap (plusieurs lignes) | wrap-reverse (plusieurs lignes inversé) */
+    /* flex-direction + flex-wrap = flex-flow => flex-flow:row nowrap; */
+}</code></pre>
+        <h4>L'alignement</h4>
+        <h5>Sur l'axe principal</h5>
+        <style type="text/css">
+            <!--
+            #alignement ul { justify-content:space-between; /* Alignement sur l'axe principal : flex-start (début du sens de lecture / par défaut) | flex-end (fin du sens de lecture) | center (centrage) | space-between (répartition entre les éléments HTML de l'espace disponible) | space-around (répartition autour des éléments HTML de l'espace disponible) */ }
+            -->
+        </style>
+        <div class="flexbox" id="alignement">
+            <ul>
+                <li style="background-color:lightblue;">Item 1</li>
+                <li style="background-color:lightgreen;">Item 2</li>
+                <li style="background-color:orange;">Item 3</li>
+                <li style="background-color:purple;">Item 4</li>
+                <li style="background-color:yellow;">Item 5</li>
+                <li style="background-color:maroon;">Item 6</li>
+            </ul>
+        </div>
+        <pre><code class="css">
+ul { justify-content:space-between; /* Alignement sur l'axe principal : flex-start (début du sens de lecture / par défaut) | flex-end (fin du sens de lecture) | center (centrage) | space-between (répartition entre les éléments HTML de l'espace disponible) | space-around (répartition autour des éléments HTML de l'espace disponible) */ }</code>
+<code class="html">
+&lt;ul&gt;
+    &lt;li style="background-color:lightblue;"&gt;Item 1&lt;/li&gt;
+    &lt;li style="background-color:lightgreen;"&gt;Item 2&lt;/li&gt;
+    &lt;li style="background-color:orange;"&gt;Item 3&lt;/li&gt;
+    &lt;li style="background-color:purple;"&gt;Item 4&lt;/li&gt;
+    &lt;li style="background-color:yellow;"&gt;Item 5&lt;/li&gt;
+    &lt;li style="background-color:maroon;"&gt;Item 6&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+        <h5>Sur l'axe secondaire</h5>
+        <style type="text/css">
+            <!--
+            #align ul { align-items:stretch; /* Alignement sur l'axe secondaire : stretch (étiré / par défaut) | flex-start | flex-end | center | baseline (équivalent à flex-start) */ }
+            -->
+        </style>
+        <div class="flexbox" id="align">
+            <ul>
+                <li style="background-color:lightblue;">Item 1</li>
+                <li style="background-color:lightgreen;">Item 2</li>
+                <li style="background-color:orange;">Item 3</li>
+                <li style="background-color:purple;">Item 4</li>
+                <li style="background-color:yellow;">Item 5</li>
+                <li style="background-color:maroon;">Item 6</li>
+            </ul>
+        </div>
+        <pre><code class="css">
+ul { align-items:stretch; /* Alignement sur l'axe secondaire : stretch (étiré / par défaut) | flex-start | flex-end | center | baseline (équivalent à flex-start) */ }</code></pre>
+        <h5>Au cas par cas sur l'axe secondaire</h5>
+        <style type="text/css">
+            <!--
+                #self ul :nth-child(1) {}
+                #self ul :nth-child(2) { align-self:stretch; /* Alignement personnalisé sur l'axe secondaire */ }
+                #self ul :nth-child(3) { align-self:flex-start; /* Alignement personnalisé sur l'axe secondaire */ }
+                #self ul :nth-child(4) { align-self:flex-end; /* Alignement personnalisé sur l'axe secondaire */ }
+                #self ul :nth-child(5) { align-self:center; /* Alignement personnalisé sur l'axe secondaire */ }
+                #self ul :nth-child(6) { align-self:baseline; /* Alignement personnalisé sur l'axe secondaire */ }
+            -->
+        </style>
+        <div class="flexbox" id="self">
+            <ul>
+                <li style="background-color:lightblue;">Item 1</li>
+                <li style="background-color:lightgreen;">Item 2</li>
+                <li style="background-color:orange;">Item 3</li>
+                <li style="background-color:purple;">Item 4</li>
+                <li style="background-color:yellow;">Item 5</li>
+                <li style="background-color:maroon;">Item 6</li>
+            </ul>
+        </div>
+        <pre><code class="css">
+ul :nth-child(1) {}
+ul :nth-child(2) { align-self:stretch; /* Alignement personnalisé sur l'axe secondaire */ }
+ul :nth-child(3) { align-self:flex-start; /* Alignement personnalisé sur l'axe secondaire */ }
+ul :nth-child(4) { align-self:flex-end; /* Alignement personnalisé sur l'axe secondaire */ }
+ul :nth-child(5) { align-self:center; /* Alignement personnalisé sur l'axe secondaire */ }
+ul :nth-child(6) { align-self:baseline; /* Alignement personnalisé sur l'axe secondaire */ }</code></pre>
+        <h4>La réorganisation</h4>
+        <style type="text/css">
+            <!--
+                #reorganisation ul :nth-child(1) { order:4; }
+                #reorganisation ul :nth-child(2) { order:3; }
+                #reorganisation ul :nth-child(3) { order:5; }
+                #reorganisation ul :nth-child(4) { order:3; }
+                #reorganisation ul :nth-child(5) { order:1; }
+                #reorganisation ul :nth-child(6) { order:2; }
+            -->
+        </style>
+        <div class="flexbox" id="reorganisation">
+            <ul>
+                <li style="background-color:lightblue;">Item 1</li>
+                <li style="background-color:lightgreen;">Item 2</li>
+                <li style="background-color:orange;">Item 3</li>
+                <li style="background-color:purple;">Item 4</li>
+                <li style="background-color:yellow;">Item 5</li>
+                <li style="background-color:maroon;">Item 6</li>
+            </ul>
+        </div>
+        <pre><code class="css">
+ul :nth-child(1) { order:4; }
+ul :nth-child(2) { order:3; }
+ul :nth-child(3) { order:5; }
+ul :nth-child(4) { order:3; }
+ul :nth-child(5) { order:1; }
+ul :nth-child(6) { order:2; }</code></pre>
+        <h4>La fluidité</h4>
+        <style type="text/css">
+            <!--
+                #fluidite ul li { flex:1 1 auto; }
+            -->
+        </style>
+        <div class="flexbox" id="fluidite">
+            <ul>
+                <li style="background-color:lightblue;">Item 1</li>
+                <li style="background-color:lightgreen;">Item 2</li>
+                <li style="background-color:orange;">Item 3</li>
+                <li style="background-color:purple;">Item 4</li>
+                <li style="background-color:yellow;">Item 5</li>
+                <li style="background-color:maroon;">Item 6</li>
+            </ul>
+        </div>
+        <pre><code class="css">
+ul li { flex:1 1 auto; }</code></pre>
+        <p>La fluidité peut imposer un ratio d'occupation si on l'applique à plusieurs "flex-items".</p>
+        <style type="text/css">
+            <!--
+                #flex ul :nth-child(2) { flex:1; }
+                #flex ul :nth-child(3) { flex:2; }
+            -->
+        </style>
+        <div class="flexbox" id="flex">
+            <ul>
+                <li style="background-color:lightblue;">Item 1</li>
+                <li style="background-color:lightgreen;">Item 2</li>
+                <li style="background-color:orange;">Item 3</li>
+                <li style="background-color:purple;">Item 4</li>
+                <li style="background-color:yellow;">Item 5</li>
+                <li style="background-color:maroon;">Item 6</li>
+            </ul>
+        </div>
+        <pre><code class="css">
+ul :nth-child(2) { flex:1; }
+ul :nth-child(3) { flex:2; }</code></pre>
+        <p class="block alert">Si vous voulez vous entraîner un peu en vous amusant, il existe un jeu de Tower defense qui vous fera appliquer les différentes instructions au fur et à mesure : <a href="http://www.flexboxdefense.com/" target="_blank" title="Tower defense">flexboxdefense.com</a>.</em></p>
+    </body>
+</html>

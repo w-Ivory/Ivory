@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
+        <title>La mise en page CSS avancée grâce à la propriété display</title>
+
+        <!-- // highlight.js : Coloration syntaxique du code -->
+        <link rel="stylesheet" type="text/css" href="../../_assets/plugins/highlight/styles/monokai_sublime.css">
+        <script type="text/javascript" src="../../_assets/plugins/highlight/highlight.pack.js"></script>
+        <script type="text/javascript">
+            hljs.initHighlightingOnLoad();
+        </script>
+        <!-- // -->
+
+        <link rel="stylesheet" type="text/css" href="../../_assets/css/style.css">
+    </head>
+
+    <body>
+        <h1>La mise en page CSS avancée grâce à la propriété display</h1>
+        <hr />
+        <h2>Du type en-ligne vers le type bloc</h2>
+        <style type="text/css">
+            <!--
+            #inline-vs-bloc .link{
+                background-color:lightgreen;
+                display:block;
+                width:250px;
+            }
+            -->
+        </style>
+        <div id="inline-vs-bloc">
+            <a href="http://www.google.fr" title="">Lien inline</a>
+            <a href="http://www.google.fr" title="">Lien inline</a>
+            <a class="link" href="http://www.google.fr" title="">Lien block</a>
+            <a href="http://www.google.fr" title="">Lien inline</a>
+            <a href="http://www.google.fr" title="">Lien inline</a>
+        </div>
+        <pre><code class="css">
+.link{
+    background-color:lightgreen;
+    display:block;
+    width:250px;
+}</code>
+<code class="html">
+&lt;a href="http://www.google.fr" title=""&gt;Lien inline&lt;/a&gt;
+&lt;a href="http://www.google.fr" title=""&gt;Lien inline&lt;/a&gt;
+&lt;a class="link" href="http://www.google.fr" title=""&gt;Lien block&lt;/a&gt;
+&lt;a href="http://www.google.fr" title=""&gt;Lien inline&lt;/a&gt;
+&lt;a href="http://www.google.fr" title=""&gt;Lien inline&lt;/a&gt;</code></pre>
+        <hr />
+        <h2>Utilisation du bloc en-ligne</h2>
+        <p><em>La valeur inline-block intervient en permettant de bénéficier à la fois de l'élément en tant que bloc — et par la même occasion de pouvoir spécifier une taille — ainsi qu'en tant qu'élément en ligne au niveau de la gestion des placements.</em></p>
+        <p class="block alert"><em><strong>Rappelons un point important concernant ce mode de positionnement : le navigateur ajoute un espace entre nos éléments inline-bloc. Ce défaut peut être corrigé en appliquant un "font-size:0;" sur l'élément conteneur.<br />Attention néanmoins à bien réattribuer un font-size sur les blocs inline-bloc sinon leur contenu textuel ne s'affichera pas !</strong></em></p>
+        <p class="block alert"><em><strong>Si on compare l'utilisation du display:inline-bloc avec celle de la propriété de positionnement float, on remarque que le conteneur a conservé sa hauteur.</strong></em></p>
+        <style type="text/css">
+            <!--
+            #inline-bloc{
+                background-color:black;
+                font-size:0;
+            }
+                #inline-bloc .c_1{
+                    background-color:lightblue;
+                    display:inline-block;
+                    font-size:12px;
+                    height:100px;
+                    width:50%;
+                }
+                #inline-bloc .c_2{
+                    background-color:lightgreen;
+                    display:inline-block;
+                    font-size:12px;
+                    height:150px;
+                    width:50%;
+                }
+
+                #inline-bloc.valign .c_1{
+                    background-color:lightblue;
+                    display:inline-block;
+                    font-size:12px;
+                    height:100px;
+                    vertical-align:middle;
+                    width:50%;
+                }
+                #inline-bloc.valign .c_2{
+                    background-color:lightgreen;
+                    display:inline-block;
+                    font-size:12px;
+                    height:150px;
+                    vertical-align:middle;
+                    width:50%;
+                }
+
+            #inline-bloc-ul .list{list-style:none;}
+                #inline-bloc-ul .list > li{
+                    display:inline-block;
+                    padding-left:50px;
+                }
+            -->
+        </style>
+        <h3>Application sur des éléments de type bloc</h3>
+        <div id="inline-bloc">
+            <div class="c_1">Boite de type bloc 1</div>
+            <div class="c_2">Boite de type bloc 2</div>
+        </div>
+        <pre><code class="css">
+#inline-bloc{
+    background-color:black;
+    font-size:0;
+}
+    #inline-bloc .c_1{
+        background-color:lightblue;
+        display:inline-block;
+        font-size:12px;
+        height:100px;
+        width:50%;
+    }
+    #inline-bloc .c_2{
+        background-color:lightgreen;
+        display:inline-block;
+        font-size:12px;
+        height:150px;
+        width:50%;
+    }</code>
+<code class="html">
+&lt;div id="inline-bloc"&gt;
+    &lt;div class="c_1"&gt;Boite de type bloc 1&lt;/div&gt;
+    &lt;div class="c_2"&gt;Boite de type bloc 2&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        <h4>L'alignement vertical</h4>
+        <p><em>En temps qu'éléments possédant les caractéristiques du type en-ligne, les blocs en inline-bloc adjacents peuvent s'aligner entre eux.</em></p>
+        <div id="inline-bloc" class="valign">
+            <div class="c_1">Boite de type bloc 1</div>
+            <div class="c_2">Boite de type bloc 2</div>
+        </div>
+        <pre><code class="css">
+#inline-bloc{
+    background-color:black;
+    font-size:0;
+}
+    #inline-bloc.valign .c_1{
+        background-color:lightblue;
+        display:inline-block;
+        font-size:12px;
+        height:100px;
+        vertical-align:middle;
+        width:50%;
+    }
+    #inline-bloc.valign .c_2{
+        background-color:lightgreen;
+        display:inline-block;
+        font-size:12px;
+        height:150px;
+        vertical-align:middle;
+        width:50%;
+    }</code>
+<code class="html">
+&lt;div id="inline-bloc" class="valign"&gt;
+    &lt;div class="c_1"&gt;Boite de type bloc 1&lt;/div&gt;
+    &lt;div class="c_2"&gt;Boite de type bloc 2&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    </body>
+</html>

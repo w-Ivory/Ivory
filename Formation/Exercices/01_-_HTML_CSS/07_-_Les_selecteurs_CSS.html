@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
+        <title>Les sélecteurs CSS - Mise en pratique HTML</title>
+
+        <link rel="stylesheet" type="text/css" href="../../_assets/css/style.css">
+
+        <!-- // highlight.js : Coloration syntaxique du code -->
+        <link rel="stylesheet" type="text/css" href="../../_assets/plugins/highlight/styles/monokai_sublime.css">
+        <script type="text/javascript" src="../../_assets/plugins/highlight/highlight.pack.js"></script>
+        <script type="text/javascript">
+            hljs.initHighlightingOnLoad();
+        </script>
+        <!-- // -->
+    </head>
+
+    <body>
+        <h1>Les sélecteurs CSS - Mise en pratique</h1>
+        <blockquote>Suite au <a href="../../Cours/01_-_HTML_CSS/06_-_Les_selecteurs_CSS.html" target="_blank" title="">cours sur les sélecteurs CSS</a>, nous allons mettre en pratique les différentes propriétés CSS correspondant à ces instructions.<br />Vous allez trouver ci-dessous différens exercices vous permettant de les manipuler.</blockquote>
+        <hr />
+        <h2>Exercice 1 : affectation d'un style sur sélecteur de répétition</h2>
+        <p>Pour cet exercice :</p>
+        <ul>
+            <li>nous allons créer un tableau régulier (nombre de colonnes constant par lignes) avec table, tr, td et th.</li>
+            <li>le tableau contiendra au moins 10 lignes tr et 2 colonnes td.</li>
+            <li>la première ligne du tableau sera une ligne d'en-tête et n'aura que des colonnes th.</li>
+            <li>nous ferons en sorte qu'après la ligne d'en-tête, toutes les 6 lignes un périodicité de couleurs soit établie :
+                <ul>
+                    <li>les 3 premières lignes seront sur un fond rouge clair (#ffcccc),</li>
+                    <li>la quatrième ligne sera sur un fond jaune clair (#ffffcc),</li>
+                    <li>la cinquième ligne sera sur un fond vert clair (#ccffcc),</li>
+                    <li>la sixième ligne sera sur un fond bleu clair (#ccffff).</li>
+                </ul>
+            </li>
+            <li>nous ferons également en sorte que :
+                <ul>
+                    <li>la ligne d'en-tête soit en caractères blancs sur fond rouge sombre (#663333),</li>
+                    <li>la deuxième colonne soit écrite en rouge (#ff0000).</li>
+                </ul>
+            </li>
+        </ul>
+        <style type="text/css">
+            <!--
+            #ex1 table,#ex1 td,#ex1 th {border:solid 1px black;}
+            #ex1 td,#ex1 th {
+                height:35px;
+                width:150px;
+            }
+            #ex1 thead th {
+                background-color:#663333;
+                color:#ffffff;
+            }
+            #ex1 tbody :nth-child(6n+1) td,#ex1 tbody :nth-child(6n+2) td,#ex1 tbody :nth-child(6n+3) td {background-color:#ffcccc;}
+            #ex1 tbody :nth-child(6n+4) td {background-color:#ffffcc;}
+            #ex1 tbody :nth-child(6n+5) td {background-color:#ccffcc;}
+            #ex1 tbody :nth-child(6n+6) td {background-color:#ccccff;}
+            #ex1 tbody :nth-child(0n+2) td {color:#ff0000;}
+            -->
+        </style>
+        <div id="ex1">
+            <table>
+                <thead>
+                    <tr>
+                        <th>En-tête 1</th>
+                        <th>En-tête 2</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Item 1</td>
+                        <td>Item 2</td>
+                    </tr>
+                    <tr>
+                        <td>Item 1</td>
+                        <td>Item 2</td>
+                    </tr>
+                    <tr>
+                        <td>Item 1</td>
+                        <td>Item 2</td>
+                    </tr>
+                    <tr>
+                        <td>Item 1</td>
+                        <td>Item 2</td>
+                    </tr>
+                    <tr>
+                        <td>Item 1</td>
+                        <td>Item 2</td>
+                    </tr>
+                    <tr>
+                        <td>Item 1</td>
+                        <td>Item 2</td>
+                    </tr>
+                    <tr>
+                        <td>Item 1</td>
+                        <td>Item 2</td>
+                    </tr>
+                    <tr>
+                        <td>Item 1</td>
+                        <td>Item 2</td>
+                    </tr>
+                    <tr>
+                        <td>Item 1</td>
+                        <td>Item 2</td>
+                    </tr>
+                    <tr>
+                        <td>Item 1</td>
+                        <td>Item 2</td>
+                    </tr>
+                    <tr>
+                        <td>Item 1</td>
+                        <td>Item 2</td>
+                    </tr>
+                    <tr>
+                        <td>Item 1</td>
+                        <td>Item 2</td>
+                    </tr>
+                    <tr>
+                        <td>Item 1</td>
+                        <td>Item 2</td>
+                    </tr>
+                    <tr>
+                        <td>Item 1</td>
+                        <td>Item 2</td>
+                    </tr>
+                    <tr>
+                        <td>Item 1</td>
+                        <td>Item 2</td>
+                    </tr>
+                    <tr>
+                        <td>Item 1</td>
+                        <td>Item 2</td>
+                    </tr>
+                    <tr>
+                        <td>Item 1</td>
+                        <td>Item 2</td>
+                    </tr>
+                    <tr>
+                        <td>Item 1</td>
+                        <td>Item 2</td>
+                    </tr>
+                    <tr>
+                        <td>Item 1</td>
+                        <td>Item 2</td>
+                    </tr>
+                    <tr>
+                        <td>Item 1</td>
+                        <td>Item 2</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <pre><code class="css">
+table,td,th {border:solid 1px black;}
+td,th {
+    height:35px;
+    width:150px;
+}
+thead th {
+    background-color:#663333;
+    color:#ffffff;
+}
+tbody :nth-child(6n+1) td,tbody :nth-child(6n+2) td,tbody :nth-child(6n+3) td {background-color:#ffcccc;}
+tbody :nth-child(6n+4) td {background-color:#ffffcc;}
+tbody :nth-child(6n+5) td {background-color:#ccffcc;}
+tbody :nth-child(6n+6) td {background-color:#ccccff;}
+tbody :nth-child(0n+2) td {color:#ff0000;}</code>
+<code class="html">
+&lt;table&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;En-tête 1&lt;/th&gt;
+            &lt;th&gt;En-tête 2&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Item 1&lt;/td&gt;
+            &lt;td&gt;Item 2&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Item 1&lt;/td&gt;
+            &lt;td&gt;Item 2&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Item 1&lt;/td&gt;
+            &lt;td&gt;Item 2&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Item 1&lt;/td&gt;
+            &lt;td&gt;Item 2&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Item 1&lt;/td&gt;
+            &lt;td&gt;Item 2&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Item 1&lt;/td&gt;
+            &lt;td&gt;Item 2&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Item 1&lt;/td&gt;
+            &lt;td&gt;Item 2&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Item 1&lt;/td&gt;
+            &lt;td&gt;Item 2&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Item 1&lt;/td&gt;
+            &lt;td&gt;Item 2&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Item 1&lt;/td&gt;
+            &lt;td&gt;Item 2&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Item 1&lt;/td&gt;
+            &lt;td&gt;Item 2&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Item 1&lt;/td&gt;
+            &lt;td&gt;Item 2&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Item 1&lt;/td&gt;
+            &lt;td&gt;Item 2&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Item 1&lt;/td&gt;
+            &lt;td&gt;Item 2&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Item 1&lt;/td&gt;
+            &lt;td&gt;Item 2&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Item 1&lt;/td&gt;
+            &lt;td&gt;Item 2&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Item 1&lt;/td&gt;
+            &lt;td&gt;Item 2&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Item 1&lt;/td&gt;
+            &lt;td&gt;Item 2&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Item 1&lt;/td&gt;
+            &lt;td&gt;Item 2&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Item 1&lt;/td&gt;
+            &lt;td&gt;Item 2&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+        <hr />
+        <h2>Exercice 2 : affectation d'un style suite à un frère identifiable</h2>
+        <p>Pour cet exercice :</p>
+        <ul>
+            <li>nous allons utiliser quelques citations amusantes émises par des personnages célèbres (ou du moins attribuées à).</li>
+            <li>nous utiliserons une mise en page par un paragraphe p.</li>
+            <li>la citation sera placée dans un q.</li>
+            <li>l'auteur prétendu de la citation ne sera placé dans aucun élément, mais il suivra la citation et se terminera par un saut de ligne br.</li>
+            <li>une citation contiendra une classe ma_classe.</li>
+            <li>nous placerons également un titre h1 avant notre paragraphe.</li>
+            <li>ce titre contiendra un élément unique em avant notre paragraphe.</li>
+            <li>faire en sorte que :
+                <ul>
+                    <li>les citations soient par défaut sur un fond jaune (#ffffcc),</li>
+                    <li>toutes les citations suivant la citation de classe ma_classe soient sur un fond rouge clair (#ffcccc),</li>
+                    <li>tous les éléments enfants uniques soient sur un fond vert clair (#ccffcc).</li>
+                </ul>
+            </li>
+        </ul>
+        <style type="text/css">
+            <!--
+            #ex2 q {background-color:#ffffcc}
+            #ex2 q.ma_classe~q {background-color:#ffcccc}
+            #ex2 :only-child {background-color:#ccffcc}
+            -->
+        </style>
+        <div id="ex2">
+            <h1>Quelques <em>citations</em> amusantes ...</h1>
+            <p>
+                <q>Quand les bornes sont franchies, il n'y a plus de limite.</q> Pierre Dac.<br />
+                <q>On l'a retrouvé assassiné un jour, il en est mort.</q> Hugues dans Le Grand détournement - La Classe américaine.<br />
+                <q>Ma patience a des limites mais il ne faut pas exagérer.</q> Fred Williamson dans White Fire.<br />
+                <q>Je vais te tuer jusqu'à ce que tu sois mort !</q> Jerry Haleva alias Saddam Hussein dans Hot Shots 2.<br />
+                <q class="ma_classe">Selon l'ancien code des corsaires : celui qui crève est vaincu !</q> President Thomas -Tug- Benson dans Hot Shots 2.<br />
+                <q>Ce que j'ai écrit, je l'ai écrit.</q> Ponce Pilate.<br />
+                <q>Quand c'est rugueux, c'est pas lisse.</q> Jacques Lanzmann<br />
+                <q>Je pense que nous sommes d'accord : le passé est révolu.</q> George W. Bush.<br />
+                <q>La plupart de nos importations viennent de l'étranger.</q> George W. Bush<br />
+                <q>Je vais te faire pleurer jusqu'à ce que tu pleures.</q> Jamel Debbouze dans Le Boulet.<br />
+                <q>Si on n'avait pas perdu une heure et quart, on serait là depuis une heure et quart.</q> Johnny Halliday.<br />
+                <q>La meilleure façon de dire la vérité, c'est de ne pas mentir.</q>
+                <q>Cet homme a quitté la France depuis quinze ans et depuis quinze ans il est à l'étranger.</q>
+                Charles Lemontier alias Jacques II de Chabannes de La Palice dans François Ier.<br />
+            </p>
+        </div>
+        <pre><code class="css">
+
+q {background-color:#ffffcc}
+q.ma_classe~q {background-color:#ffcccc}
+:only-child {background-color:#ccffcc}
+</code>
+<code class="html">
+&lt;h1&gt;Quelques &lt;em&gt;citations&lt;/em&gt; amusantes ...&lt;/h1&gt;
+&lt;p&gt;
+    &lt;q&gt;Quand les bornes sont franchies, il n'y a plus de limite.&lt;/q&gt; Pierre Dac.&lt;br /&gt;
+    &lt;q&gt;On l'a retrouvé assassiné un jour, il en est mort.&lt;/q&gt; Hugues dans Le Grand détournement - La Classe américaine.&lt;br /&gt;
+    &lt;q&gt;Ma patience a des limites mais il ne faut pas exagérer.&lt;/q&gt; Fred Williamson dans White Fire.&lt;br /&gt;
+    &lt;q&gt;Je vais te tuer jusqu'à ce que tu sois mort !&lt;/q&gt; Jerry Haleva alias Saddam Hussein dans Hot Shots 2.&lt;br /&gt;
+    &lt;q class="ma_classe"&gt;Selon l'ancien code des corsaires : celui qui crève est vaincu !&lt;/q&gt; President Thomas -Tug- Benson dans Hot Shots 2.&lt;br /&gt;
+    &lt;q&gt;Ce que j'ai écrit, je l'ai écrit.&lt;/q&gt; Ponce Pilate.&lt;br /&gt;
+    &lt;q&gt;Quand c'est rugueux, c'est pas lisse.&lt;/q&gt; Jacques Lanzmann&lt;br /&gt;
+    &lt;q&gt;Je pense que nous sommes d'accord : le passé est révolu.&lt;/q&gt; George W. Bush.&lt;br /&gt;
+    &lt;q&gt;La plupart de nos importations viennent de l'étranger.&lt;/q&gt; George W. Bush&lt;br /&gt;
+    &lt;q&gt;Je vais te faire pleurer jusqu'à ce que tu pleures.&lt;/q&gt; Jamel Debbouze dans Le Boulet.&lt;br /&gt;
+    &lt;q&gt;Si on n'avait pas perdu une heure et quart, on serait là depuis une heure et quart.&lt;/q&gt; Johnny Halliday.&lt;br /&gt;
+    &lt;q&gt;La meilleure façon de dire la vérité, c'est de ne pas mentir.&lt;/q&gt;
+    &lt;q&gt;Cet homme a quitté la France depuis quinze ans et depuis quinze ans il est à l'étranger.&lt;/q&gt;
+    Charles Lemontier alias Jacques II de Chabannes de La Palice dans François Ier.&lt;br /&gt;
+&lt;/p&gt;
+</code></pre>
+    </body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
+        <title>Les tableaux</title>
+
+        <!-- // highlight.js : Coloration syntaxique du code -->
+        <link rel="stylesheet" type="text/css" href="../../_assets/plugins/highlight/styles/monokai_sublime.css">
+        <script type="text/javascript" src="../../_assets/plugins/highlight/highlight.pack.js"></script>
+        <script type="text/javascript">
+            hljs.initHighlightingOnLoad();
+        </script>
+        <!-- // -->
+
+        <link rel="stylesheet" type="text/css" href="../../_assets/css/style.css">
+    </head>
+
+    <body>
+        <h1>Les tableaux</h1>
+        <hr />
+        <table border="1" cellspacing="0" cellpadding="5" style="border-collapse:collapse;">
+            <caption>Elèves de la session Webdevelopment</caption> <!-- Titre du tableau -->
+
+            <thead> <!-- En-tête du tableau -->
+                <tr> <!-- Ligne d'en-tête du tableau -->
+                    <th align="center">Prénom</th> <!-- Cellule de ligne d'en-tête : l'attribut de balise "align" permet d'aligner le texte horizontalement et peut prendre comme valeur "left" (par défaut), "center", "right", "justify" -->
+                    <th align="center">Date d'entrée en formation</th>
+                </tr>
+            </thead>
+
+            <tfoot> <!-- Pied de tableau -->
+                <tr>
+                    <th align="center">Prénom</th>
+                    <th align="center">Date d'entrée en formation</th>
+                </tr>
+            </tfoot>
+
+            <tbody> <!-- Corps du tableau -->
+                <tr> <!-- Ligne du tableau -->
+                    <td>Chrystel</td> <!-- Cellule -->
+                    <td align="center" rowspan="18" valign="middle">09 jan. 2017</td> <!-- Cellule : l'attribut de balise "valign" permet d'aligner le texte verticalement et peut prendre comme valeur "middle" (par défaut), "top", "bottom" -->
+                </tr>
+                <tr>
+                    <td>David</td>
+                </tr>
+                <tr>
+                    <td>Fabrice</td>
+                </tr>
+                <tr>
+                    <td>Georges</td>
+                </tr>
+                <tr>
+                    <td>Guillaume</td>
+                </tr>
+                <tr>
+                    <td>Gwendal</td>
+                </tr>
+                <tr>
+                    <td>Jean-Baptiste</td>
+                </tr>
+                <tr>
+                    <td>Jérémy</td>
+                </tr>
+                <tr>
+                    <td>Léo</td>
+                </tr>
+                <tr>
+                    <td>Loïc</td>
+                </tr>
+                <tr>
+                    <td>Marius</td>
+                </tr>
+                <tr>
+                    <td>Mourad</td>
+                </tr>
+                <tr>
+                    <td>Nathan</td>
+                </tr>
+                <tr>
+                    <td>Olivier</td>
+                </tr>
+                <tr>
+                    <td>Pascal</td>
+                </tr>
+                <tr>
+                    <td>Patrick</td>
+                </tr>
+                <tr>
+                    <td>Quentin</td>
+                </tr>
+                <tr>
+                    <td>Sylvain</td>
+                </tr>
+                <tr>
+                    <td colspan="2">...</td>
+                </tr>
+            </tbody>
+        </table>
+        <pre><code class="html">
+&lt;table border="1" cellspacing="0" cellpadding="5" style="border-collapse:collapse;"&gt;
+    &lt;caption&gt;Elèves de la session Webdevelopment&lt;/caption&gt; &lt;!-- Titre du tableau --&gt;
+
+    &lt;thead&gt; &lt;!-- En-tête du tableau --&gt;
+        &lt;tr&gt; &lt;!-- Ligne d'en-tête du tableau --&gt;
+            &lt;th align="center"&gt;Prénom&lt;/th&gt; &lt;!-- Cellule de ligne d'en-tête : l'attribut de balise "align" permet d'aligner le texte horizontalement et peut prendre comme valeur "left" (par défaut), "center", "right", "justify" --&gt;
+            &lt;th align="center"&gt;Date d'entrée en formation&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+
+    &lt;tfoot&gt; &lt;!-- Pied de tableau --&gt;
+        &lt;tr&gt;
+            &lt;th align="center"&gt;Prénom&lt;/th&gt;
+            &lt;th align="center"&gt;Date d'entrée en formation&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/tfoot&gt;
+
+    &lt;tbody&gt; &lt;!-- Corps du tableau --&gt;
+        &lt;tr&gt; &lt;!-- Ligne du tableau --&gt;
+            &lt;td&gt;Chrystel&lt;/td&gt; &lt;!-- Cellule --&gt;
+            &lt;td align="center" rowspan="18" valign="middle"&gt;09 jan. 2017&lt;/td&gt; &lt;!-- Cellule : l'attribut de balise "valign" permet d'aligner le texte verticalement et peut prendre comme valeur "middle" (par défaut), "top", "bottom" --&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;David&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Fabrice&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Georges&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Guillaume&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Gwendal&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Jean-Baptiste&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Jérémy&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Léo&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Loïc&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Marius&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Mourad&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Nathan&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Olivier&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Pascal&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Patrick&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Quentin&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Sylvain&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td colspan="2"&gt;...&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+    </body>
+</html>

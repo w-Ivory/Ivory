@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
+        <title>Les listes à puces</title>
+
+        <!-- // highlight.js : Coloration syntaxique du code -->
+        <link rel="stylesheet" type="text/css" href="../../_assets/plugins/highlight/styles/monokai_sublime.css">
+        <script type="text/javascript" src="../../_assets/plugins/highlight/highlight.pack.js"></script>
+        <script type="text/javascript">
+            hljs.initHighlightingOnLoad();
+        </script>
+        <!-- // -->
+
+        <link rel="stylesheet" type="text/css" href="../../_assets/css/style.css">
+    </head>
+
+    <body>
+        <h1>Les listes à puces</h1>
+        <hr />
+        <h2>Liste à puces non ordonnée</h2>
+        <ul>
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+        </ul>
+        <pre><code class="html">
+&lt;ul&gt;
+    &lt;li&gt;Item 1&lt;/li&gt;
+    &lt;li&gt;Item 2&lt;/li&gt;
+    &lt;li&gt;Item 3&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+        <h3>Type de la puce</h3>
+        <p><em>Il existe dans l'architecture HTML trois types de puces prêts à l'emploi.</em></p>
+        <ul type="disc">
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+        </ul>
+        <ul type="circle">
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+        </ul>
+        <ul type="square">
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+        </ul>
+        <pre><code class="html">
+&lt;ul type="disc"&gt;&lt;!-- "disc" (par défaut) --&gt;
+    &lt;li&gt;Item 1&lt;/li&gt;
+    &lt;li&gt;Item 2&lt;/li&gt;
+    &lt;li&gt;Item 3&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul type="circle"&gt;&lt;!-- "circle" --&gt;
+    &lt;li&gt;Item 1&lt;/li&gt;
+    &lt;li&gt;Item 2&lt;/li&gt;
+    &lt;li&gt;Item 3&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul type="square"&gt;&lt;!-- "square" --&gt;
+    &lt;li&gt;Item 1&lt;/li&gt;
+    &lt;li&gt;Item 2&lt;/li&gt;
+    &lt;li&gt;Item 3&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+        <p class="block alert"><em>La valeur CSS "list-style" peut être utilisée à la place de l'attribut "type" et prendre les valeurs "disc" (par défaut), "circle", "square"</em></p>
+        <h3>Imbrication</h3>
+        <p><em>Chaque imbrication entraine une indentation de la liste et modifie le style de la puce (uniquement jusqu'à la 3ème imbrication car seulement 3 styles de puces disponibles)</em></p>
+        <ul>
+            <li>Item 1</li>
+            <li>Item 2
+                <ul>
+                    <li>Item 2.1</li>
+                    <li>Item 2.2
+                        <ul>
+                            <li>Item 2.2.1</li>
+                            <li>Item 2.2.2
+                                <ul>
+                                    <li>Item 2.2.2.1</li>
+                                    <li>Item 2.2.2.2</li>
+                                    <li>Item 2.2.2.3</li>
+                                </ul>
+                            </li>
+                            <li>Item 2.2.3</li>
+                        </ul>
+                    </li>
+                    <li>Item 2.3</li>
+                </ul>
+               </li>
+            <li>Item 3</li>
+        </ul>
+        <pre><code class="html">
+&lt;ul&gt;
+    &lt;li&gt;Item 1&lt;/li&gt;
+    &lt;li&gt;Item 2
+        &lt;ul&gt;
+            &lt;li&gt;Item 2.1&lt;/li&gt;
+            &lt;li&gt;Item 2.2
+                &lt;ul&gt;
+                    &lt;li&gt;Item 2.2.1&lt;/li&gt;
+                    &lt;li&gt;Item 2.2.2
+                        &lt;ul&gt;
+                            &lt;li&gt;Item 2.2.2.1&lt;/li&gt;
+                            &lt;li&gt;Item 2.2.2.2&lt;/li&gt;
+                            &lt;li&gt;Item 2.2.2.3&lt;/li&gt;
+                        &lt;/ul&gt;
+                    &lt;/li&gt;
+                    &lt;li&gt;Item 2.2.3&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/li&gt;
+            &lt;li&gt;Item 2.3&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;Item 3&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+        <hr />
+        <h2>Liste à puces ordonnée</h2>
+        <ol>
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+        </ol>
+        <pre><code class="html">
+&lt;ol&gt;
+    &lt;li&gt;Item 1&lt;/li&gt;
+    &lt;li&gt;Item 2&lt;/li&gt;
+    &lt;li&gt;Item 3&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+        <h3>Type d'ordonnancement</h3>
+        <p><em>L'attribut de balise "type" peut prendre les valeurs "1" (par défaut), "a" (ordre alphabétique avec des lettres en minuscule), "A" (ordre alphabétique avec des lettres en majuscule), "i" (chiffres romains en minuscule), "I" (chiffres romains en majuscule)</em></p>
+        <ol type="1">
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+        </ol>
+        <ol type="a">
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+        </ol>
+        <ol type="A">
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+        </ol>
+        <ol type="i">
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+        </ol>
+        <ol type="I">
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+        </ol>
+        <pre><code class="html">
+&lt;ol type="1"&gt;&lt;!-- "1" (par défaut) : liste numérotée --&gt;
+    &lt;li&gt;Item 1&lt;/li&gt;
+    &lt;li&gt;Item 2&lt;/li&gt;
+    &lt;li&gt;Item 3&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ol type="a"&gt;&lt;!-- "a" : ordre alphabétique avec des lettres en minuscule --&gt;
+    &lt;li&gt;Item 1&lt;/li&gt;
+    &lt;li&gt;Item 2&lt;/li&gt;
+    &lt;li&gt;Item 3&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ol type="A"&gt;&lt;!-- "A" : ordre alphabétique avec des lettres en majuscule --&gt;
+    &lt;li&gt;Item 1&lt;/li&gt;
+    &lt;li&gt;Item 2&lt;/li&gt;
+    &lt;li&gt;Item 3&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ol type="i"&gt;&lt;!-- "i" : chiffres romains en minuscule --&gt;
+    &lt;li&gt;Item 1&lt;/li&gt;
+    &lt;li&gt;Item 2&lt;/li&gt;
+    &lt;li&gt;Item 3&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ol type="I"&gt;&lt;!-- "I" : chiffres romains en majuscule --&gt;
+    &lt;li&gt;Item 1&lt;/li&gt;
+    &lt;li&gt;Item 2&lt;/li&gt;
+    &lt;li&gt;Item 3&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+        <h3>Valeur de départ</h3>
+        <p><em>L'attribut de balise "start" indique l'indice de départ</em></p>
+        <ol start="100">
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+        </ol>
+        <pre><code class="html">
+&lt;ol start="100"&gt;
+    &lt;li&gt;Item 1&lt;/li&gt;
+    &lt;li&gt;Item 2&lt;/li&gt;
+    &lt;li&gt;Item 3&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+        <h3>Type d'ordonnancement & valeur de départ</h3>
+        <p><em>Les attributs de balise "type" et "start" peuvent être utilisés conjointement. L'attribut "start" prendra toujours une valeur numérique.</em></p>
+        <ol type="A" start="10">
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+        </ol>
+        <pre><code class="html">
+&lt;ol type="A" start="10"&gt;
+    &lt;li&gt;Item 1&lt;/li&gt;
+    &lt;li&gt;Item 2&lt;/li&gt;
+    &lt;li&gt;Item 3&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+        <h3>Imbrication</h3>
+        <ol>
+            <li>Item 1</li>
+            <li>Item 2
+                <ol>
+                    <li>Item 2.1</li>
+                    <li>Item 2.2
+                        <ol>
+                            <li>Item 2.2.1</li>
+                            <li>Item 2.2.2
+                                <ol>
+                                    <li>Item 2.2.2.1</li>
+                                    <li>Item 2.2.2.2</li>
+                                    <li>Item 2.2.2.3</li>
+                                </ol>
+                            </li>
+                            <li>Item 2.2.3</li>
+                        </ol>
+                    </li>
+                    <li>Item 2.3</li>
+                </ol>
+               </li>
+            <li>Item 3</li>
+        </ol>
+        <pre><code class="html">
+&lt;ol&gt;
+    &lt;li&gt;Item 1&lt;/li&gt;
+    &lt;li&gt;Item 2
+        &lt;ol&gt;
+            &lt;li&gt;Item 2.1&lt;/li&gt;
+            &lt;li&gt;Item 2.2
+                &lt;ol&gt;
+                    &lt;li&gt;Item 2.2.1&lt;/li&gt;
+                    &lt;li&gt;Item 2.2.2
+                        &lt;ol&gt;
+                            &lt;li&gt;Item 2.2.2.1&lt;/li&gt;
+                            &lt;li&gt;Item 2.2.2.2&lt;/li&gt;
+                            &lt;li&gt;Item 2.2.2.3&lt;/li&gt;
+                        &lt;/ol&gt;
+                    &lt;/li&gt;
+                    &lt;li&gt;Item 2.2.3&lt;/li&gt;
+                &lt;/ol&gt;
+            &lt;/li&gt;
+            &lt;li&gt;Item 2.3&lt;/li&gt;
+        &lt;/ol&gt;
+    &lt;/li&gt;
+    &lt;li&gt;Item 3&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+    </body>
+</html>

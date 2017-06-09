@@ -1,0 +1,97 @@
+*{
+	margin:0;padding:0;
+	font-family: Arial,sans-serif;
+	list-style-type:none;
+}
+.gras{
+	font-weight:bold;
+}
+.ita{
+	font-style:italic;
+}
+.wrap{
+	overflow:auto;
+}
+#page{
+	margin:0 auto;
+	width:800px;
+}
+#header{
+	height:200px;
+	background-color:grey;
+}
+#header h1{
+	width:500px;
+	float:left;
+	text-align:center;
+	line-height:200px;
+}
+#header>div{
+	width:300px;
+	float:left;
+}
+#header #bloc-connect{
+	padding:9px;
+	font-size:12px;
+}
+#header form p{
+	border:1px solid black;
+}
+#header>div>div{
+	padding:10px;
+}
+#header #notif li{
+	font-size:12px;
+	line-height:16px;
+	margin-top:8px;
+	padding-left:18px;
+	background:url('img/notif.png') no-repeat;
+}
+#header #notif li.warning{
+	background-position:0 -16px;
+}
+#header #notif li.error{
+	background-position:0 -32px;
+}
+#header>div>div h2{
+	font-size:16px;
+}
+#header form input,#header form label{
+	display:inline-block;
+	width:118px;
+	margin:0 10px;
+	border:none;
+}
+#header form input.submit{
+	width:260px;
+	margin:5px 10px;
+}
+#menu{
+	border:1px solid black;
+	width:198px;
+	float:left;
+	font-size:14px;
+}
+#menu a{
+	color:black;
+}
+#menu a:hover{
+	font-weight:bold;
+}
+#menu ul{
+	border-bottom:1px solid black;
+}
+#menu ul li{
+	list-style-type:disc;
+	list-style-position:inside;
+	padding-left:10px;
+}
+#content{
+	width:600px;
+	float:left;
+}
+#footer{
+	text-align:center;
+	background-color:grey;
+}
+

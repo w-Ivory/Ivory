@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
+        <title>Les transformations & transitions CSS - Mise en pratique</title>
+
+        <link rel="stylesheet" type="text/css" href="../../_assets/css/style.css">
+
+        <!-- // highlight.js : Coloration syntaxique du code -->
+        <link rel="stylesheet" type="text/css" href="../../_assets/plugins/highlight/styles/monokai_sublime.css">
+        <script type="text/javascript" src="../../_assets/plugins/highlight/highlight.pack.js"></script>
+        <script type="text/javascript">
+            hljs.initHighlightingOnLoad();
+        </script>
+        <!-- // -->
+
+        <style type="text/css">
+            *,*::before,*::after {
+                -webkit-box-sizing:border-box;
+                -moz-box-sizing:border-box;
+                -ms-box-sizing:border-box;
+                -o-box-sizing:border-box;
+                box-sizing:border-box;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Les transformations & transitions CSS - Mise en pratique</h1>
+        <blockquote>Suite au <a href="../../Cours/01_-_HTML_CSS/12_-_Les_transformations_et_transitions_CSS.html" target="_blank" title="">cours sur les transformations & transitions CSS</a>, nous allons mettre en pratique les différentes propriétés CSS correspondant à ces instructions.<br />Vous allez trouver ci-dessous différens exercices vous permettant de les manipuler.</blockquote>
+        <hr />
+        <h2>Ex. 1 : Ouvrir la porte</h2>
+        <p>Pour cet exercice :</p>
+        <ul>
+            <li>nous allons utiliser les transformations et les transitions pour ouvrir la porte (dans le bon sens).</li>
+            <li>le survol de la souris représentera le fait que nous frappions à la porte et nous attendrons 4 secondes avant que quelqu'un nous ouvre.</li>
+            <li>la porte mettra 1 seconde à s'ouvrir entièrement de manière linéaire.</li>
+            <li>la porte mettra 4 secondes à se refermer entièrement après un délai de 2 secondes le temps de passer.</li>
+            <li>le début de la fermeture se fera doucement puis accélèrera avant de ralentir sur la fin.<br /><em style="font-size:smaller;">information supplémentaire: il est possible d'indiquer des transitions différentes sur l'élément et sur son survol.</em></li>
+        </ul>
+        <style type="text/css">
+            <!--
+            #ex1 {
+                border:#000000 5px solid;
+                height:250px;
+                margin:15px auto;
+                position:relative;
+                width:90px;
+
+                -webkit-perspective:800px;
+                -moz-perspective:800px;
+                -ms-perspective:800px;
+                -o-perspective:800px;
+                perspective:800px;
+            }
+                #ex1 .porte {
+                    background-color:#c3c3c3;
+                    height:240px;
+                    position:relative;
+                    width:80px;
+                    z-index:10;
+
+                    -webkit-transform-style:preserve-3d;
+                    -moz-transform-style:preserve-3d;
+                    -ms-transform-style:preserve-3d;
+                    -o-transform-style:preserve-3d;
+                    transform-style:preserve-3d;
+
+                    -webkit-transform-origin:0 50%;
+                    -moz-transform-origin:0 50%;
+                    -ms-transform-origin:0 50%;
+                    -o-transform-origin:0 50%;
+                    transform-origin:0 50%;
+
+                    -webkit-transform:rotateY(360deg);
+                    -moz-transform:rotateY(360deg);
+                    -ms-transform:rotateY(360deg);
+                    -o-transform:rotateY(360deg);
+                    transform:rotateY(360deg);
+
+                    -webkit-transition:transform 4s ease-in-out 2s;
+                    -moz-transition:transform 4s ease-in-out 2s;
+                    -ms-transition:transform 4s ease-in-out 2s;
+                    -o-transition:transform 4s ease-in-out 2s;
+                    transition:transform 4s ease-in-out 2s;
+                }
+                #ex1 .porte:hover {
+                    -webkit-transform:rotateY(180deg);
+                    -moz-transform:rotateY(180deg);
+                    -ms-transform:rotateY(180deg);
+                    -o-transform:rotateY(180deg);
+                    transform:rotateY(180deg);
+
+                    -webkit-transition:transform 1s linear 4s;
+                    -moz-transition:transform 1s linear 4s;
+                    -ms-transition:transform 1s linear 4s;
+                    -o-transition:transform 1s linear 4s;
+                    transition:transform 1s linear 4s;
+                }
+                    #ex1 .porte .poignee {
+                        background-color:#666666;
+                        height:10px;
+                        margin-top:-5px;
+                        position:absolute;
+                        right:20px;
+                        top:50%;
+                        width:10px;
+
+                        -webkit-border-radius:50%;
+                        -moz-border-radius:50%;
+                        -ms-border-radius:50%;
+                        -o-border-radius:50%;
+                        border-radius:50%;
+                    }
+                    #ex1 .porte .gond {
+                        background-color:#666666;
+                        height:10px;
+                        margin-top:-5px;
+                        position:absolute;
+                        left:-2px;
+                        width:4px;
+                    }
+                        #ex1 .porte #gondhaut {top:15%;}
+                        #ex1 .porte #gondbas {bottom:15%;}
+            -->
+        </style>
+        <div id="ex1">
+            <div class="porte"><div class="gond" id="gondhaut"></div><div class="gond" id="gondbas"></div><div class="poignee"></div></div>
+        </div>
+        <pre><code class="css">
+#ex1 {
+    border:#000000 5px solid;
+    height:250px;
+    margin:15px auto;
+    position:relative;
+    width:90px;
+
+    -webkit-perspective:800px;
+    -moz-perspective:800px;
+    -ms-perspective:800px;
+    -o-perspective:800px;
+    perspective:800px;
+}
+    #ex1 .porte {
+        background-color:#c3c3c3;
+        height:240px;
+        position:relative;
+        width:80px;
+        z-index:10;
+
+        -webkit-transform-style:preserve-3d;
+        -moz-transform-style:preserve-3d;
+        -ms-transform-style:preserve-3d;
+        -o-transform-style:preserve-3d;
+        transform-style:preserve-3d;
+
+        -webkit-transform-origin:0 50%;
+        -moz-transform-origin:0 50%;
+        -ms-transform-origin:0 50%;
+        -o-transform-origin:0 50%;
+        transform-origin:0 50%;
+
+        -webkit-transform:rotateY(360deg);
+        -moz-transform:rotateY(360deg);
+        -ms-transform:rotateY(360deg);
+        -o-transform:rotateY(360deg);
+        transform:rotateY(360deg);
+
+        -webkit-transition:transform 4s ease-in-out 2s;
+        -moz-transition:transform 4s ease-in-out 2s;
+        -ms-transition:transform 4s ease-in-out 2s;
+        -o-transition:transform 4s ease-in-out 2s;
+        transition:transform 4s ease-in-out 2s;
+    }
+    #ex1 .porte:hover {
+        -webkit-transform:rotateY(180deg);
+        -moz-transform:rotateY(180deg);
+        -ms-transform:rotateY(180deg);
+        -o-transform:rotateY(180deg);
+        transform:rotateY(180deg);
+
+        -webkit-transition:transform 1s linear 4s;
+        -moz-transition:transform 1s linear 4s;
+        -ms-transition:transform 1s linear 4s;
+        -o-transition:transform 1s linear 4s;
+        transition:transform 1s linear 4s;
+    }
+        #ex1 .porte .poignee {
+            background-color:#666666;
+            height:10px;
+            margin-top:-5px;
+            position:absolute;
+            right:20px;
+            top:50%;
+            width:10px;
+
+            -webkit-border-radius:50%;
+            -moz-border-radius:50%;
+            -ms-border-radius:50%;
+            -o-border-radius:50%;
+            border-radius:50%;
+        }
+        #ex1 .porte .gond {
+            background-color:#666666;
+            height:10px;
+            margin-top:-5px;
+            position:absolute;
+            left:-2px;
+            width:4px;
+        }
+            #ex1 .porte #gondhaut {top:15%;}
+            #ex1 .porte #gondbas {bottom:15%;}</code>
+<code class="html">
+&lt;div id="ex1"&gt;
+    &lt;div class="porte"&gt;&lt;div class="gond" id="gondhaut"&gt;&lt;/div&gt;&lt;div class="gond" id="gondbas"&gt;&lt;/div&gt;&lt;div class="poignee"&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        <hr />
+        <h2>Ex. 2 : Blocs d'informations</h2>
+        <p>Pour cet exercice :</p>
+        <ul>
+            <li>nous allons utiliser les transformations et les transitions pour afficher le bloc d'informations sur l'image survolée.</li>
+            <li>le bloc est caché en bas de l'image par défaut.</li>
+            <li>le bloc doit s'afficher en glissant vers le haut.</li>
+            <li>le bloc doit mettre 0.3 secondes à s'afficher.</li>
+            <li>le bloc ne faisant pas 100% de la hauteur de l'image, il doit rester aligné en bas de l'image.</li>
+        </ul>
+        <style type="text/css">
+            <!--
+            #ex2 {
+                font-size:0;
+                margin:15px auto;
+                position:relative;
+            }
+                #ex2 .thumb-wrap {
+                    background:#111111 url(assets/images/12_-_Les_transformations_et_transitions_CSS/region.jpg) center top no-repeat;
+                    display:inline-block;
+                    height:320px;
+                    margin:0 1.5%;
+                    overflow:hidden;
+                    position:relative;
+                    width:30%;
+
+                    -webkit-background-size:cover;
+                    -moz-background-size:cover;
+                    -ms-background-size:cover;
+                    -o-background-size:cover;
+                    background-size:cover;
+                }
+                    #ex2 .thumb-wrap .caption {
+                        background-color:rgba(21,21,21,.9);
+                        color:#fefefe;
+                        font-size:12px;
+                        left:0;
+                        height:150px;
+                        padding:10px;
+                        position:absolute;
+                        right:0;
+                        top:100%;
+                        z-index:10;
+
+                        -webkit-transform-style:preserve-3d;
+                        -moz-transform-style:preserve-3d;
+                        -ms-transform-style:preserve-3d;
+                        -o-transform-style:preserve-3d;
+                        transform-style:preserve-3d;
+
+                        -webkit-transform-origin:50% 100%;
+                        -moz-transform-origin:50% 100%;
+                        -ms-transform-origin:50% 100%;
+                        -o-transform-origin:50% 100%;
+                        transform-origin:50% 100%;
+
+                        -webkit-transform:translateY(0);
+                        -moz-transform:translateY(0);
+                        -ms-transform:translateY(0);
+                        -o-transform:translateY(0);
+                        transform:translateY(0);
+
+                        -webkit-transition:transform .3s linear;
+                        -moz-transition:transform .3s linear;
+                        -ms-transition:transform .3s linear;
+                        -o-transition:transform .3s linear;
+                        transition:transform .3s linear;
+                    }
+                    #ex2 .thumb-wrap:hover .caption {
+                        -webkit-transform:translateY(-100%);
+                        -moz-transform:translateY(-100%);
+                        -ms-transform:translateY(-100%);
+                        -o-transform:translateY(-100%);
+                        transform:translateY(-100%);
+                    }
+            -->
+        </style>
+        <div id="ex2">
+            <figure class="thumb-wrap">
+                <figcaption class="caption"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris egestas nibh vehicula dui egestas, in tempus velit semper. Pellentesque nec condimentum mi, sit amet aliquam neque. Duis urna augue, hendrerit vitae imperdiet vitae, pretium sit amet enim.</p></figcaption>
+            </figure>
+            <figure class="thumb-wrap">
+                <figcaption class="caption"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris egestas nibh vehicula dui egestas, in tempus velit semper. Pellentesque nec condimentum mi, sit amet aliquam neque. Duis urna augue, hendrerit vitae imperdiet vitae, pretium sit amet enim.</p></figcaption>
+            </figure>
+            <figure class="thumb-wrap">
+                <figcaption class="caption"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris egestas nibh vehicula dui egestas, in tempus velit semper. Pellentesque nec condimentum mi, sit amet aliquam neque. Duis urna augue, hendrerit vitae imperdiet vitae, pretium sit amet enim.</p></figcaption>
+            </figure>
+        </div>
+        <pre><code class="css">
+#ex2 {
+    font-size:0;
+    margin:15px auto;
+    position:relative;
+}
+    #ex2 .thumb-wrap {
+        background:#111111 url(assets/images/12_-_Les_transformations_et_transitions_CSS/region.jpg) center top no-repeat;
+        display:inline-block;
+        height:320px;
+        margin:0 1.5%;
+        overflow:hidden;
+        position:relative;
+        width:30%;
+
+        -webkit-background-size:cover;
+        -moz-background-size:cover;
+        -ms-background-size:cover;
+        -o-background-size:cover;
+        background-size:cover;
+    }
+        #ex2 .thumb-wrap .caption {
+            background-color:rgba(21,21,21,.9);
+            color:#fefefe;
+            font-size:12px;
+            left:0;
+            height:150px;
+            padding:10px;
+            position:absolute;
+            right:0;
+            top:100%;
+            z-index:10;
+
+            -webkit-transform-style:preserve-3d;
+            -moz-transform-style:preserve-3d;
+            -ms-transform-style:preserve-3d;
+            -o-transform-style:preserve-3d;
+            transform-style:preserve-3d;
+
+            -webkit-transform-origin:50% 100%;
+            -moz-transform-origin:50% 100%;
+            -ms-transform-origin:50% 100%;
+            -o-transform-origin:50% 100%;
+            transform-origin:50% 100%;
+
+            -webkit-transform:translateY(0);
+            -moz-transform:translateY(0);
+            -ms-transform:translateY(0);
+            -o-transform:translateY(0);
+            transform:translateY(0);
+
+            -webkit-transition:transform .3s linear;
+            -moz-transition:transform .3s linear;
+            -ms-transition:transform .3s linear;
+            -o-transition:transform .3s linear;
+            transition:transform .3s linear;
+        }
+        #ex2 .thumb-wrap:hover .caption {
+            -webkit-transform:translateY(-100%);
+            -moz-transform:translateY(-100%);
+            -ms-transform:translateY(-100%);
+            -o-transform:translateY(-100%);
+            transform:translateY(-100%);
+        }</code>
+<code class="html">
+&lt;div id="ex2"&gt;
+    &lt;figure class="thumb-wrap"&gt;
+        &lt;figcaption class="caption"&gt;&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris egestas nibh vehicula dui egestas, in tempus velit semper. Pellentesque nec condimentum mi, sit amet aliquam neque. Duis urna augue, hendrerit vitae imperdiet vitae, pretium sit amet enim.&lt;/p&gt;&lt;/figcaption&gt;
+    &lt;/figure&gt;
+    &lt;figure class="thumb-wrap"&gt;
+        &lt;figcaption class="caption"&gt;&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris egestas nibh vehicula dui egestas, in tempus velit semper. Pellentesque nec condimentum mi, sit amet aliquam neque. Duis urna augue, hendrerit vitae imperdiet vitae, pretium sit amet enim.&lt;/p&gt;&lt;/figcaption&gt;
+    &lt;/figure&gt;
+    &lt;figure class="thumb-wrap"&gt;
+        &lt;figcaption class="caption"&gt;&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris egestas nibh vehicula dui egestas, in tempus velit semper. Pellentesque nec condimentum mi, sit amet aliquam neque. Duis urna augue, hendrerit vitae imperdiet vitae, pretium sit amet enim.&lt;/p&gt;&lt;/figcaption&gt;
+    &lt;/figure&gt;
+&lt;/div&gt;</code></pre>
+        <hr />
+        <h2>Ex. 3 : Card flip</h2>
+        <p>Pour cet exercice :</p>
+        <ul>
+            <li>nous allons utiliser les transformations et les transitions pour retourner la carte au survol.</li>
+            <li>la carte affiche par défaut la face 1 (id="front").</li>
+            <li>le bloc doit se retourner en fonction d'un axe placé en profondeur à 400px en retrait sur l'axe z puis revenir se plaquer sur l'écran.</li>
+            <li>une fois retournée, la carte doit afficher la face 2 (id="back").</li>
+            <li>les deux faces ne doivent pas s'afficher en même temps.<br /><em style="font-size:smaller;">information supplémentaire: il existe une instruction s'appelant "backface-visibility".</em></li>
+        </ul>
+        <style type="text/css">
+            <!--
+            #ex3 {
+                border:#cccccc thin solid;
+                height:260px;
+                margin:40px auto;
+                position:relative;
+                width:200px;
+
+                -webkit-perspective:400px;
+                -moz-perspective:400px;
+                -ms-perspective:400px;
+                -o-perspective:400px;
+                perspective:400px;
+            }
+                .card {
+                    cursor:pointer;
+                    height:100%;
+                    position:absolute;
+                    width:100%;
+
+                    -webkit-transform-style:preserve-3d;
+                    -moz-transform-style:preserve-3d;
+                    -ms-transform-style:preserve-3d;
+                    -o-transform-style:preserve-3d;
+                    transform-style:preserve-3d;
+
+                    -webkit-transform-origin:100% 50%;
+                    -moz-transform-origin:100% 50%;
+                    -ms-transform-origin:100% 50%;
+                    -o-transform-origin:100% 50%;
+                    transform-origin:100% 50%;
+                    
+                    -webkit-transition:transform 1s;
+                    -moz-transition:transform 1s;
+                    -o-transition:transform 1s;
+                    transition:transform 1s;
+                }
+                .card:hover {
+                    -webkit-transform:translateX(-100%) rotateY(-180deg);
+                    -moz-transform:translateX(-100%) rotateY(-180deg);
+                    -ms-transform:translateX(-100%) rotateY(-180deg);
+                    -o-transform:translateX(-100%) rotateY(-180deg);
+                    transform:translateX(-100%) rotateY(-180deg);
+                }
+                    .card .face {
+                        display:block;
+                        color:#ffffff;
+                        font-size:140px;
+                        font-weight:bold;
+                        height:100%;
+                        line-height:260px;
+                        margin:0;
+                        position:absolute;
+                        text-align:center;
+                        width:100%;
+
+                        -webkit-backface-visibility:hidden;
+                        -moz-backface-visibility:hidden;
+                        -ms-backface-visibility:hidden;
+                        -o-backface-visibility:hidden;
+                        backface-visibility:hidden;
+                    }
+                    .card .front {background:lightblue;}
+                    .card .back {
+                        background:lightgreen;
+
+                        -webkit-transform:rotateY(180deg);
+                        -moz-transform:rotateY(180deg);
+                        -ms-transform:rotateY(180deg);
+                        -o-transform:rotateY(180deg);
+                        transform:rotateY(180deg);
+                    }
+            -->
+        </style>
+        <div id="ex3">
+          <div class="card">
+            <figure class="face front">1</figure>
+            <figure class="face back">2</figure>
+          </div>
+        </div>
+        <pre><code class="css">
+#ex3 {
+    border:#cccccc thin solid;
+    height:260px;
+    margin:40px auto;
+    position:relative;
+    width:200px;
+
+    -webkit-perspective:400px;
+    -moz-perspective:400px;
+    -ms-perspective:400px;
+    -o-perspective:400px;
+    perspective:400px;
+}
+    .card {
+        cursor:pointer;
+        height:100%;
+        position:absolute;
+        width:100%;
+
+        -webkit-transform-style:preserve-3d;
+        -moz-transform-style:preserve-3d;
+        -ms-transform-style:preserve-3d;
+        -o-transform-style:preserve-3d;
+        transform-style:preserve-3d;
+
+        -webkit-transform-origin:100% 50%;
+        -moz-transform-origin:100% 50%;
+        -ms-transform-origin:100% 50%;
+        -o-transform-origin:100% 50%;
+        transform-origin:100% 50%;
+        
+        -webkit-transition:transform 1s;
+        -moz-transition:transform 1s;
+        -o-transition:transform 1s;
+        transition:transform 1s;
+    }
+    .card:hover {
+        -webkit-transform:translateX(-100%) rotateY(-180deg);
+        -moz-transform:translateX(-100%) rotateY(-180deg);
+        -ms-transform:translateX(-100%) rotateY(-180deg);
+        -o-transform:translateX(-100%) rotateY(-180deg);
+        transform:translateX(-100%) rotateY(-180deg);
+    }
+        .card .face {
+            display:block;
+            color:#ffffff;
+            font-size:140px;
+            font-weight:bold;
+            height:100%;
+            line-height:260px;
+            margin:0;
+            position:absolute;
+            text-align:center;
+            width:100%;
+
+            -webkit-backface-visibility:hidden;
+            -moz-backface-visibility:hidden;
+            -ms-backface-visibility:hidden;
+            -o-backface-visibility:hidden;
+            backface-visibility:hidden;
+        }
+        .card .front {background:lightblue;}
+        .card .back {
+            background:lightgreen;
+
+            -webkit-transform:rotateY(180deg);
+            -moz-transform:rotateY(180deg);
+            -ms-transform:rotateY(180deg);
+            -o-transform:rotateY(180deg);
+            transform:rotateY(180deg);
+        }</code>
+<code class="html">
+&lt;div id="ex3"&gt;
+  &lt;div class="card"&gt;
+    &lt;figure class="face front"&gt;1&lt;/figure&gt;
+    &lt;figure class="face back"&gt;2&lt;/figure&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    </body>
+</html>

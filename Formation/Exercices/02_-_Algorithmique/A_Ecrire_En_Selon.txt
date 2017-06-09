@@ -1,0 +1,16 @@
+variables abreviation: chaîne de caractères
+début
+	{préparation du traitement}
+	afficher (“Civilité (Mme / Mlle / M / Autre) :”)
+	saisir ( abreviation )
+	si abreviation = “Mme”
+		alors afficher (“Madame”)
+	sinon si abreviation = “Mlle”
+			alors afficher (“Mademoiselle”)
+		sinon si abreviation = “M”
+				alors afficher (“Monsieur”)
+			sinon afficher (“Transgenre”)
+			fsi
+		fsi
+	fsi
+fin

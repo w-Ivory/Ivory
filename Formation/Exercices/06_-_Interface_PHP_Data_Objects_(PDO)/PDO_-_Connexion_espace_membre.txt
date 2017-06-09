@@ -1,0 +1,12 @@
+Espace Administration
+
+Nous voulons mettre en place un système permettant de s'identifier (login/mot de passe).
+Une fois connecté, nous aurons la possibilité de gérer les personnes autorisées à s'identifier à leur tour.
+Chaque personne doit pouvoir être associée à un rôle (SuperAdmin, Admin, Invité, ... d'autres pourraient être ajoutés par la suite).
+Chaque rôle va posséder des autorisations (Ajout, Suppression, Modification, Edition, Approbation, ... d'autres pourraient être ajoutées par la suite).
+
+
+Etape 1 : Réaliser un MCD répondant à cet énoncé
+Etape 2 : Après validation, créez la bdd correspondante et insérer un premier enregistrement pour vous en SuperAdmin
+Etape 3 : Créer une page permettant de s'identifier (avec gestion des erreurs)
+Etape 4 : Créer les pages permettant d'ajouter et/ou modifier et/ou supprimer un utilisateur

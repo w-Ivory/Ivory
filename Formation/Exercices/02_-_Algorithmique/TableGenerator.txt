@@ -1,0 +1,126 @@
+--------------------------------------------------------------Version Minimaliste--------------------------------------------------------------
+
+Fonction CreerCellules(nbCellules : naturel) : chaîne
+	Variable contenu : chaîne
+	Debut
+		Afficher("Saisissez le contenu de la cellule")
+		Saisir(contenu)
+
+		Si nbCellules = 1
+			Alors Retourner "<td>" + contenu + "</td>"
+		Sinon
+			Retourner "<td>" + contenu + "</td>" + CreerCellules(nbCellules - 1)
+		FSi
+	Fin
+
+Fonction CreerLignes(nbLignes : naturel, nbCol : naturel) : chaîne
+	Debut
+		Si nbLignes = 1
+			Alors Retourner "<tr>" + CreerCellules(nbCol) + "</tr>"
+		Sinon
+			Alors Retourner "<tr>" + CreerCellules(nbCol) + "</tr>" + CreerLignes(nbLignes - 1, nbCol)
+	Fin
+
+Fonction CreerTable() : chaîne
+	Variables lignes, colonnes : naturel
+	Debut
+		Afficher("Entrez le nombre de lignes et colonnes")
+		Saisir(lignes)
+		Saisir(colonnes)
+		Retourner "<table>" + CreerLignes(lignes, colonnes) + "</table>"
+	Fin
+
+
+
+
+
+
+
+
+
+
+
+
+--------------------------------------------------------------Version Choix Lignes--------------------------------------------------------------
+
+Algorithme TableGenerator
+	Fonction CreerTable() : chaîne
+		Debut
+			retourner "<table>" + CreerLignes(0) + "</table>"
+		Fin
+
+	Fonction CreerLignes() : chaîne
+		Variable 	resultat : chaîne
+					choix : booleen
+					taille : naturel
+		Debut
+			Afficher("Quelle taille de ligne voulez-vous?")
+			Saisir(taille)
+			resultat <- "<tr>" + CreerCellules(0, taille) + "</tr>"
+			Afficher("Voulez-vous une ligne de plus?")
+			Saisir(choix)
+			Si choix = VRAI
+				Alors resultat <- resultat + CreerLignes()
+
+			retourner resultat
+		Fin
+
+	Fonction CreerCellules(actuelle : naturel, max : naturel) : chaîne
+		Variable content : chaîne
+		Debut
+			Si actuelle >= max
+				Alors Retourner ""
+			FSi
+
+			Afficher("Entrez le contenu de la cellule ", actuelle)
+			Saisir(content)
+
+			Retourner "<td>" + content + "</td>" + CreerCellules(actuelle + 1, max)
+		Fin
+
+
+
+
+
+
+--------------------------------------------------------------Version Choix Total--------------------------------------------------------------
+
+Algorithme TableGenerator
+	Fonction CreerTable() : chaîne
+		Variable resultat : chaîne
+		Debut
+			resultat <- "<table>" + CreerLignes(0) + "</table>"
+		Fin
+
+	Fonction CreerLignes(taille : naturel) : chaîne
+		Variable 	resultat : chaîne
+					choix : booleen
+		Debut
+			resultat <- "<tr>" + CreerCellules(0, taille) + "</tr>"
+			Afficher("Voulez-vous une ligne de plus?")
+			Saisir(choix)
+			Si choix = VRAI
+				Alors resultat <- resultat + CreerLignes(taille)
+
+			retourner resultat
+		Fin
+
+	Fonction CreerCellules(actuelle : naturel, E/S max : naturel) : chaîne
+		Variable content : chaîne
+		Debut
+			Si max > 0 ET actuelle >= max
+				Alors Retourner ""
+			FSi
+
+			Afficher("Entrez le contenu de la cellule ", actuelle)
+			Si max = 0 ET actuelle > 0
+				Alors Afficher("Saisie vide pour annuler")
+			FSi
+			Saisir(content)
+
+			Si content != "" OU max > 0 OU actuelle = 0
+				Retourner "<td>" + content + "</td>" + CreerCellules(actuelle + 1, max)
+
+			max <- actuelle
+			Retourner ""
+		Fin

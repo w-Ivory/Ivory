@@ -1,0 +1,164 @@
+/**
+ * ------------------------------------------------------------
+ * ANALYSE
+ * ------------------------------------------------------------
+**/
+-   La partie ne peut débuter que lorsque deux joueurs sont connectés
+    -   deux joueurs sont connectés
+        ... Qu'est-ce qu'un joueur ?
+        =>  Une entité caractérisée par : identifiant / mot de passe / email / date de création
+        ... D'où jouent-ils ?
+        =>  Si monoposte, je peux utiliser une session
+            Si multiposte, seule une base de données pourra partager les informations aux deux joueurs
+    -   La partie ne peut débuter que lorsque
+        ... Qu'est-ce qu'une partie ?
+        =>  Préparer le jeu en posant un plateau et en positionnant les différentes pièces pour les adversaires
+            -   les différentes pièces
+            ... Qu'est-ce qu'une pièce ?
+            =>  Une entité caractérisée par : type / couleur / emplacement sur l'échiquier
+            -   posant un plateau
+            ... Qu'est-ce qu'un plateau ?
+            =>  Une entité caractérisée par : nombre de cases / couleur des cases
+            -   positionnant les différentes pièces
+            ... Que signifie "positionner les pièces" ?
+            =>  Mettre en place les pièces sur les bonnes cases du plateau
+                =>  Cela signifie que les cases existent déjà depuis le plateau et que les règles du jeu imposent que chaque case doit accueillir ou non une pièce précise
+                    Puisque les règles du jeu et le plateau sont liés, cela signifie donc pour moi que c'est le plateau qui va imposer les règles du jeu
+                    C'est donc le plateau qui va héberger les pièces et permettre leurs déplacements à partir d'informations reçues par les joueurs
+-   Une partie peut être interrompue en cours de jeu. Vous devez donc proposer un moyen de la reprendre lorsque les deux mêmes joueurs sont à nouveau connectés. Tout au cours de la partie, nous devons disposer de l'historique des coups
+... Comment peut-on reprendre une partie ?
+=>  Puisque j'ai déjà proposé l'utilisation d'une base de données, je vais privilégier cette solution. Je devrai donc relier les deux joueurs à une partie et conserver tout l'historique
+    -   conserver tout l'historique
+    ... Quelle forme doit prendre l'historique ?
+    =>  Si mode replay, je dois stocker tous les mouvements
+        Si mode console, je peux ne stocker que la liste des actions de manière textuelle et le dernier état complet du plateau avec ses pièces
+        Je pense privilégier le mode console qui sera suffisant pour la demande
+-   Nous ne nous servirons que de quatre types de pièce différents en simplifiant leurs mouvements ...
+... Quelles sont les possibilités des pièces ?
+=>  Les pièces vont avoir des fonctionnalités communes comme : se déplacer d'un certain nombre de cases / se déplacer horizontalement / se déplacer en avant / manger une pièce
+    Les pièces vont avoir des fonctionnalités différentes en fonction de leur type comme : se déplacer verticalement / se déplacer en arrière / sauter par dessus toutes les pièces / sauter uniquement par dessus les pièces de sa couleur / être mangé / être mis en échec
+    -   quatre types de pièce différents
+    ... Comment différencier les pièces ?
+    =>  Regrouper dans une entité pièce toutes les caractéristiques et fonctionnalités communes
+        Créer des déclinaisons pour toutes les spécificités
+        -   toutes les spécificités
+        ... Lesquelles sont elles ?
+        =>  En observant les fonctionnalités, je remarque surtout qu'il s'agit de paramètres comme le nombre de cases, l'axe de déplacement, le sens de déplacement et le type d'obstacle franchissable (ami ou ennemi)
+            Mes spécificités ne vont alors pas être en terme de fonctionnalités, mais en terme de valeurs pour les paramètres (donc en terme de valeurs pour des caractéristiques) : nombre de cases / déplacement horizontal / déplacement vertical / déplacement alterné dans les deux sens / sens de départ / saut par dessus un ami / saut par dessus un ennemi
+            En revanche, une fonctionnalité commune peut être ajoutée puisqu'une pièce doit pouvoir distinguer les amis des ennemis
+            -   distinguer les amis des ennemis
+            ... Comment ?
+            =>  Les pièces sont regroupées par couleur. Je dois donc comparer ma couleur à celle des autres
+-   Comme aux échecs classiques, on joue au tour par tour : honneur aux blancs !
+    -   on joue au tour par tour
+    ... Comment identifier les tours ?
+    =>  Puisque je stocke l'historique, je dois lire qui a joué en dernier et bloquer ses actions en autorisant uniquement l'autre joueur à bouger une pièce
+    -   honneur aux blancs
+    ... Comment savoir la couleur attribuée à un joueur ?
+    =>  Je vais laisser le choix au premier joueur qui lancera la partie de choisir sa couleur. J'empêcherai alors l'autre de choisir la même
+        Je devrai donc utiliser mon stockage de données pour conserver la couleur choisie par le joueur
+        Si aucun tour n'a été joué, le joueur ayant choisi la couleur blanche sera donc le premier autorisé à faire un mouvement
+-   Une pièce touchée est une pièce jouée (on ne peut donc pas déselectionner une pièce)
+... Comment ?
+=>  Je dois empêcher un nouvel envoi de données si une pièce est sélectionnée tant que celle-ci n'a pas été jouée.
+    Je ne pourrai donc sélectionner que des pièces jouables
+-   La partie s'arrête lorsque l'un des Rois est "Échec et Mat"; à savoir qu'il ne peut plus se déplacer sans risquer d'être "mangé" par une pièce adverse
+... Comment une pièce peut être capable de déterminer les déplacements qu'elle peut faire ?
+=>  En fonction de ses caractéristiques et de ce qui l'entoure
+    -   ce qui l'entoure
+    ... Une pièce sait-elle ce qui l'entoure ?
+    =>  Une pièce est une entité indépendante des autres. Elle ne peut donc pas savoir directement ce qui l'entoure
+        Je vais donc devoir demander au plateau ce qui entoure cette pièce
+        C'est donc le plateau qui va déterminer si une pièce peut se déplacer sur lui
+
+
+/**
+ * ------------------------------------------------------------
+ * RÉSUMÉ
+ * ------------------------------------------------------------
+**/
+Entité JOUEUR
+    identifiant
+    mot de passe
+    email
+    date de création
+    --------------------
+    + méthodes relatives au joueur
+
+
+Entité PARTIE
+    plateau
+    équipes
+    joueurs
+    historique
+    --------------------
+    initialiser le plateau avec les pièces
+    bouger une pièce en fonction de coordonnées de destination
+    jouer la partie
+    afficher l'historique
+
+
+Entité PLATEAU
+    cases
+    --------------------
+    initialiser les pièces
+    concevoir et afficher le plateau avec les pièces
+    + méthodes relatives aux règles du jeu (déplacement des pièces)
+
+
+Entité PIECE
+    type
+    couleur
+    emplacement sur l'échiquier
+    nombre de cases
+    possibilité de déplacement horizontal
+    possibilité de déplacement vertical
+    possibilité de déplacement alterné dans les deux sens
+    possibilité de sens de départ
+    possibilité de saut par dessus un ami
+    possibilité de saut par dessus un ennemi
+    possibilité d'être mis en échec
+    --------------------
+    tester si ami ou ennemi
+
+
+Entité ROI
+
+
+Entité REINE
+
+
+Entité CAVALIER
+
+
+Entité PION
+
+
++ gestion de la base de donnée
+
+
+/**
+ * ------------------------------------------------------------
+ * PRIORITÉS
+ * ------------------------------------------------------------
+**/
+01 - Créer les pièces
+02 - Créer le plateau
+03 - Positionner les pièces sur le plateau
+04 - Permettre la sélection d'une pièce (par clic ou formulaire)
+05 - Permettre le choix d'une case cible pour le déplacement (par clic ou formulaire)
+06 - Permettre le déplacement d'une pièce aux nouvelles coordonnées (son changement de case sur l'échiquier)
+07 - Manger les pièces ennemies
+08 - Restreindre le déplacement à des cases de l'échiquier
+09 - Restreindre le déplacement à des cases accessibles à la pièce en fonction du nombre de cases possible dans ses caractéristiques
+10 - Restreindre le déplacement à des cases accessibles à la pièce en fonction des axes possibles dans ses caractéristiques
+11 - Restreindre le déplacement à des cases accessibles à la pièce en fonction du sens de déplacement possible dans ses caractéristiques
+12 - Restreindre le déplacement à des cases accessibles à la pièce en fonction des capacités de saut possibles dans ses caractéristiques
+13 - Tester la présence d'une autre pièce sur l'échiquier aux coordonnées cible
+14 - Tester si la potentielle pièce est amie ou ennemie
+15 - Restreindre le déplacement à des cases de l'échiquier non occupées par des pièces amies
+16 - Gérer le cas de l'échec du Roi (empêcher de le manger et donc anticiper à la fin du déplacement qui met en échec)
+17 - Gérer le cas de la fin de partie
+18 - Gérer l'historique
+19 - Gérer les joueurs
+20 - Gérer le stockage en base de données

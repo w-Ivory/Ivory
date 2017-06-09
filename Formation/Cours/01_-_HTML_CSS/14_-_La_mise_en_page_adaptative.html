@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
+        <title>La mise en page adaptative avec les Media Queries</title>
+
+        <!-- // highlight.js : Coloration syntaxique du code -->
+        <link rel="stylesheet" type="text/css" href="../../_assets/plugins/highlight/styles/monokai_sublime.css">
+        <script type="text/javascript" src="../../_assets/plugins/highlight/highlight.pack.js"></script>
+        <script type="text/javascript">
+            hljs.initHighlightingOnLoad();
+        </script>
+        <!-- // -->
+
+        <link rel="stylesheet" type="text/css" href="../../_assets/css/style.css">
+    </head>
+    <body>
+        <h1>La mise en page adaptative avec les Media Queries</h1>
+        <p><em>Une media query (ou requête média) consiste en un type de média, et au moins une expression limitant la portée des déclarations CSS, en mettant à profit les particularités des supports multimédias comme leur largeur, leur hauteur ou leur affichage des couleurs. Ajouté dans CSS3, les media queries permettent d'adapter la présentation du contenu à une large gamme d'appareils sans changer le contenu lui-même.<br />On nomme également cette pratique <strong>Responsive Web Design</strong>, pour dénoter qu'il s'agit d'adapter dynamiquement le design à l'aide de CSS.</em></p>
+        <hr />
+        <h2>Approche historique</h2>
+        <p><em>Avec CSS2 et HTML4, il était déjà possible de spécifier un média de destination pour l'application d'une ou plusieurs feuilles de style. C'est ainsi que l'on a pu associer des règles CSS complémentaires pour l'impression, modifiant la mise en page, favorisant tel élément ou faisant disparaître un autre inutile à la sortie sur papier, par exemple un menu de navigation.<br />La balise &lt;link&gt; est alors dupliquée pour autant de feuilles de style que nécessaire, et comporte un attribut media précisant le contexte dans lequel les styles doivent être appliqués.</em></p>
+        <pre><code class="html">
+/**
+L'attribut media peut prendre les valeurs principales :
+    all | screen (écrans) | handheld (périphériques mobiles ou de petite taille) | print (impression) | projection (projecteurs) | tv (téléviseurs)
+**/
+&lt;link rel="stylesheet" type="text/css" media="screen" href="screen.css" /&gt;
+&lt;link rel="stylesheet" type="text/css" media="print" href="print.css" /&gt;</code></pre>
+        <hr />
+        <h2>Syntaxe des Media Queries CSS3</h2>
+        <p><em>La philosophie des Media Queries (ou requêtes de media) en CSS3 est d'offrir un panel de critères plus vaste et plus précis, à l'aide de propriétés et de valeurs numériques, ainsi que de combinaisons multiples de ces mêmes critères. Le but est de cibler plus finement les périphériques de destination en fonction de leurs capacités intrinsèques.<br />L'écriture de ces requêtes est relativement explicite (en anglais) : une media query est une expression dont la valeur est toujours vraie ou fausse. Il suffit d'associer les différentes déclarations possibles avec un opérateur logique pour définir l'ensemble des conditions à réunir pour l'application des styles compris dans le bloc adjacent.</em></p>
+        <h3>Les opérateurs logiques</h3>
+        <h4>L'opérateur ET</h4>
+        <p><em>En général, on combine ensemble un type de média (screen, all...) et une expression grâce à "and", bien qu'une expression seule puisse être utilisée. L'expression est toujours écrite entre parenthèses.</em></p>
+        <pre><code class="css">
+@media screen and (max-width: 640px) { ... } /* Cible les écrans de largeur inférieure à 640 pixels grâce à la règle max-width associée à la valeur 640px */</code></pre>
+        <p><em>Les combinaisons peuvent être multiples.</em></p>
+        <pre><code class="css">
+@media screen and (min-width: 200px) and (max-width: 640px) { ... } /* Cible les écrans dont la résolution en largeur est comprise entre 200 et 640 pixels */</code></pre>
+        <h4>L'opérateur OU</h4>
+        <p><em>Pour obtenir l'équivalent du "ou", il suffit d'énumérer différentes media queries à la suite, séparées par des virgules : si l'une d'entre elles est valable, alors l'ensemble de la règle sera appliquée.</em></p>
+        <pre><code class="css">
+@media (min-width: 700px), handheld and (orientation: landscape) { ... } /* Avec cette déclaration, si nous sommes sur un périphérique screen avec une largeur de viewport de 800 pixels, la déclaration media retournera vrai car la première partie, interprétée comme @media all and (min-width: 700px) sera appliqué à notre périphérique, bien que notre périphérique screen ne passera pas la vérification sur le type média handheld de la deuxième media query. De la même façon, si nous sommes sur un périphérique handheld tenu en mode paysage avec une largeur de viewport de 500 pixels, bien que la première media query sera fausse à cause de la largeur du viewport, la deuxième media query sera vrai, et ainsi la déclaration media sera validée. */</code></pre>
+        <h4>L'opérateur d'exclusion</h4>
+        <p><em>Le mot-clé not inverse le résultat de la requête ; par exemple, « all and (not color) » est vrai pour les périphériques monochromes quel que soit le type de média.<br />"not" inversera seulement la media query à laquelle il est appliqué. Il ne s'appliquera pas à l'ensemble des media queries d'une liste séparée par des virgules.</em></p>
+        <pre><code class="css">
+@media not all and (monochrome) { ... } /* Interprétée comme @media not (all and (monochrome)) { ... } et non pas comme @media (not all) and (monochrome) { ... } */</code></pre>
+        <h4>Le mot-clé only</h4>
+        <p><em>Le mot-clé "only" empêche les vieux navigateurs, ne supportant pas les media queries, d'afficher les styles définis.</em></p>
+        <pre><code class="css">
+@media only screen { ... }</code></pre>
+        <h3>Les fonctionnalités</h3>
+        <ul style="font-style:italic;">
+            <li><strong>aspect-ratio :</strong> ratio de la zone d'affichage (par exemple 16/9)</li>
+            <li><strong>width :</strong> dimension en largeur de la zone d'affichage</li>
+            <li><strong>height :</strong> dimension en hauteur de la zone d'affichage</li>
+            <li><strong>resolution :</strong> résolution du périphérique (en dpi, dppx, ou dpcm)</li>
+            <li><strong>orientation :</strong> orientation du périphérique (portait ou landscape)</li>
+            <li><strong>device-aspect-ratio :</strong> ratio du périphérique de sortie (par exemple 16/9)</li>
+            <li><strong>device-width :</strong> dimension en largeur du périphérique</li>
+            <li><strong>device-height :</strong> dimension en hauteur du périphérique</li>
+        </ul>
+        <p><em>Les dimensions pourront être évaluées avec des unités (px, em). Les ratio avec des fractions (entier/entier). Une résolution sera définie en dpi (points par pouce) ou en dpcm (points par centimètres).</em></p>
+        <p class="alert"><em>La plupart des critères (ou fonctionnalités) peuvent être préfixés par "min-" et "max-" lorsqu'elles acceptent des valeurs numériques pour définir des valeurs minimales ou maximales à respecter.</em></p>
+        <hr />
+        <h2>Media Queries les plus fréquentes</h2>
+        <pre><code class="css">
+/* ------    orientation    ------ */
+@media only screen and (orientation: portrait) { ... }
+@media only screen and (orientation: landscape) { ... }
+
+
+
+/* ------    largeur d'affichage    ------ */
+/* --- Pour les écrans supérieurs à 3000px --- */
+@media only screen and (min-width: 3000px) { ... }
+
+/* --- Pour les écrans inférieurs à 1200px --- */
+@media only screen and (max-width: 1200px) { ... }
+
+/* --- Pour les écrans inférieurs à 1020px --- */
+@media not screen and (max-width: 1020px) { ... }
+
+/* --- Pour les écrans inférieurs à 1020px --- */
+@media only screen and (max-width: 1020px) { ... }
+
+/* --- Pour les écrans inférieurs à 800px --- */
+@media only screen and (max-width: 800px) { ... }
+
+/* --- Pour les écrans inférieurs à 768px --- */
+@media only screen and (max-width: 768px) { ... }
+
+/* --- Pour les écrans inférieurs à 600px --- */
+@media only screen and (max-width: 600px) { ... }
+
+/* --- Pour les écrans inférieurs à 480px --- */
+@media only screen and (max-width: 480px) { ... }
+
+
+
+/* ------    écran retina    ------ */
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+             only screen and (-moz-min-device-pixel-ratio: 1.5),
+             only screen and (-o-min-device-pixel-ratio: 3/2),
+             only screen and (min-device-pixel-ratio: 1.5) { ... }
+
+
+
+/* ------    impression    ------ */
+@media print {
+    body { background-image:none !important; }
+    .noprint { display:none !important; }
+}
+
+
+
+/* ------    navigateurs    ------ */
+/* Webkit-based : chrome/safari */
+@media screen and (-webkit-min-device-pixel-ratio:0) { ... }
+
+/* Firefox */
+@-moz-document url-prefix() { ... }
+
+/* Opera */
+@media all and (-webkit-min-device-pixel-ratio:10000), not all and (-webkit-min-device-pixel-ratio:0) { ... }
+
+/* Internet explorer */
+@media screen\0 {} /* IE 8, IE 9, IE 10 */
+@media screen\9 {} /* IE 6, IE 7 */
+@media \0screen {} /* IE 8 */
+@media screen and (min-width:0\0) {} /* IE 9, IE 10 */</code></pre>
+        <hr />
+        <h2>Infographie à propos du Responsive webdesign</h2>
+        <p>Elle commence à être un peu datée en terme de points de rupture pour les media queries mais voici une infographie assez bien faite sur le sujet</p>
+        <img src="assets/images/10-basic-tips-about-responsive-design-FR.jpg" style="clear:both;display:block;margin:0 auto;" />
+    </body>
+</html>

@@ -1,0 +1,94 @@
+Sources : http://www.daniweb.com/web-development/php/threads/347696/sending-email-from-localhost-in-xampp-windows
+Envoyer des emails en localhost avec XAMPP (Windows)
+
+Avant tout, je tiens à préciser que je l’ai fait sous XAMPP mais qu’il devrait également être possible de le faire sous WAMP (ou autre all-in-one) de façon assez facile je pense.
+Je vais donc d’abord expliquer les démarches pour XAMPP et ensuite décrire la façon dont je pense qu’il faudrait le faire avec n’importe quel autre pack.
+
+NOTE 1
+Pour pouvoir envoyer un mail via localhost de façon simple, il est préférable de posséder un compte Gmail ou tout du moins un serveur SMTP.
+Dans le pire des cas, vous pouvez toujours utiliser le SMTP de votre Fournisseur d’Accès à Internet (comme dans mon cas, Belgacom, dont le serveur SMTP est relay.belgacom.be)
+
+NOTE 2
+Je ferai plusieurs fois références à « commenter » et « décommenter » une ligne. Dans les fichiers .ini, les lignes en commentaire sont précédées d’un point-virgule ( ; )
+
+Via XAMPP
+Ouvrez le fichier de configuration php.ini (normalement: C:\xampp\php\php.ini)
+Cherchez les lignes « SMTP = » et « smtp_port =  » et ajoutez-y les infos de votre serveur SMTP
+Mon exemple :
+SMTP = smtp.gmail.com
+smtp_port = 587
+
+Cherchez la ligne « sendmail_from = « , décommentez-la si elle l’est (normalement oui). Ajoutez-y votre adresse email.
+Cherchez la ligne « sendmail_path = « . Commentez celle qui concerne mailtodisk => sendmail_path = « D:\xampp\mailtodisk\mailtodisk.exe »
+Décommentez celle qui concerne sendmail et vérifier que le chemin est correct (normalement oui)
+Ouvrez à présent le fichier sendmail.ini (normalement C:\xampp\sendmail\sendmail.ini)
+Cherchez les lignes « smtp_server= »  et « smtp_port » et mettez-y les informations de votre serveur SMTP (les mêmes que pour le php.ini)
+Cherchez les lignes « auth_username= » et « auth_password= » et mettez les informations relatives à votre compte. Dans le cas d’un compte Gmail, il suffit de mettre votre adresse email et le mot de passe que vous utilisez pour vous connecter à Gmail.
+Cherchez la ligne « force_sender= » et ajoutez-y une fois encore votre adresse Gmail.
+
+C’est fini ! Redémarrez votre serveur Apache et testez dès à présent votre script ! Si ça ne fonctionne pas, vérifier le fichier error.log dans le dossier de sendmail.
+
+
+
+Via d’autres packs (WAMP, …)
+Concernant le php.ini, les règles restent les mêmes si ce n’est les chemins qui changent. Par exemple dans WAMP, il me semble que le chemin d’accès au php.ini est : C:\wamp\bin\php\php5.3.9\php.ini
+
+Concernant sendmail, il n’existe pas par défaut dans WAMP, vous pouvez le télécharger ici : http://www.sendmail.com/sm/open_source/
+
+Il ne reste plus qu’à vérifier les chemins de chargement de sendmail dans php.ini et ensuite configurer sendmail.ini et normalement, le tour est joué.
+
+Un petit script pour tester l’envoi d’email
+if (isset($_POST['action']) && $_POST['action'] == 'envoyer') {
+    $send_error = "";
+    $required_fields = array('to', 'subject', 'message');
+    foreach ($required_fields AS $v) {
+        if (empty($_POST[$v])) {
+            $send_error = "Un ou plusieurs champs sont vides, veuillez vérifier le formulaire.";
+        }
+    }
+    if (empty($send_error)) {
+        extract($_POST);
+        $headers = "From: Sendmail Tests" . PHP_EOL;
+        $headers .= 'Content-type: text/html; charset=utf-8' . PHP_EOL;
+        if (!mail($to, $subject, $message, $headers)) {
+            $send_error = "Erreur lors de l'envoi de l'email :(";
+        }
+    }
+}
+?>
+<div class="container">
+    <div class="page-header">
+        <h1>Test d'envoi d'email au format HTML</h1>
+    </div>
+    <form method="post" action="">
+        <?php
+        if (isset($_POST['action']) && $_POST['action'] == 'envoyer' && empty($send_error)) {
+            echo '<div class="alert alert-success"><a class="close" data-dismiss="alert" href="#">&times;</a>Email envoyé avec succès !</div>';
+        } else if (isset($send_error)) {
+            echo '<div class="alert alert-error"><a class="close" data-dismiss="alert" href="#">&times;</a>' . $send_error . '</div>';
+        }
+        ?>
+        <div class="control-group">
+            <label for="to">Email</label>
+            <div class="controls">
+                <input type="text" name="to" id="to" class="span12" value="<?php if (isset($_POST['to'])) echo $_POST['to']; ?>" />
+            </div>
+        </div>
+        <div class="control-group">
+            <label for="subject">Sujet</label>
+            <div class="controls">
+                <input type="text" name="subject" id="subject" class="span12" value="<?php if (isset($_POST['subject'])) echo $_POST['subject']; ?>" />
+            </div>
+        </div>
+        <div class="control-group">
+            <label for="message">Message (format HTML)</label>
+            <div class="controls">
+                <textarea name="message" id="message"class="span12" rows="20" cols="50"><?php if (isset($_POST['message'])) echo $_POST['message']; ?></textarea>
+            </div>
+        </div>
+        <div class="form-actions">
+            <input type="hidden" name="action" value="envoyer" />
+            <button type="submit" class="btn btn-primary">Envoyer</button>
+        </div>
+    </form>
+</div>

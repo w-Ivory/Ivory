@@ -1,0 +1,67 @@
+/*
+Theme Name:     Controle personnel minier
+Theme URI:      http://domain.tld
+Description:    Management application.
+Version:        1.0
+Author:         Objectif 3W
+Author URI:     http://www.objectif3w.com
+License:        Copyright ©2017 - Objectif 3W - All rights reserved - Tous droits reserves
+*/
+
+@charset "utf-8";
+/* CSS Document */
+
+
+
+/**
+ * --------------------------------------------------
+ * MEDIA QUERIES
+ * --------------------------------------------------
+**/
+/* PRINT */
+@media print {
+body { background-image:none !important; }
+.noprint { display:none !important; }
+}
+
+/* DEVICE WIDTH */
+@media screen and (max-width:1000px) {
+    body > div,footer[role="contentinfo"] { height:auto!important; }
+    .grid-wrapper .grid12.x3 { width:33.333333333%; }
+    .grid-wrapper .grid12.x9 { width:66.666666666%; }
+    .grid-wrapper.widgets .item.grid12.x6 {
+        margin-left:0;
+        margin-right:0;
+        width:100%;
+    }
+}
+
+
+
+@media screen and (max-width:600px) {
+    #logo [data-role="logo-wrapper"] {
+        display:inline-block;
+        margin-right:.333333333%;
+        max-width:33%;
+        vertical-align:middle;
+    }
+    #logo [data-role="baseline"] {
+        display:inline-block;
+        margin-left:6.666666666%;
+        max-width:60%;
+        text-align:right;
+        vertical-align:middle;
+    }
+
+    .grid-wrapper .grid12.x1,.grid-wrapper .grid12.x2,.grid-wrapper .grid12.x3,.grid-wrapper .grid12.x4,.grid-wrapper .grid12.x5,.grid-wrapper .grid12.x6,.grid-wrapper .grid12.x7,.grid-wrapper .grid12.x8,.grid-wrapper .grid12.x9,.grid-wrapper .grid12.x10,.grid-wrapper .grid12.x11,.grid-wrapper .grid12.x12 {
+        display:block;
+        margin-left:0;
+        margin-right:0;
+        width:100%;
+    }
+    .grid-wrapper.widgets .item.grid12.x6,.grid-wrapper.widgets .item.grid12.x6:nth-child(2n) {
+        margin-left:0;
+        margin-right:0;
+        width:100%;
+    }
+}

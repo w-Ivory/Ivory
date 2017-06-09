@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>La securite des mots de passe</title>
+</head>
+<body>
+	<main>
+		<article>
+			<header>
+				<h1>La securite des mots de passe</h1>
+			</header>
+			<section>
+				<header>
+					<h2>Les attaques courantes</h2>
+				</header>
+				<section>
+					<header>
+						<h3>L'attaque brute-force</h3>
+					</header>
+					<p>Comme son nom l'indique, cette attaque n'est pas très élaborée, mais peut tout de même fonctionner. Elle consiste à tester toute les combinaisons de caractères possibles, jusqu'à tomber sur le mot de passe. C'est la principale raison pour laquelle on demande une certaine longueur et complexité sur les mots de passe.<br/>
+					En raison de sa haute inefficacité, ce genre d'attaque n'est viable qu'avec un très grand nombre d'essais par seconde. Cela signifie qu'elle est facilement contrée en limitant ce nombre, en bloquant le compte et/ou l'IP lors d'un grand nombre de tentatives ratées, ou encore avec un captcha pour empêcher l'automatisation de l'attaque. De nombreux sites choisissent un compromis, en demandant un captcha à partir de quelques tentatives échouées.</p>
+				</section>
+				<section>
+					<header>
+						<h3>L'attaque par timing</h3>
+					</header>
+					<p>L'attaque par timing consiste à chronométrer le serveur lorsqu'on tente un mot de passe. Si le serveur compare les mots de passe de manière naïve
+					(comparaison de la taille des strings, puis comparaison caractère par caractère, en s'arrêtant à la première différence), ce qui est la cas si on utilise un simple ==,
+					il effectuera un test supplémentaire pour chaque caractère valide. Il suffit alors de tester tous les caractères jusqu'à ce que le serveur réponde un peu plus lentement,
+					ce qui signifie qu'il a effectué une opération supplémentaire, on sait alors que c'est le bon caractère. Répétez pour chaque caractère du mot de passe.<br/>
+					Elle peut être contrée par des comparaisons dont la durée n'apporte pas d'informations (en temps constant avec des fonctions spécialisées ou par exemple en comparant des hash, dont les valeurs sont <strong>extrêmement</strong> variables). Étant donné le nombre important d'essais que peut nécéssiter cette attaque, les contres à l'attaque brute-force entrâvent également celle-ci.</p>
+				</section>
+				<section>
+					<header>
+						<h3>L'attaque de l'homme du milieu</h3>
+					</header>
+					<p>Dans ce scénario, l'attaquant (appelons-le Mallory) essaye d'intercepter les échanges entre deux agents (Alice et Bob), en se faisant passer pour l'un auprès de l'autre. Ainsi, Alice envoie un message à Mallory en pensant l'envoyer à Bob, et Mallory, après avoir lu le message, le fait passer à Bob en se faisant passer pour Alice. Il agit alors comme un intermédiare qui a accès à l'intégralité des informations échangées. Maintenant, remplacez Alice par le client, Bob par le serveur, et le message par le mot de passe.<br/>
+					Cette attaque peut être contrée grâce à HTTPS. En l'activant, les échanges sont cryptés, et donc illisibles par les personnes non concernées, et authentifiés, donc protégés des imposteurs.</p>
+				</section>
+			</section>
+			<section>
+				<header>
+					<h2>Sécuriser les mots de passe en BDD</h2>
+					<p>La solution la plus simple pour sauvegarder un mot de passe en base de données est de le sauvegarder en clair. Cependant, la moindre personne ayant accès à ces données (un pirate, un employé du SAV, ou même quelqu'un qui regarde par dessus votre épaule) représente alors une faille de sécurité monumentale. On peut alors choisir de pas sauvegarder directement les mots de passe.</p>
+				</header>
+				<section>
+					<header>
+						<h3>Les fonctions de hachage</h3>
+					</header>
+					<p>Une fonction de hachage est une fonction qui calcule le hash, ou l'empreinte, des données qu'on lui fournit (que ce soit un fichier, une chaîne de caractères ou autre). Suivant sont utilisation, une bonne fonction de hashage peut avoir plusieurs propriétés : </p>
+					<ul>
+						<li>La taille : La majorité des fonctions de hashage génère un hash d'une taille fixe, peut importe les données d'entrée</li>
+						<li>Des résultats variés : L'un des intérêts principaux du hachage est de différencier rapidement des données. Ainsi, deux données similaires auront des hashs radicalement différents.</li>
+						<li>Un minimum de collisions : Lorsque la taille du hash est inférieure à celle des données (et ça arrive souvent puisque c'est l'un des intérêts du hash), il y aura forcément un moment où deux données donneront le même hash, on parle alors de collision. Une bonne fonction de hash minimise ces cas là.</li>
+						<li>Irréversible : Certaines fonctions de hachage sont créées pour que ce soit impossible (ou du moins <strong>très</strong> long) de retrouver la donnée originale à partir du hash. Ce sont alors des <em>fonctions de hashage cryptographiques</em>.</li>
+					</ul>
+					<p>Grâce à ces propriétés, les fonctions de hachage sont utilisées dans de nombreux cas. Entre autres :</p>
+					<ul>
+						<li>L'indexation : Puisque les hash ont une taille limitée et sont différentiés, ils sont très utiles pour effectuer une indexation rapide des données. D'ailleurs, le tableaux associatifs de PHP se basent sur du hachage pour leurs index non numériques. On parle de table de hachage.</li>
+						<li>Des vérifications : Principalement vu dans les téléchargements, où le serveur peut transmettre le hash du fichier qu'il envoie. Ainsi, le navigateur peut hacher le fichier reçu et vérifier si les hashs correspondent. Sinon, cela signifie que le fichier n'est pas le même, et est donc corrompu.</li>
+						<li>Les fonctions de hachage cryptographiques sont égalements utilisées pour encoder des mots de passe. (Voir section suivante)</li>
+					</ul>
+				</section>
+				<section>
+					<header>
+						<h3>Hacher des mots de passe</h3>
+					</header>
+					<p>Une stratégie pour se prémunir du vol de mots de passe est tout simplement de ne pas le sauvegarder. Plus précisément, on ne sauvegarde que le hash (cryptographique) du mot de passe. Ainsi, lorsque l'utilisateur rentre un mot de passe, on le hache, et on vérifie que le hash soit le même. On peut donc vérifier la validité du mot de passe sans le sauvegarder directement. Cela permet non seulement de se protéger des vols de mots de passe, mais aussi des attaques par timing, puisque la comparaison des hash n'apporte aucune information utile à l'attaquant (car même un mot de passe très proche aurait un hash complètement différent)</p>
+				</section>
+				<section>
+					<header>
+						<h3>Les attaques par dictionnaire et les tables arc-en-ciel</h3>
+					</header>
+					<p>Même si le hachage est irréversible, on peut tenter de retrouver "à tâtons" l'original. On peut utiliser pour cela des dictionnaires, qui associent à une liste de mots de passe courants leur hash précalculés. Il suffit alors de vérifier si le hash recherché fait partie des résultats, ce qui signifie que le mot de passe associé est le bon. Une table arc-en-ciel est une variante optimisée de ce principe qui génère beaucoup plus de mots de passe plus variés sans consommer plus de mémoire. Dans tout les cas, le principe est le même : la table est longue à générer, mais une fois générée elle peut être réutilisée pour tout les mots de passe recherchés, et ce très rapidement.</p>
+				</section>
+				<section>
+					<header>
+						<h3>Un grain de sel</h3>
+					</header>
+					<p>Vient alors le <em>salage</em>. Cela consiste à rajouter à la fin d'un mot de passe quelques caractères aléatoires supplémentaires, que l'on appèle <em>sel</em>, et de sauvegarder ce sel à côté du mot de passe <a href="http://cdn2-elle.ladmedia.fr/var/plain_site/storage/images/elle-a-table/recettes-de-cuisine/steak-hache-a-la-creme-2079214/22082262-3-fre-FR/Steak-hache-a-la-creme.jpg" target="_blank">salé et haché</a>. Même si il possède le salage, cela bloque l'attaquant : soit il regénère sa table pour chaque salage, ce qui va à l'encontre du principe même de son attaque (on l'a dit, ces tables sont très lourdes à générer), soit il tente de trouver le hash du mot passe salé avec sa table, ce qui est hautement improbable étant donné la complexité ajoutée : rien que 2 caractères multiplient la complexité (et donc la taille nécessaire de la table) par 4096!</p>
+				</section>
+				<section>
+					<header>
+						<h3>Le hash en PHP</h3>
+					</header>
+					<p>Même si on peut utiliser les fonctions de hachage classiques en PHP (<code>md5</code>, <code>sha1</code>...), on préfèrera utiliser un trio de fonctions spécialisées :</p>
+					<ul>
+						<li><code>password_hash($mdp, $algo)</code> qui retourne le mot de passe salé et haché.</li>
+						<li><code>password_verify($mdp, $hash)</code> qui vérifie si le mot de passe fourni correspond bien au mot de passe haché passé en second argument.</li>
+						<li><code>password_needs_rehash($hash, $algo)</code> qui vérifie si le mot de passe haché et bien haché selon les paramètres voulus actuels. Sinon, il faudra rappeler <code>password_hash</code>.</li>
+					</ul>
+					<p>Dans tout les cas, <code>$algo</code> représente l'algorythme de hash voulu et sera souvent la constante <code>PASSWORD_DEFAULT</code></p>
+				</section>
+			</section>
+		</article>
+	</main>
+</body>
+</html>

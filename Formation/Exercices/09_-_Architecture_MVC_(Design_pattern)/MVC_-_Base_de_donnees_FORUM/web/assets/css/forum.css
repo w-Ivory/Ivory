@@ -1,0 +1,106 @@
+/*
+ Theme Name:   Forum
+ Theme URI:    http://localhost/forum/
+ Description:  Designed and developped as part of a training project within the Objectif 3W center.
+ Author:       Damien TIVELET - Objectif 3W
+ Author URI:   http://blog.objectif3w.com/humeur/bienvenue-a-damien-notre-nouveau-formateur-en-webdevelopment/
+ Version:      1.0.0
+ License:      Copyright © Objectif 3W - All rights reserved / tous droits réservés
+ License URI:  http://www.objectif3w.com/mentions-legales/
+ Tags:         forum, training, object, design pattern, database, flex
+*/
+
+@charset "utf-8";
+/* CSS Document */
+
+table { table-layout:fixed; }
+table.messages { border-collapse:collapse; }
+    tr {}
+        th,td {
+            padding:4px 7px;
+            text-align:center;
+        }
+        th {
+            background-color:rgb(80,80,80);
+            color:white;
+            text-transform:uppercase;
+        }
+        table.conversations th:last-child {
+            background-color:inherit;
+            color:inherit;
+        }
+        table.messages th,table.messages td {
+            border-right:rgb(0,0,0) thin solid;
+            border-top:rgb(0,0,0) thin solid;
+        }
+        table.messages th:last-child,table.messages td:last-child { border-right:none; }
+        table.messages tr:nth-child(2n+2) td { background-color:rgb(225,225,225); }
+        .closed td { background-color:#ffdddd; }
+        .opened td { background-color:#ddffdd; }
+            td a {
+                color:black;
+                text-decoration:none;
+            }
+
+a.more::after{
+    content:'\2192';
+    margin-left:5px;
+}
+a.back {
+    background-color:rgb(63,63,63);
+    color:rgb(255,255,255);
+    padding:7px 15px;
+    margin:10px auto;
+    text-decoration:none;
+}
+a.back::before{
+    content:'\2190';
+    margin-right:5px;
+}
+a.prev,a.next,a.first,a.last{
+    color:rgb(255,255,255);
+    text-transform:uppercase;
+}
+a.prev::before{
+    content:'\3C';
+    font-size:10px;
+    font-weight:700;
+    margin-right:5px;
+}
+a.next::after{
+    content:'\3E';
+    font-size:10px;
+    font-weight:700;
+    margin-left:5px;
+}
+a.first::before{
+    content:'\00AB';
+    margin-right:5px;
+}
+a.last::after{
+    content:'\00BB';
+    margin-left:5px;
+}
+a.tri {
+    color:rgb(255,255,255);
+    display:inline-block;
+    font-size:10px;
+    text-decoration:none;
+}
+a.tri.actif::after {
+    content:'\3E';
+    display:inline-block;
+    margin-left:5px;
+}
+a.tri.asc::after {
+    -webkit-transform:rotate(90deg);
+    -moz-transform:rotate(90deg);
+    -ms-transform:rotate(90deg);
+    transform:rotate(90deg);
+}
+a.tri.desc::after {
+    -webkit-transform:rotate(-90deg);
+    -moz-transform:rotate(-90deg);
+    -ms-transform:rotate(-90deg);
+    transform:rotate(-90deg);
+}

@@ -1,0 +1,42 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: intl_O3W\n"
+"POT-Creation-Date: 2017-05-29 15:55+0200\n"
+"PO-Revision-Date: 2017-05-29 15:56+0200\n"
+"Last-Translator: \n"
+"Language-Team: L'équipe O3W <contact@objectif3w.com>\n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.7\n"
+"X-Poedit-Basepath: ../../../..\n"
+"Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: _;_n:1,2;ngettext:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: 13_-_L_internationalisation_d_interface_homme_machine.php:72
+msgid "Hello world !"
+msgstr "Bonjour le monde !"
+
+#: 13_-_L_internationalisation_d_interface_homme_machine.php:73
+#, php-format
+msgid "My name is %s !!!"
+msgstr "Mon nom est %s !!!"
+
+#: 13_-_L_internationalisation_d_interface_homme_machine.php:75
+#, php-format
+msgid "I have %d article"
+msgid_plural "I have %d articles"
+msgstr[0] "Je possède %d article"
+msgstr[1] "Je possède %d articles"
+
+#~ msgid "I have %d articles"
+#~ msgstr "Je possède %d articles"
+
+#~ msgid "My name is "
+#~ msgstr "Mon nom est : "
+
+#~ msgid "My name is THE BOSS !!!"
+#~ msgstr "Mon nom est LE PATRON !!!"

@@ -1,0 +1,62 @@
+<html>
+    <head>
+    </head>
+    <body>
+<p>s</p>
+    	
+    	
+    	<ul class="content-box center-content">
+	    	<li class="box-left"><h1><a>CAPOT</a></h1></li>
+	    	<li class="box-center"><h1><div>PORTIERES</div></h1></li>
+	    	<li class="box-right"><h1>COFFRE</h1></li>
+        </ul>
+	    
+
+    	<style>
+    		
+    		ul.content-box {
+    			position: absolute;
+    		}
+    		ul.content-box li {
+    			display:inline-block;
+    		}
+    	    ul.content-box li.box-center {
+    	    	background: rgba(0,0,0,0.5);
+    	    	padding:25px;
+    	    	
+				-webkit-transform:skew(30deg);
+				-moz-transform:skew(30deg);
+				-o-transform:skew(30deg);
+				tranform:skew(30deg);			    	    	
+    	    	/*width: 200px;
+    	    	height: 50px;*/
+
+    	    }
+    	    ul.content-box div{
+    	    	position: absolute;
+				tranform:skew(0deg);
+				-webkit-transform:skew(0deg);
+				-moz-transform:skew(0deg);
+				-o-transform:skew(0deg);
+    	    }
+    	</style>
+
+    	<script>
+			window.onload=function() {
+
+				var x = document.getElementsByClassName('center-content');
+				var body = document.getElementsByTagName('body');
+				if(body.length == 1) {
+					var screenW = body[0].offsetWidth;
+					var screenH = body[0].offsetHeight;
+					for(var i=0; i < x.length; i++) {
+						var h = (screenH/2)-(x[i].offsetHeight/2);
+						var w = (screenW/2)-(x[i].offsetWidth/2);
+						x[i].style.top = h+'px';
+						x[i].style.left = w+'px';
+					}
+				}
+			}
+        </script>
+    </body>
+</html>

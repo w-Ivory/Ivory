@@ -1,0 +1,139 @@
+<script>
+function peau(type) 
+{
+	resourceCall("peau_personnalisation", type);
+};
+
+function tshirt(type) 
+{
+	resourceCall("tshirt_personnalisation", type);
+};
+
+function veste(type) 
+{
+	resourceCall("veste_personnalisation", type);
+};
+
+function visage(type) 
+{
+	resourceCall("visage_personnalisation", type);
+};
+
+function cheveu(type) 
+{
+	resourceCall("cheveu_personnalisation", type);
+};
+
+function cheveu_color(type) 
+{
+	resourceCall("cheveu_color_personnalisation", type);
+};
+
+function pantalon(type) 
+{
+	resourceCall("pantalon_personnalisation", type);
+};
+
+function chaussure(type) 
+{
+	resourceCall("chaussure_personnalisation", type);
+};
+</script>
+
+<html>
+    <body>
+    	<div id="cadre">
+			<center>
+			<img src="http://dev-986421345786.lschronicles.net/web/img/gestion/logo.png" height="100" width="100" class="center-content"></img>
+			<hr>
+			<h2>Personnalisation du personnage</h2>
+			</center>
+			<br>
+			<div class="cadre-content">
+			
+				<h4>Sélection du visage</h4>
+				<a href="#" onclick="visage(0);" class="button"><div>&#x25c0;</div></a>
+				<a href="#" onclick="visage(1);" class="button"><div>&#x25ba;</div></a>
+				
+				<h4>Sélection des cheveux</h4>
+				<a href="#" onclick="cheveu(0);" class="button"><div>&#x25c0;</div></a>
+				<a href="#" onclick="cheveu(1);" class="button"><div>&#x25ba;</div></a>
+				
+				<h4>Sélection de la couleur des cheveux</h4>
+				<a href="#" onclick="cheveu_color(0);" class="button"><div>&#x25c0;</div></a>
+				<a href="#" onclick="cheveu_color(1);" class="button"><div>&#x25ba;</div></a>
+				
+				<h4>Sélection de la peau</h4>
+				<a href="#" onclick="peau(0);" class="button"><div>&#x25c0;</div></a>
+				<a href="#" onclick="peau(1);" class="button"><div>&#x25ba;</div></a>
+				
+				<h4>Sélection du pantalon</h4>
+				<a href="#" onclick="pantalon(0);" class="button"><div>&#x25c0;</div></a>
+				<a href="#" onclick="pantalon(1);" class="button"><div>&#x25ba;</div></a>
+				
+				<h4>Sélection des chaussures</h4>
+				<a href="#" onclick="chaussure(0);" class="button"><div>&#x25c0;</div></a>
+				<a href="#" onclick="chaussure(1);" class="button"><div>&#x25ba;</div></a>
+				
+				<h4>T-shirt</h4>
+				<a href="#" onclick="tshirt(0);" class="button"><div>&#x25c0;</div></a>
+				<a href="#" onclick="tshirt(1);" class="button"><div>&#x25ba;</div></a>
+				
+				<h4>Veste</h4>
+				<a href="#" onclick="veste(0);" class="button"><div>&#x25c0;</div></a>
+				<a href="#" onclick="veste(1);" class="button"><div>&#x25ba;</div></a>
+			</div>
+		</div>
+		
+		
+        <style>
+		body
+		{
+			padding: 0;
+			margin: 0;
+			font-family : "Arial", sans-serif;
+		}
+		#cadre 
+		{
+			width: 35%;
+			/*width: 20%;
+			margin: 0 auto;
+			padding: 10px;*/
+			background-color: rgba(0, 0, 0, 0.5);
+			padding:10px;
+			bottom: 0;
+			position: absolute;
+			/*position:absolute;
+			left:0;
+			top:0;
+			bottom:0;
+			height: 100%;*/
+        }
+        div.cadre-content {
+        	padding-left: 40px;
+        	padding-right: 40px;
+        	border:1px solid rgba(255,255,255,0.5);
+        	box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.5);
+        	background-color: rgba(0,0,0,0.2);
+        	border-radius: 2px;
+        }
+
+		hr 
+		{
+			width: 50%;
+		}
+		#cadre h4  {
+			
+			margin-left: -10px;
+			color: rgba(255,255,255,0.8);
+		}
+		#cadre a.button {
+			
+			color: #3EA1CB;
+			display: inline-block;
+			text-decoration: none;
+		}
+        </style>
+
+    </body>
+</html>

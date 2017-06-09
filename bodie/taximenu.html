@@ -1,0 +1,86 @@
+<html>
+    <head></head>
+
+    <body>
+    	<div class="container-taxi center-content">
+	    	<div class="content-taxi">
+	    		<br>
+	    		<h3><center>TAXI</center></h3>
+	    		<br>
+		        <ul class = "nav-taxi">
+		        	<li id="taxi-btn-gps">Activer le GPS</li>
+		        	<li id="taxi-btn-compteur">Activer le compteur</li>
+		        	<li id="taxi-btn-clients">Clients</li>
+		        	<li id="taxi-btn-service" class="last">Fin de service</li>
+		        </ul>
+		    </div>
+	    </div>
+
+	    <style>
+
+	        div.container-taxi {
+	        	position: absolute;
+	        	width: 20%;
+	        	background:rgba(255, 255, 255, 0.5);
+	        	border-radius: 2px;
+	        	padding: 4;
+	        }
+
+	        div.container-taxi h3 {
+	        	margin: 0;
+	        	color:rgba(246,99,1,0.9);
+	        	text-shadow: 1px 1px rgba(0,0,0,0.7);
+	        }
+
+		    div.container-taxi div.content-taxi {
+		    	font-family: Arial, sans-serif;
+		    	background-color:white;
+		    }
+
+		    div.container-taxi ul.nav-taxi {
+		    	list-style: none;
+		    	padding: 0;
+		    	padding-bottom: 10px;
+		    	margin:0;
+		    }
+
+		    div.container-taxi ul.nav-taxi li {
+		    	padding: 0;
+		    	text-align: center;
+		    	background: rgba(246,99,1,0.9);/*#FB6501*/
+		    	margin-top:10px;
+		    	margin-left: 10px;
+		    	margin-right: 10px;
+		    	padding-right: 30px;
+		    	padding-left: 30px;
+		    	padding-top: 15px;
+		    	padding-bottom: 15px;
+		    	color: white;
+		    	cursor: pointer;
+		    	text-shadow: 1px 1px rgba(0,0,0,0.7);
+		    }
+
+		    div.container-taxi ul.nav-taxi li.last {
+		    	background-color: rgba(255, 0, 0, 0.8);
+		    }
+
+	    </style>
+
+	    <script>
+			window.onload=function() {
+				var x = document.getElementsByClassName('center-content');
+				var body = document.getElementsByTagName('body');
+				if(body.length == 1) {
+					var screenW = body[0].offsetWidth;
+					var screenH = body[0].offsetHeight;
+					for(var i=0; i < x.length; i++) {
+						var h = (screenH/2)-(x[i].offsetHeight/2);
+						var w = (screenW/2)-(x[i].offsetWidth/2);
+						x[i].style.top = h+'px';
+						x[i].style.left = w+'px';
+					}
+				}
+			}
+        </script>
+    </body>
+</html>

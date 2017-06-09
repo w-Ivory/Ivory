@@ -1,0 +1,29 @@
+main {
+	width: 100%;
+	box-sizing: border-box;
+	font-size: 0;
+}
+article {
+	background-color: rgba(0,0,0,0.8);
+	width: 45%;
+	color: white;
+	padding: 15px;
+	display: inline-block;
+	vertical-align: top;
+	margin: 1px;
+}
+article img {
+	margin:0 auto;
+	width: 40%;
+	display: inline-block;
+	vertical-align: top;
+}
+article p {
+	font-size: 16px;
+	display:inline-block;
+	vertical-align: top;
+	width: 50%;
+	hyphens: auto;
+	margin: 0;
+	text-align: justify;
+}

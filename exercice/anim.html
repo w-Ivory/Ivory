@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+
+		<style type="text/css">
+			.anim {
+				height: 50px;
+				width: 50px;
+				position: relative;
+				background-color: black;
+				animation-name: test;
+				animation-duration: 4s;
+				animation-timing-function: ease-in-out;
+				animation-iteration-count: 2;
+				/*animation-direction: reverse;*/
+			}	
+			/*.anim:hover {
+				animation-play-state: paused;
+			}*/
+			@keyframes test {
+				0% {
+				    top:0;
+				    left:0;
+				
+				}
+				24% {
+					background-color: black;
+				}
+				25% {
+					top:0;
+					left:200px;
+					background-color: red;
+
+				}
+				49% {
+				    transform: rotate(0deg);
+				}
+				50% {
+					left: 200px;
+					top:200px;
+					transform: rotate(45deg);
+					background-color: red;
+				}
+				74% {
+					background-color: red;
+					transform: rotate(45deg);
+				}
+				75% {
+				    left:0;
+				    top: 200px;
+				    background-color: black;
+				    transform: rotate(0deg);
+				}
+				100% {
+					top:0;
+				}
+			}
+		</style>
+
+
+	</head>
+	<body>
+		<div class="anim"></div>
+	</body>
+</html>

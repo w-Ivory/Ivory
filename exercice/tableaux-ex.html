@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<style type="text/css">
+		
+		/*Exercice 1*/
+
+		/*tbody tr:nth-child(6n+3), tbody tr:nth-child(6n+2), tbody tr:nth-child(6n+1) {
+		    background-color: #ffcccc;
+		}*/
+
+		tbody tr {
+		    background-color: #ffcccc;
+		}
+
+		tbody tr:nth-child(6n+4) {
+			background-color: #ffffcc;
+		}
+
+		tbody tr:nth-child(6n+5) {
+			background-color: #ccffcc;
+		}
+
+		tbody tr:nth-child(6n+6) {
+			background-color: #ccffff;
+		}
+
+		tbody td:nth-child(2) {
+			color:#ff0000;
+		}
+
+		thead tr {
+			color: white;
+			background-color: #663333;
+		}
+
+		
+		/* Exercice 2*/
+
+		/*p {
+			display: inline-block;
+			margin:0;
+		}*/
+
+		p q {
+			background-color: #ffffcc;
+		}
+
+		p .ma_classe~q {
+			background-color: #ffcccc;
+		}
+
+		h1 > :only-child {
+			background-color: #ccffcc;
+		}
+
+
+	</style>
+</head>
+	<body>
+
+		<header></header>
+		<main>
+		    <h1>Exercice 1</h1>
+		    <hr />
+			<table border="1">
+			    <thead>
+			        <tr>
+			            <th>En-tête 1</th>
+			            <th>En-tête 2</th>
+			        </tr>
+			    </thead>
+
+			    <tbody>
+			    	<tr>
+			    		<td>1</td>
+			    		<td>2</td>
+			    	</tr>
+			    	<tr>
+			    		<td>1</td>
+			    		<td>2</td>
+			    	</tr>
+			    	<tr>
+			    		<td>1</td>
+			    		<td>2</td>
+			    	</tr>
+			    	<tr>
+			    		<td>1</td>
+			    		<td>2</td>
+			    	</tr>
+			    	<tr>
+			    		<td>1</td>
+			    		<td>2</td>
+			    	</tr>
+			    	<tr>
+			    		<td>1</td>
+			    		<td>2</td>
+			    	</tr>
+			    	<tr>
+			    		<td>1</td>
+			    		<td>2</td>
+			    	</tr>
+			    	<tr>
+			    		<td>1</td>
+			    		<td>2</td>
+			    	</tr>
+			    	<tr>
+			    		<td>1</td>
+			    		<td>2</td>
+			    	</tr>
+			    	<tr>
+			    		<td>1</td>
+			    		<td>2</td>
+			    	</tr>
+			    	<tr>
+			    		<td>1</td>
+			    		<td>2</td>
+			    	</tr>
+			    	<tr>
+			    		<td>1</td>
+			    		<td>2</td>
+			    	</tr>
+			    	<tr>
+			    		<td>1</td>
+			    		<td>2</td>
+			    	</tr>
+			    	<tr>
+			    		<td>1</td>
+			    		<td>2</td>
+			    	</tr>
+			    	<tr>
+			    		<td>1</td>
+			    		<td>2</td>
+			    	</tr>
+			    	<tr>
+			    		<td>1</td>
+			    		<td>2</td>
+			    	</tr>
+			    	<tr>
+			    		<td>1</td>
+			    		<td>2</td>
+			    	</tr>
+			    	<tr>
+			    		<td>1</td>
+			    		<td>2</td>
+			    	</tr>
+			    </tbody>
+			</table>
+			
+			<br />
+
+			<h1>Exercice 2</h1>
+		    <hr />
+			<h1>Quelques <em>citations</em> amusantes ...</h1>
+		    <p>
+			    <q>Quand les bornes sont franchies, il n'y a plus de limite</q> Pierre Dac.<br />
+			    <q>Quand les bornes sont franchies, il n'y a plus de limite</q> Pierre Dac.<br />
+			    <q>Quand les bornes sont franchies, il n'y a plus de limite</q> Pierre Dac.<br />
+			    <q>Quand les bornes sont franchies, il n'y a plus de limite</q> Pierre Dac.<br />
+			    <q class="ma_classe">Quand les bornes sont franchies, il n'y a plus de limite</q> Pierre Dac.<br />
+		        <q>Quand les bornes sont franchies, il n'y a plus de limite</q> Pierre Dac.<br />
+		        <q>Quand les bornes sont franchies, il n'y a plus de limite</q> Pierre Dac.<br />
+		        <q>Quand les bornes sont franchies, il n'y a plus de limite</q> Pierre Dac.<br />
+		        <q>Quand les bornes sont franchies, il n'y a plus de limite</q> Pierre Dac.<br />
+		        <q>Quand les bornes sont franchies, il n'y a plus de limite</q> Pierre Dac.<br />
+		        <q>Quand les bornes sont franchies, il n'y a plus de limite</q> Pierre Dac.<br />
+		        <q>Quand les bornes sont franchies, il n'y a plus de limite</q> Pierre Dac.<br />
+		        <q>Quand les bornes sont franchies, il n'y a plus de limite</q> Pierre Dac.<br />
+		    </p>
+
+		</main>
+		<footer></footer>
+	</body>
+</html>

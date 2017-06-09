@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	    <meta charset="utf-8">
+		<title>CSS</title>
+		<style type="text/css">
+
+	        body {
+	        	margin:30px;
+	        }
+
+			.c_1 {
+				background-color: rgb(255, 3, 255);
+				height: 500px;
+				width: 500px;
+				position: relative;
+			}
+
+			.c_2 {
+				background-color: rgb(0, 255, 255);
+				height: 250px;
+				width: 250px;
+				position: absolute;
+				top:50px;
+				left: 50px;
+			}
+
+			.s_1 {
+				background-color: rgb(255, 3, 255);
+				position: relative;
+				bottom: 5px;
+				left: 10px;
+			}
+
+			.s_2 {
+				background-color: rgb(0, 255, 255);
+			}
+
+			.p_1 {
+				position: relative;
+				text-align: right;
+			}
+
+			.i_1 {
+				position: absolute;
+				right: 0;
+				height: 50px;
+				width: 50px;
+				background-color: #000;
+			}
+
+			.fixed {
+				background-color: lightblue;
+				z-index: 1;
+				position: fixed;
+				top: 0px;
+				right: 0;
+				width: 100%;
+			}
+
+			.fleft {
+				background-color: lightblue;
+				float:left;
+				height: 50%;
+				width:50%;
+				box-sizing: border-box;
+				border:1px solid black;
+			}
+
+			.fright {
+				background-color: lightgreen;
+				float:right;
+				height: 50%;
+				width:50%;
+			}
+
+			.float1 {
+				background-color: black;
+				float: right;
+			}
+
+			.clear {
+				clear: both;
+			}
+
+			.clear1 {
+				clear: left;
+				background-color: lightblue;
+				float: left;
+				height: 150px;
+				width: 33.33333333%;
+			}
+			.clear2 {
+				background-color: lightgreen;
+				clear: left;
+				float: left;
+				height: 150px;
+				width: 33.33333333%;
+			}
+			.clear3 {
+				background-color: magenta;
+				float: left;
+				height: 150px;
+				width: 33.33333333%;
+			}
+
+
+
+
+		</style>
+	</head>
+	<body>
+
+		<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+
+		<div class="c_1">Boite de type bloc 1
+		    <div class="c_2">Boite de type bloc 2</div> 
+		</div>
+		
+
+		<span class="s_1">Boite de type en-ligne 1</span>
+		<span class="s_2">Boite de type en-ligne 2</span>
+
+		<p class="p_1"> 
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. In in feugiat justo. Curabitur risus libero, facilisis at tincidunt aliquet, lacinia id felis.
+			<span class="i_1">coucou</span>
+		</p>
+
+		<div class="fixed">Boite de type bloc en position fixed</div>
+		
+		<div class="fleft">Boite de type float left</div>
+		<div class="fright">Boite de type float right</div>
+
+		<div class="float1">Ma div</div>
+		
+
+		<div class="clear1"></div>
+		<div class="clear2"></div>
+		<div class="clear3"></div>
+
+
+
+
+
+
+	</body>
+</html>

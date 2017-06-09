@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Les floats ex 2</title>
+
+		<style type="text/css">
+
+			body {
+				margin: 0;
+				padding: 0;
+			}
+			section {
+				position: relative;
+				top: 150px;
+			}
+			
+			.topbar {
+				position: fixed;
+				background-color: brown;
+				width: 100%;
+				height: 150px;
+				z-index: 1;
+
+			}
+
+			.leftbar {
+				background-color: yellow;
+				width: 20%;
+				height: 500px;
+				float: left;
+				
+			}
+
+			.content {
+				float: left;
+				width: 60%;
+				height: 500px;
+				background-color: orange;
+			}
+
+			.rightbar {
+				float: left;
+				width:20%;
+				height: 500px;
+				background-color: blue;
+			}
+
+			.bottombar {
+				
+				background-color: red;
+				width: 100%;
+				height: 200px;
+				
+				margin:0;
+
+			}
+
+			.clearBlock {
+				clear: both;
+			}
+		</style>
+	</head>
+	<body>
+	    <header>
+			<div class="topbar">Topbar</div>
+		</header>
+		<section>
+		<main>
+		   
+			<div class="leftbar">LeftBar</div>
+			<div class="content">Content</div>
+			<div class="rightbar">Rightbar</div>
+			<div class="clearBlock"></div>
+		</main>
+		<footer>
+			<div class="bottombar">Bottombar</div>
+		</footer>
+		</section>
+
+	</body>
+</html>

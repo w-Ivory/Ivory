@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	    <meta charset="utf-8">
+		<title>Display inline block 2</title>
+
+		<style type="text/css">
+			body {
+				margin:0;
+				padding: 0;
+			}
+			#inline-block {
+				font-size: 0;
+			}
+			.bottom {
+				width: 100%;
+				background-color: purple;
+				height:100px;
+			}
+			.top {
+				width: 100%;
+				background-color: blue;
+				height:150px;
+			}
+			.leftbar{
+				width: 20%;
+				height: 400px;
+				background-color: lightgreen;
+				display: inline-block;
+			}
+			.content{
+				width: 60%;
+				height: 400px;
+				background-color: orange;
+				display: inline-block;
+			}
+			.rightbar{
+				width: 20%;
+				height: 400px;
+				background-color: yellow;
+				display: inline-block;
+			}
+		</style>
+	</head>
+	<body>
+
+	<section id="inline-block">
+		<header>
+			<div class=top></div>
+		</header>
+
+		<main>
+			<div class="leftbar"></div>
+			<div class="content"></div>
+			<div class="rightbar"></div>
+		</main>
+
+		<footer>
+			<div class="bottom"></div>
+		</footer>
+	</section>
+	</body>
+</html>

@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+
+		<style type="text/css">
+
+
+			/* PORTE */
+			.cadre {
+				margin-left: 100px;
+				border:5px solid black;
+				width: 100px;
+	        	height: 200px;
+	        	-webkit-perspective:600px;
+			    -moz-perspective:600px;
+			    -ms-perspective:600px;
+			    -o-perspective:600px;
+			    perspective:600px;
+			}
+	        .door {
+	        	position: absolute;
+	        	background-color: #ccc;
+	        	width: 100px;
+	        	height: 200px;
+
+				-webkit-transform-style:preserve-3d;
+		        -moz-transform-style:preserve-3d;
+		        -ms-transform-style:preserve-3d;
+		        -o-transform-style:preserve-3d;
+		        transform-style:preserve-3d;
+
+			    -webkit-transform-origin:0 0;
+		        -moz-transform-origin:0 0;
+		        -ms-transform-origin:0 0;
+		        -o-transform-origin:0 0;
+		        transform-origin:0 0;
+
+		        -webkit-transition:transform 2s cubic-bezier(.17,.67,.83,.67) 4s;
+		        -moz-transition:transform 2s cubic-bezier(.17,.67,.83,.67) 4s;
+		        -ms-transition:transform 2s cubic-bezier(.17,.67,.83,.67) 4s;
+		        -o-transition:transform 2s cubic-bezier(.17,.67,.83,.67) 4s;
+		        transition:transform 2s cubic-bezier(.17,.67,.83,.67) 4s;
+
+		        
+	        }
+	        .door:hover {
+		        -webkit-transform:rotate3d(0,1, 0, -180deg);
+		        -moz-transform:rotate3d(0,1, 0, -180deg);
+		        -ms-transform:rotate3d(0,1, 0, -180deg);
+		        -o-transform:rotate3d(0,1, 0, -180deg);
+		        transform:rotate3d(0,1, 0, -180deg);
+	        }
+	        .poigne {
+	        	border-radius: 50px;
+	        	height: 15px;
+	        	width: 15px;
+	        	margin-left: 75px;
+	        	margin-top: 100px;
+	        	background-color: grey;
+	        	border: 1px solid white;
+	        }
+			.block1 {
+				position: absolute;
+			    background-color: grey;
+			    width: 5px;
+			    height: 15px;
+			    border: 1px solid white;
+			    margin-left: -3px;
+			    margin-top: -70px;
+			    
+			}
+			.block2 {
+				position: absolute;
+			    background-color: grey;
+			    width: 5px;
+			    height: 15px;
+			    border: 1px solid white;
+			    margin-top: 20px;
+			    margin-left: -3px;
+			}
+		
+
+
+
+
+
+
+
+
+			/* TRANSFORM REGION */
+			#region .bg {
+				position: relative;
+				background: url(region.jpg) center top no-repeat;
+				height: 380px;
+				width: 380px;
+				overflow: hidden;
+			
+			}
+
+			#region .black {
+				position:absolute;
+				background-color: rgba(0,0,0,0.8);
+				height: 180px;
+				width: 100%;
+				transition: all 0.5s;
+				transform: translateY(100%);
+				color: white;
+				bottom: 0;
+
+			}
+
+			#region .bg:hover .black{
+				transform: translateY(0%);
+			
+			}
+
+
+
+
+
+
+
+
+
+			/* MOVE TRANSLATE */
+			.container {
+				position: relative;
+				width: 250px;
+				height: 250px;
+				border: 1px solid #ccc;
+			}
+			.content {
+			    position: absolute;
+			    width: 20%;
+			    height: 20%;
+			    text-align: center;
+			    background-color: red;
+			    transition: transform 0.5s;
+			}
+
+			.container:hover .content {
+				transform: translate(400%, 400%);
+			}
+
+
+
+			
+
+
+
+
+
+			
+			/* CARD */
+			.container3 {
+				position: relative;
+				border:1px solid #ccc;
+				height: 250px;
+				width: 250px;
+				perspective: 400px;
+
+
+			}
+
+			.face{
+				position: absolute;
+				display: block;
+				text-align: center;
+				line-height: 250px;
+				width: 100%;
+				font-size: 140px;
+				font-weight: bold;
+				color: white;
+				transform-origin: 50% 50%;
+				transition: transform 1s;
+				transform-style:preserve-3d;
+			}
+
+			.container3:hover .faceA{			
+				transform:rotateY(-180deg) ;
+			}
+
+			.container3:hover .faceB{		
+				transform:rotateY(0deg) ;
+			}
+
+			.container3:hover .card {
+				transform: translateX(0%);
+			}
+
+			.faceA {
+			    background-color: lightblue;
+			    z-index: 10;
+			    backface-visibility: hidden;
+			}
+			.faceB {
+			    background-color: lightgreen;
+			    transform: rotateY(180deg);
+			}
+
+
+
+
+
+
+
+
+			/* MOVE + ROTATE */
+			.container4 {
+				border:1px solid #ccc;
+				width: 300px;
+				height: 300px;
+			}
+
+			.container4 .contenu {
+				background-color: red;
+				width: 50px;
+				height: 50px;
+				text-align: center;
+				color: white;
+				transition:transform 1s;
+			}
+
+			.container4:hover .contenu{
+				transform: translate(500%, 500%) rotate(360deg);
+			}
+
+
+
+
+
+
+
+
+			/* MOVE & ROTATE */
+			.container5 {
+				border:1px solid #ccc;
+				width: 300px;
+				height: 300px;
+			}
+
+			.container5 .contenu {
+				background-color: red;
+				width: 50px;
+				height: 50px;
+				text-align: center;
+				color: white;
+				transition:margin-top 1s, margin-left 1s, transform 1s 1s;
+			}
+
+			.container5:hover .contenu{
+				margin-top: 250px;
+				margin-left: 250px;
+				transform: rotate(360deg);
+			}
+
+
+
+
+
+		</style>
+	</head>
+	<body>
+
+
+
+
+
+
+		
+		<!-- PORTE -->
+		<div class="cadre">
+			<div class="door">
+				<div class="poigne"></div>
+				<div class="block1"></div>
+				<div class="block2"></div>
+			</div>
+		</div>
+
+
+
+
+
+
+
+
+		<br />
+		<hr />
+
+		<!-- TRANSFORM REGION -->
+		<div id="region">
+		    <div class="bg">
+		    	<div class="black">
+		    		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris egestas nibh vehicula dui egestas, in tempus velit semper. Pellentesque nec condimentum mi, sit amet aliquam neque. Duis urna augue, hendrerit vitae imperdiet vitae, pretium sit amet enim.</p>
+		    	</div>
+		    </div>
+		</div>
+
+
+
+
+
+
+
+
+		<br />
+		<hr />
+
+		<!-- MOVE TRANSLATE -->
+		<div class="container">
+		    <div class="content">
+		    	
+		    </div>
+		</div>
+		
+
+
+
+
+
+
+
+
+
+
+
+		<br />
+		<hr />
+
+		<!-- CARD -->
+		<div class="container3">
+		    <div class="face faceA">1</div>
+		    <div class="face faceB">2</div>
+		</div>
+
+	
+
+		<br />
+		<hr />
+
+		<!-- MOVE + ROTATE -->
+		<div class="container4">
+		    <div class="contenu">Hey salut !</div>
+		</div>
+
+
+		<br />
+		<hr />
+
+		<!-- MOVE & ROTATE -->
+		<div class="container5">
+		    <div class="contenu">Hey salut !</div>
+		</div>
+	
+	</body>
+</html>

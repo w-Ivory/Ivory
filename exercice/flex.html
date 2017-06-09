@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Flex</title>
+		<!--[if lt IE 9]>
+		    <script>
+		        document.createElement("header");
+		        document.createElement("main");
+		        document.createElement("nav");
+		        document.createElement("article");
+		        document.createElement("footer");
+		    </script>
+	    <![endif]-->
+		<style type="text/css">
+			/*body {
+				margin: 0;
+				min-height: 100vh;
+				display: flex;
+				flex-direction: column;
+				font-size: 1.1em;
+				font-family: "Century Gothic", helvetica, arial, sans-serif;
+			}
+
+			header, footer, nav, article {
+				margin: 3px;
+			}
+
+		    header {
+		    	background-color: lightblue;
+		    	padding: 40px;
+		    	border-radius: 5px;
+		    	text-align: center;
+		    	color: white;
+		    }
+
+		    main{
+				display: flex;
+				flex:20;
+		    }
+
+		    main nav {
+		    	flex:1;
+			    background-color: red;
+			    border-radius: 5px;
+		    }
+
+		    main nav ul {
+		    	list-style: none;
+		    	margin: 0;
+		    	padding: 0;
+		    }
+
+		    main nav ul li {
+		    	color: white;
+		    	border-bottom: 1px solid white;
+		    	padding: 10px;
+		    	margin: 10px;
+		    	cursor: pointer;
+		    }
+
+		    main article {
+		      flex:4;
+			  background-color: green;
+			  border-radius: 5px;
+			  padding: 20px;
+			  color:white;
+		    }
+
+		    footer {
+		    	background-color: yellow;
+		    	border-radius: 5px;
+		    	padding: 10px;
+		    	color: white;
+		    	text-align: center;
+		    }*/
+
+		    body {
+				margin: 0;
+				min-height: 100vh;
+				display: flex;
+				flex-direction: column;
+				font-size: 1.1em;
+				font-family: "Century Gothic", helvetica, arial, sans-serif;
+			}
+
+			header, footer, nav, article {
+				margin: 3px;
+			}
+
+		    header {
+		    	background-color: lightblue;
+		    	padding: 40px;
+		    	border-radius: 5px;
+		    	text-align: center;
+		    	color: white;
+		    	flex:0;
+		    }
+
+		    main{
+				display: flex;
+				flex-direction: column;
+				flex:1;
+		    }
+			
+		    main nav {
+		    	flex:0;
+			    background-color: red;
+			    border-radius: 5px;
+		    }
+
+		    main nav ul {
+				display: flex;
+		    	list-style: none;
+		    	margin: 0;
+		    	padding: 0;
+		    }
+
+		    main nav ul li.space {
+		    	flex:1;
+		    }
+
+		    main nav ul li button {
+		    	border-radius: 3px;
+		    	background-color: #fff;
+		    	border: 1px solid black;
+		    	padding: 8px;
+		    	transition: all 0.5s;
+		    	cursor:pointer;
+		    }
+
+		    main nav ul li button:hover {
+				background-color: black;
+				color: white;
+				border: 1px solid white;
+				/*transform: rotate(360deg);*/
+				/*transform: translate(-5px);*/
+				/*transform: scale(1.1, 1.1);*/
+				/*transform: matrix(1,1,-1,1.1,-15,0);*/
+
+				
+		    }
+
+		    main nav ul li {
+		    	color: white;
+		    	padding: 10px;
+		    	margin: 10px;
+		    }
+
+		    main article {
+		      flex:1;
+			  background-color: green;
+			  border-radius: 5px;
+			  padding: 20px;
+			  color:white;
+			 
+		    }
+
+		    footer {
+		    	background-color: yellow;
+		    	border-radius: 5px;
+		    	padding: 10px;
+		    	color: white;
+		    	text-align: center;
+		    	flex:0;
+		    }
+
+
+
+		    /*body {
+				margin:0;
+				font-family: "Century Gothic", helvetica, arial, sans-serif;
+			}
+
+			* {
+				display: block;
+				margin: 0;
+		    	box-sizing: border-box;
+
+			}
+
+
+			
+		    header {
+		    	background-color: lightblue;
+		    	border-radius: 5px;
+		    	text-align: center;
+		    	color: white;
+		    	width: 100%;
+		    	padding: 20px;
+
+		    }
+
+		    main{
+				float:left;
+				width: 100%;
+		    }
+
+		    main nav {
+			    background-color: red;
+			    border-radius: 5px;
+			    float: left;
+			    width: 30%;
+			    height: 500px;
+		    }
+
+		    main nav ul {
+		    	list-style: none;
+
+		    	 
+		    }
+
+		    main nav ul li {
+		    	color: white;
+		    	border-bottom: 1px solid white;
+		    	cursor: pointer;
+		    	margin: 10px;
+		    	padding: 10px;
+		    }
+
+		    main article {
+			    background-color: green;
+			    border-radius: 5px;
+			    color:white;
+			    float: left;
+			    height: 500px;
+			    width: 70%;
+			   
+	
+			   
+		    }
+
+		    footer {
+		    	background-color: yellow;
+		    	border-radius: 5px;
+		    	color: white;
+		    	text-align: center;
+		   		clear: both;
+		    	padding: 10px;
+
+		    }*/
+
+
+		</style>
+	</head>
+	<body>
+		
+			<header>
+				<h1>I do love my Knacky balls !</h1>
+			</header>
+			<main>
+			
+			   <nav> 
+			       <ul>
+			           <li>Salade</li>
+			           <li>Tomate</li>
+			           <li>Oignon</li>
+			           <li>Choucroute</li>
+			           <li>Picon Bière</li>
+			           <li class="space"></li>
+			           <li><button>PROMO</button></li>
+			       </ul>
+
+			       
+			   </nav>
+			   <article>
+			       <h2>Les flexboxs</h2>
+			       <p>
+			           Lorem ipsum dolor sit amet, consectetur adipiscing elit. In in feugiat justo. Curabitur risus libero, facilisis at tincidunt aliquet, lacinia id felis. Duis ut fermentum tellus, ut volutpat metus. Vestibulum porta egestas tempus. In ultricies, massa vel posuere malesuada, velit nisl gravida purus, ut gravida mauris metus at ante. Ut vel lorem libero. Donec non justo nec sapien vulputate sagittis hendrerit nec eros. Pellentesque sed vestibulum lacus. Duis a convallis libero. Aenean ut maximus nibh. Pellentesque porttitor tempor posuere. Integer a justo in dui faucibus imperdiet interdum semper tellus. Quisque efficitur luctus ex, posuere pretium ipsum molestie vitae.
+			       </p>
+			   </article>
+				
+			</main>
+
+			<footer>
+				Voici le footer
+			</footer>
+
+
+		
+
+
+	</body>
+</html>

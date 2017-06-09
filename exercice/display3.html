@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	    <meta charset="utf-8">
+		<title>Display inline block 3</title>
+
+		<style type="text/css">
+			body {
+				margin:0;
+			}
+			#inline-block {
+				font-size: 0;
+			}
+			.left, .right {
+				background-color: lightgreen;
+				width:20%;
+				height: 850px;
+				display:inline-block;
+				vertical-align: top;
+			}
+			.top {
+				background-color: purple;
+				width:60%;
+				height: 200px;
+				display: inline-block;
+				vertical-align: top;
+			}
+
+			.contentR {
+				background-color: red;
+				height: 650px;
+				width: 30%;
+				display: inline-block;
+				vertical-align: top;
+				
+			}
+
+			.contentL {
+				background-color: green;
+				height: 650px;
+				width: 30%;
+				display: inline-block;
+				vertical-align: top;
+
+				
+			}
+
+		</style>
+	</head>
+	<body>
+		<div id="inline-block">
+		    <div class="left"></div>
+			<div class="top"></div>
+			<div class="contentR"></div>
+				<div class="contentL"></div>
+			<div class="right"></div>
+
+
+				
+		</div>
+
+	</body>
+</html>

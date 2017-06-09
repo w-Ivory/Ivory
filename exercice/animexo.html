@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+
+		<style type="text/css">
+			/*.a{
+			    height: 100px;
+			    width: 100px;
+			    background-color: lightgreen;
+			}
+			.b{
+			    height: 100px;
+			    width: 100px;
+			    background-color: lightblue;
+			    transform: rotate(45deg);
+			    border-top-left-radius: 50px;
+
+			}
+			.c{
+			    height: 100px;
+			    width: 100px;
+			    background-color: yellow;
+			    border-top-right-radius:50px;
+			    border-bottom-right-radius:50px;
+
+			}
+			.d{
+			    height: 100px;
+			    width: 100px;
+			    background-color: lightpink;
+				transform: rotate(45deg);
+			    border-top-right-radius:50px;
+			    border-bottom-right-radius:50px;
+			    border-bottom-left-radius:50px;
+
+
+			}
+			.e{
+			    height: 100px;
+			    width: 100px;
+			    background-color: purple;
+			    border-radius: 50px;
+
+			}*/
+
+			.anim {
+				height: 100px;
+				width: 100px;
+				position: relative;
+				animation-name: form;
+				animation-duration: 10s;
+				/*animation-timing-function: ease-in-out;*/
+				animation-iteration-count: infinite;
+				margin-top: 100px;
+				margin-left: 100px;
+			}
+
+
+			@keyframes form {
+			    0% {
+			    	background-color: lightgreen;
+			    }
+			    19% {
+			    	background-color: lightgreen;
+			    	border-top-right-radius:0px;
+			        border-bottom-right-radius:0px;
+			        border-top-left-radius: 0px;
+			        border-bottom-left-radius: 0px;
+			        transform: rotate(0deg);
+			    }
+			    20% {
+			    	background-color: lightblue;
+			        transform: rotate(45deg);
+			        border-top-left-radius: 50px;
+			    }
+			    39% {
+			    	background-color: lightblue;
+			       	transform: rotate(45deg);
+			        border-top-left-radius: 50px;
+			        border-top-right-radius:0px;
+			        border-bottom-right-radius:0px;
+			        border-bottom-left-radius: 0px;
+			    }
+			    40% {
+			    	transform: rotate(0deg);
+			    	background-color: yellow;
+			        border-top-right-radius:50px;
+			        border-bottom-right-radius:50px;
+			        border-top-left-radius: 0px;
+			        border-bottom-left-radius: 0px;
+			    }
+			    59% {
+			    	background-color: yellow;
+			    	transform:rotate(0deg);
+			        border-top-right-radius:50px;
+			        border-bottom-right-radius:50px;
+			        border-top-left-radius: 0px;
+			        border-bottom-left-radius: 0px;
+			    }
+			    60% {
+			    	background-color: lightpink;
+					transform: rotate(45deg);
+				    border-top-right-radius:50px;
+				    border-bottom-right-radius:50px;
+				    border-bottom-left-radius:50px;
+				    border-top-left-radius: 0px;
+			    }
+			    79% {
+			    	background-color: lightpink;
+					transform: rotate(45deg);
+				    border-top-right-radius:50px;
+				    border-bottom-right-radius:50px;
+				    border-bottom-left-radius:50px;
+				    border-top-left-radius: 0px;
+			    }
+			    80% {
+			    	background-color: purple;
+			        border-radius: 50px;
+			    }
+			    100% {
+			    	background-color: purple;
+			        border-radius: 50px;
+			    }
+			}
+
+			
+
+
+		</style>
+
+	</head>
+	<body>
+		<!--<div class="a"></div>
+		<div class="b"></div>
+		<div class="c"></div>
+		<div class="d"></div>
+		<div class="e"></div>-->
+
+		<div class="anim"></div>
+	</body>
+</html>

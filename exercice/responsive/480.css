@@ -2,4 +2,13 @@
     article {
 	   display: block;
     }
+    article img {
+    	display: block;
+    	width: 80%;
+    }
+    article p {
+    	display: block;
+    	width: 100%;
+    	margin-top: 0;
+    }
 }

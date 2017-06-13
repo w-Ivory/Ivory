@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+		<link rel="stylesheet" href="../montage/webart/inc/picto/css/font-awesome.min.css">
+		<meta charset="UTF-8" name="viewport" content="width=device-width">
+		<style type="text/css">
+		    body {
+		    	margin:0;
+		    	
+		    }
+		    * {box-sizing: border-box;}
+
+		    header nav {
+		    	background-color: rgba(0,0,0,0.6);
+		    }
+			header nav ul {
+				list-style: none;
+				margin:0;
+				padding: 0;
+				text-align: center;
+			}
+
+			header nav ul li {
+				display: inline-block;
+				margin:10px;
+			}
+			figure {
+				margin:0;
+			}
+			figure.pub {
+				background-color: red;
+				height: 200px;
+				margin-bottom: 10px;
+			}
+			figure.archive {
+				background-color: yellow;
+				height: 100px;
+			}
+			figure.principal {
+				background-color: green;
+				height: 500px;
+			}
+			figure.action {
+				background-color: blue;
+				height: 200px;
+				margin-bottom: 10px;
+			}
+			figure.related {
+				background-color: purple;
+				height: 200px;
+			}
+
+			.gauche {
+				float: left;
+				width: 10%;
+				padding: 10px;
+			}
+			.droite {
+				float: right;
+				width: 10%;
+				padding: 10px;
+			}
+			.milieu {
+				float: left;
+				width: 80%;
+				padding: 10px;
+			}
+
+			.responsive-menu {
+				display: none;
+			}
+
+			@media screen and (max-width: 670px) {
+				.milieu {
+					width: 80%;
+				}
+				.droite {
+					float: left;
+					width: 100%;
+				}
+				.action, .related {
+					float: left;
+					width: 50%;
+				}
+				.gauche {
+					width: 20%;
+				}
+			}
+
+			@media screen and (max-width: 480px) {
+
+				.gauche {
+					display: none;
+				}
+				.related {
+					display: none;
+				}
+				.droite, .milieu {
+					width: 100%;
+				}
+				.action {
+					width: 100%;
+				}
+				.responsive-menu {
+					display: block;
+					margin-left: 10px;
+				}
+				#not-responsive {
+					display: none;
+				}
+				.responsive-menu:checked ~#not-responsive {
+					display: block;
+				}
+				#not-responsive li {
+				    display: block;
+				}
+				#not-responsive {
+					position: absolute;
+					background-color: black;
+					margin-left: 10px;
+				}
+				#navcheck {
+				   display:none;
+			    }
+				.sub {
+					display: none;
+				}
+			    #not-responsive li:hover ul.sub {
+			    	display: block;
+			    }
+
+		</style>
+	</head>
+	<body>
+		<header>
+		    <nav>
+		    	<!-- <button class="responsive-menu"><a href="#not-responsive">Responsive</a></button> -->
+		    	<input class="responsive-menu" type="checkbox" id="navcheck"/>
+		    	<label for="navcheck"><i class="fa fa-bars" aria-hidden="true"></i></label>
+		        <ul id="not-responsive">
+		        	<li>
+		        	    <button>Item 1</button>
+		        	    <ul class="sub">
+		        	        <li><button>1</button></li>
+		        	        <li><button>2</button></li>
+		        	        <li><button>3</button></li>
+		        	        <li><button>4</button></li>
+		        	       
+
+		        	    </ul>
+		        	</li>
+		        	<li>
+		        	    <button>Item 2</button>
+		        	    <ul class="sub">
+		        	        <li><button>1</button></li>
+		        	        <li><button>2</button></li>
+		        	        <li><button>3</button></li>
+		        	        <li><button>4</button></li>
+		        	    </ul>
+		        	</li>
+		        	<li>
+		        	    <button>Item 3</button>
+		        	    <ul class="sub">
+		        	        <li><button>1</button></li>
+		        	        <li><button>2</button></li>
+		        	        <li><button>3</button></li>
+		        	        <li><button>4</button></li>
+		        	    </ul>
+		        	</li>
+		        	<li>
+		        	    <button>Item 4</button>
+		        	    <ul class="sub">
+		        	        <li><button>1</button></li>
+		        	        <li><button>2</button></li>
+		        	        <li><button>3</button></li>
+		        	        <li><button>4</button></li>
+		        	    </ul>
+		        	</li>
+		        	<li>
+		        		<button>Item 5</button>
+		        		<ul class="sub">
+		        	        <li><button>1</button></li>
+		        	        <li><button>2</button></li>
+		        	        <li><button>3</button></li>
+		        	        <li><button>4</button></li> 
+		        	    </ul>
+		        	</li>
+		        	<li>
+		        		<button>Item 6</button>
+		        		<ul class="sub">
+		        	        <li><button>1</button></li>
+		        	        <li><button>2</button></li>
+		        	        <li><button>3</button></li>
+		        	        <li><button>4</button></li>
+		        	    </ul>
+
+		        	</li>
+
+		        </ul>
+		    </nav>
+
+			<section class="gauche">
+			    <figure class="pub">
+			        Pub
+			    </figure>
+			    <!-- <div style="clear: left;"></div> -->
+			     <figure class="archive">
+			        Archive
+			    </figure>
+
+			</section>
+
+			<section class="milieu">
+			    <figure class="principal">
+			        Contenue principal
+			    </figure>
+			</section>
+			
+		   	<section class="droite">
+			    <figure class="action">
+			        Action
+			    </figure>
+			    <!-- <div style="clear: right;"></div> -->
+			    <figure class="related">
+			        Related
+			    </figure>
+			</section>
+		</header>
+
+		<main>
+		</main>
+	</body>
+</html>

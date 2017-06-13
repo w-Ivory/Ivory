@@ -92,6 +92,7 @@ header .nav-head ul.nav-menu li:hover span.contact-head {
 
 main {
 	clear: both;
+	margin-bottom: 100px;
 }
 
 /* BANNER */
@@ -100,8 +101,6 @@ main .banner-container {
 	background: url('pictures/banner.jpg') no-repeat;
 	background-size: cover;
 	height: 420px;
-	width: 100%;
-
 }
 
 main .banner-container .banner-content{
@@ -279,3 +278,12 @@ footer .copy {
 	width: 100%; 
 	margin:0 auto;
 }
+
+.clear:after {
+	content: '';
+	display: block;
+	clear: both;
+}
+
+/* MEDIA QUERY */
+
